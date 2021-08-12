@@ -18,4 +18,32 @@ public class Equipement {
 
 	@ManyToMany(mappedBy = "equipements")
 	private List<Aventurier> aventuriers;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public List<Aventurier> getAventuriers() {
+		return aventuriers;
+	}
+
+	public void setAventuriers(List<Aventurier> aventuriers) {
+		this.aventuriers = aventuriers;
+	}
+
+	public Equipement() {
+
+	}
 }
