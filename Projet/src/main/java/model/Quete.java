@@ -4,31 +4,30 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "quete")
 public class Quete {
-	
+
 	@Id
-	
+
 	@Column(name = "QTE_ID")
 	private int id;
-	
+
 	@Column(name = "QTE_INTITULE")
 	private String intitule;
-	
+
 	@Column(name = "QTE_ETAT")
 	private String Etat;
-	
-	//@OneToMany
+
+	// @OneToMany
 	private List<Equipement> recompenses;
-	
+
 	@Column(name = "QTE_PROBA_REUSSITE")
 	private double probaReussite;
-	
-	//@OneToMany
+
+	// @OneToMany
 	private Aventurier aventurier;
-	
+
 	public Quete() {
 		super();
 	}
@@ -39,8 +38,6 @@ public class Quete {
 		Etat = etat;
 		this.probaReussite = probaReussite;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -65,7 +62,7 @@ public class Quete {
 	public void setEtat(String etat) {
 		Etat = etat;
 	}
-	
+
 	public List<Equipement> getRecompenses() {
 		return recompenses;
 	}
@@ -74,9 +71,6 @@ public class Quete {
 		this.recompenses = recompenses;
 	}
 
-
-	
-
 	public double getProbaReussite() {
 		return probaReussite;
 	}
@@ -84,7 +78,5 @@ public class Quete {
 	public void setProbaReussite(double probaReussite) {
 		this.probaReussite = probaReussite;
 	}
-	
-	
-	
+
 }

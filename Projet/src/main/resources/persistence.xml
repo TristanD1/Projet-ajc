@@ -6,6 +6,10 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<class>model.Aventurier</class>
+		<class>model.Equipement</class>
+		<class>model.Etat</class>
+		<class>model.Quete</class>
+		<class>model.Amenagement</class>
 		<!-- Eventuellement d'autres classes d'Entité -->
 
 		<properties>
