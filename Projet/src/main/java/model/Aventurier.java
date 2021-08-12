@@ -6,9 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.UniqueConstraint;
 
 public class Aventurier {
 	@Id
@@ -27,7 +29,8 @@ public class Aventurier {
 	private Quete quete;
 
 	@ManyToMany
-	@JoinTable()
+	@JoinTable(name = "Attribution Equipement", joinColumns = @JoinColumn(name = "AVE_ID", referencedColumnName = "AVE_ID") , inverseJoinColumns = @JoinColumn(name = "EQU_ID", referencedColumnName = "EQU_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
+			"AVE_ID", "EQU_ID" }) )
 	private List<Equipement> equipements;
 
 	public String getNom() {
