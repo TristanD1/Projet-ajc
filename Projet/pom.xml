@@ -6,12 +6,16 @@
   <artifactId>Projet</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
+  
+  
 
   <name>Projet</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 
   <dependencies>
@@ -21,5 +25,17 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-entitymanager</artifactId>
+    	<version>5.5.6.Final</version>
+	</dependency>
+	<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.2.23</version>
+    <scope>runtime</scope>
+</dependency>
+	
   </dependencies>
 </project>
