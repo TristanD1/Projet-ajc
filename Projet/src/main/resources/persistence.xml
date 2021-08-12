@@ -9,6 +9,7 @@
 		<class>model.Equipement</class>
 		<class>model.Etat</class>
 		<class>model.Quete</class>
+		<class>model.Amenagement</class>
 		<!-- Eventuellement d'autres classes d'Entité -->
 
 		<properties>
