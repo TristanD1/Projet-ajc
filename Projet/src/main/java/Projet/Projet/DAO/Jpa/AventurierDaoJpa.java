@@ -3,6 +3,7 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.IAventurierDao;
+import model.Aventurier;
 
 public class AventurierDaoJpa implements IAventurierDao{
 
