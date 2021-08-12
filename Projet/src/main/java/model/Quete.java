@@ -20,13 +20,13 @@ public class Quete {
 	@Column(name = "QTE_ETAT")
 	private String Etat;
 	
-	@OneToMany
+	//@OneToMany
 	private List<Equipement> recompenses;
 	
 	@Column(name = "QTE_PROBA_REUSSITE")
 	private double probaReussite;
 	
-	@OneToMany
+	//@OneToMany
 	private Aventurier aventurier;
 	
 	public Quete() {
