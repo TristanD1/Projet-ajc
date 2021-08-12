@@ -19,14 +19,14 @@ public class Quete {
 	@Column(name = "QTE_ETAT")
 	private String Etat;
 
-	// @OneToMany
-	private List<Equipement> recompenses;
+	@Column
+	private Equipement recompense;
 
 	@Column(name = "QTE_PROBA_REUSSITE")
 	private double probaReussite;
 
-	// @OneToMany
-	private Aventurier aventurier;
+	@OneToMany(mappedBy = "quete")
+	private List<Aventurier> aventuriers;
 
 	public Quete() {
 		super();
@@ -63,12 +63,12 @@ public class Quete {
 		Etat = etat;
 	}
 
-	public List<Equipement> getRecompenses() {
-		return recompenses;
+	public Equipement getRecompense() {
+		return recompense;
 	}
 
-	public void setRecompenses(List<Equipement> recompenses) {
-		this.recompenses = recompenses;
+	public void setRecompense(Equipement recompense) {
+		this.recompense = recompense;
 	}
 
 	public double getProbaReussite() {
@@ -79,13 +79,15 @@ public class Quete {
 		this.probaReussite = probaReussite;
 	}
 
-	public Aventurier getAventurier() {
-		return aventurier;
+	public List<Aventurier> getAventuriers() {
+		return aventuriers;
 	}
 
-	public void setAventurier(Aventurier aventurier) {
-		this.aventurier = aventurier;
+	public void setAventuriers(List<Aventurier> aventuriers) {
+		this.aventuriers = aventuriers;
 	}
+
+	
 	
 	
 
