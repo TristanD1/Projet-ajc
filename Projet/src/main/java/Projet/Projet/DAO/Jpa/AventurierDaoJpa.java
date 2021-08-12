@@ -3,35 +3,17 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.IAventurierDao;
+import model.Aventurier;
 
-public class AventurierDaoJpa implements IAventurierDao{
+public class AventurierDaoJpa extends AbstractDaoJpa<Aventurier, Integer> implements IAventurierDao{
 
 	public List<Aventurier> findAll() {
-		return null;
+		List<Aventurier> mesAventuriers = em.createQuery("select a from Aventurier a",Aventurier.class).getResultList();
+		return (mesAventuriers);
 	}
 
 	public Aventurier findById(Integer id) {
-		return null;
+		return (em.find(Aventurier.class, id));
 	}
 
-	public Aventurier insert(Aventurier entity) {
-		return null;
-	}
-
-	public Aventurier update(Aventurier entity) {
-		return null;
-	}
-
-	public Aventurier save(Aventurier entity) {
-		return null;
-	}
-
-	public void delete(Aventurier entity) {
-		
-	}
-
-	public void deleteById(Integer id) {
-		
-	}
-	
 }
