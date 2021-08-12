@@ -2,9 +2,11 @@ package Projet.Projet.DAO.Jpa;
 
 import java.util.List;
 
+import Projet.Projet.DAO.AbstractDaoJpa;
 import Projet.Projet.DAO.IAventurierDao;
+import model.Aventurier;
 
-public class AventurierDaoJpa implements IAventurierDao{
+public class AventurierDaoJpa extends AbstractDaoJpa<Aventurier, Integer> implements IAventurierDao{
 
 	public List<Aventurier> findAll() {
 		return null;
@@ -12,26 +14,6 @@ public class AventurierDaoJpa implements IAventurierDao{
 
 	public Aventurier findById(Integer id) {
 		return null;
-	}
-
-	public Aventurier insert(Aventurier entity) {
-		return null;
-	}
-
-	public Aventurier update(Aventurier entity) {
-		return null;
-	}
-
-	public Aventurier save(Aventurier entity) {
-		return null;
-	}
-
-	public void delete(Aventurier entity) {
-		
-	}
-
-	public void deleteById(Integer id) {
-		
 	}
 	
 }
