@@ -11,13 +11,12 @@ public class QueteDaoJpa extends AbstractDaoJpa<Quete, Integer> implements IQuet
 
 	@Override
 	public List<Quete> findAll() {
-		List<Quete> mesQuetes = em.createQuery("select a from Quete a",Quete.class).getResultList();
+		List<Quete> mesQuetes = em.createQuery("select q from Quete q",Quete.class).getResultList();
 		return (mesQuetes);
 	}
 
 	public Quete findById(Integer id) {
 		return (em.find(Quete.class, id));
-		// TODO Auto-generated method stub
 	}
 
 }
