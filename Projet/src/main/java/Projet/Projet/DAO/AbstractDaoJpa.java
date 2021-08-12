@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public abstract class AbstractDaoJpa<T,K> implements IDAO<T,K>{
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopUnit");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetUnit");
 	protected EntityManager em = emf.createEntityManager();
 	
 	public void close(){
