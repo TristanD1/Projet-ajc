@@ -79,4 +79,14 @@ public class Quete {
 		this.probaReussite = probaReussite;
 	}
 
+	public Aventurier getAventurier() {
+		return aventurier;
+	}
+
+	public void setAventurier(Aventurier aventurier) {
+		this.aventurier = aventurier;
+	}
+	
+	
+
 }
