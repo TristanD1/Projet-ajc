@@ -28,14 +28,10 @@ public class Aventurier {
 
 	@Column(name = "AVE_EXP")
 	private int experience;
-	
+
 	@ManyToMany
-	@JoinTable( 
-			name = "AVE_COMP", 
-			joinColumns = @JoinColumn(name = "IDAVE", referencedColumnName = "AVE_ID"), 
-			inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID")
-			,uniqueConstraints = @UniqueConstraint(columnNames = { "IDAVE", "IDCOMP" })
-		)
+	@JoinTable(name = "AVE_COMP", joinColumns = @JoinColumn(name = "IDAVE", referencedColumnName = "AVE_ID") , inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
+			"IDAVE", "IDCOMP" }) )
 	private List<Competence> competences;
 
 	@ManyToOne
@@ -84,8 +80,6 @@ public class Aventurier {
 	public void setEquipements(List<Equipement> equipements) {
 		this.equipements = equipements;
 	}
-	
-	
 
 	public List<Competence> getCompetences() {
 		return competences;
@@ -95,10 +89,4 @@ public class Aventurier {
 		this.competences = competences;
 	}
 
-	public Aventurier() {
-
-	}
-
-
-	
 }

@@ -11,23 +11,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Competence")
+@Table(name = "Competence")
 public class Competence {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="COMP_ID")
+	@Column(name = "COMP_ID")
 	private int id;
-	
-	@Column(name="COMP_NOM")
+
+	@Column(name = "COMP_NOM")
 	private String nom;
-	
-	@Column(name="COMP_BONUS")
+
+	@Column(name = "COMP_BONUS")
 	private int bonus;
-	
-	@ManyToMany(mappedBy="competences")
+
+	@ManyToMany(mappedBy = "competences")
 	private List<Aventurier> aventuriers;
-	
-	@ManyToMany(mappedBy="competences")
+
+	@ManyToMany(mappedBy = "competences")
 	private List<Quete> quetes;
 
 	public int getId() {
@@ -69,6 +69,5 @@ public class Competence {
 	public void setQuetes(List<Quete> quetes) {
 		this.quetes = quetes;
 	}
-	
-	
+
 }

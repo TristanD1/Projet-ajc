@@ -15,29 +15,29 @@ import model.Etat;
 
 public class App {
 	public static void main(String[] args) {
-		// CreateAventurier("Aragorn", 15);
-		// CreateAventurier("Legolas", 15);
-		// CreateAventurier("Bilbon", 1);
-		// CreateAventurier("Gimli", 15);
-		// CreateAventurier("Gandalf", 100);
-		//
-		// CreateEquipement("Dague", 10);
-		// CreateEquipement("Epée", 30);
-		// CreateEquipement("Arc", 20);
-		// CreateEquipement("Fronde", 10);
-		// CreateEquipement("Hache", 40);
-		// CreateEquipement("Sortilege", 50);
-		//
-		// CreateQuete("Escorte de convoi", 50);
-		// CreateQuete("Protection de village", 100);
-		// CreateQuete("Protection de Minas Tirith", 500);
-		// CreateQuete("Attaque d'Isengard", 300);
-		// CreateQuete("Destruction de l'Anneau Unique", 1000);
-		//
-		// CreateCompetence("Oeil de Lynx", 10);
-		// CreateCompetence("Bravoure", 15);
-		// CreateCompetence("Discretion", 5);
-		//
+		CreateAventurier("Aragorn", 15);
+		CreateAventurier("Legolas", 15);
+		CreateAventurier("Bilbon", 1);
+		CreateAventurier("Gimli", 15);
+		CreateAventurier("Gandalf", 100);
+
+		CreateEquipement("Dague", 10);
+		CreateEquipement("Epée", 30);
+		CreateEquipement("Arc", 20);
+		CreateEquipement("Fronde", 10);
+		CreateEquipement("Hache", 40);
+		CreateEquipement("Sortilege", 50);
+
+		CreateQuete("Escorte de convoi", 50);
+		CreateQuete("Protection de village", 100);
+		CreateQuete("Protection de Minas Tirith", 500);
+		CreateQuete("Attaque d'Isengard", 300);
+		CreateQuete("Destruction de l'Anneau Unique", 1000);
+
+		CreateCompetence("Oeil de Lynx", 10);
+		CreateCompetence("Bravoure", 15);
+		CreateCompetence("Discretion", 5);
+
 		// AssocierEquipementAventurier(2, 1);
 		// AssocierEquipementAventurier(1, 2);
 		// AssocierEquipementAventurier(3, 2);
@@ -50,10 +50,10 @@ public class App {
 		// AssocierQueteCompetence(1, 1);
 		// AssocierQueteCompetence(1, 3);
 		//
-		// AssocierAventurierQuete(1, 1);
-		// AssocierAventurierQuete(2, 1);
+		// AssocierAventurierQuete(1, 5);
+		// AssocierAventurierQuete(2, 5);
 		//
-		// EnvoyerEnMission(1);
+		// EnvoyerEnMission(5);
 
 		AbstractDaoJpa.close();
 	}
@@ -74,11 +74,11 @@ public class App {
 		new EquipementDaoJpa().save(monEquipement);
 	}
 
-	public static void CreateQuete(String nom, int reussite) {
+	public static void CreateQuete(String nom, int difficulte) {
 		Quete maQuete = new Quete();
 		maQuete.setIntitule(nom.toLowerCase());
 		maQuete.setEtat(Etat.INACHEVEE.toString().toLowerCase());
-		maQuete.setProbaReussite(reussite);
+		maQuete.setDifficulte(difficulte);
 
 		new QueteDaoJpa().save(maQuete);
 	}
@@ -111,17 +111,24 @@ public class App {
 		Aventurier monAventurier = new AventurierDaoJpa().findById(aventurierId);
 		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
 
-		monAventurier.getCompetences().add(maCompetence);
-		new AventurierDaoJpa().save(monAventurier);
+		try {
+			monAventurier.getCompetences().add(maCompetence);
+			new AventurierDaoJpa().save(monAventurier);
+		} catch (Exception e) {
 
+		}
 	}
 
 	public static void AssocierQueteCompetence(int queteId, int competenceId) {
 		Quete maQuete = new QueteDaoJpa().findById(queteId);
 		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
 
-		maQuete.getCompetences().add(maCompetence);
-		new QueteDaoJpa().save(maQuete);
+		try {
+			maQuete.getCompetences().add(maCompetence);
+			new QueteDaoJpa().save(maQuete);
+		} catch (Exception e) {
+
+		}
 	}
 
 	public static void EnvoyerEnMission(int queteId) {
@@ -138,22 +145,21 @@ public class App {
 				for (Competence c : new CompetenceDaoJpa().findCommuneByAventurier(a)) {
 					proba += c.getBonus();
 				}
-
 			}
 
 			System.out.println("bonus : " + proba);
-			System.out.println("difficulté : " + maQuete.getProbaReussite());
+			System.out.println("difficulté : " + maQuete.getDifficulte());
 			double r = new Random().nextDouble();
 			System.out.println(r);
 
 			// Faire le test de reussite
-			if (r < (double) proba / (proba + maQuete.getProbaReussite())) {
+			if (r < (double) proba / (proba + maQuete.getDifficulte())) {
 				// Changer le status de la quete si reussite
 				maQuete.setEtat(Etat.ACHEVEE.toString().toLowerCase());
 				new QueteDaoJpa().save(maQuete);
 
 				for (Aventurier a : maQuete.getAventuriers()) {
-					a.setExperience(a.getExperience() + maQuete.getProbaReussite());
+					a.setExperience(a.getExperience() + maQuete.getDifficulte());
 				}
 
 				System.out.println("Quete réussie");

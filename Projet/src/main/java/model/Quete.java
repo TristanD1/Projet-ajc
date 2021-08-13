@@ -16,38 +16,21 @@ public class Quete {
 	private String intitule;
 
 	@Column(name = "QTE_ETAT")
-	private String Etat;
+	private String etat;
 
-	
 	@ManyToMany
-	@JoinTable( 
-			name = "QTE_COMP", 
-			joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID"), 
-			inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID")
-			,uniqueConstraints = @UniqueConstraint(columnNames = { "IDQTE", "IDCOMP" })
-		)
+	@JoinTable(name = "QTE_COMP", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
+			"IDQTE", "IDCOMP" }) )
 	private List<Competence> competences;
-	
-	
+
 	// @Column(name = "QTE_RECOMPENSE")
 	// private Equipement recompense;
 
-	@Column(name = "QTE_PROBA_REUSSITE", precision = 10, scale = 2)
-	private int probaReussite;
+	@Column(name = "QTE_DIFFICULTE", precision = 10, scale = 2)
+	private int difficulte;
 
 	@OneToMany(mappedBy = "quete")
 	private List<Aventurier> aventuriers;
-
-	public Quete() {
-		super();
-	}
-
-	public Quete(String intitule, String etat, int probaReussite) {
-		super();
-		this.intitule = intitule;
-		Etat = etat;
-		this.probaReussite = probaReussite;
-	}
 
 	public int getId() {
 		return id;
@@ -66,35 +49,11 @@ public class Quete {
 	}
 
 	public String getEtat() {
-		return Etat;
+		return etat;
 	}
 
 	public void setEtat(String etat) {
-		Etat = etat;
-	}
-
-	// public Equipement getRecompense() {
-	// return recompense;
-	// }
-	//
-	// public void setRecompense(Equipement recompense) {
-	// this.recompense = recompense;
-	// }
-
-	public int getProbaReussite() {
-		return probaReussite;
-	}
-
-	public void setProbaReussite(int probaReussite) {
-		this.probaReussite = probaReussite;
-	}
-
-	public List<Aventurier> getAventuriers() {
-		return aventuriers;
-	}
-
-	public void setAventuriers(List<Aventurier> aventuriers) {
-		this.aventuriers = aventuriers;
+		this.etat = etat;
 	}
 
 	public List<Competence> getCompetences() {
@@ -104,7 +63,21 @@ public class Quete {
 	public void setCompetences(List<Competence> competences) {
 		this.competences = competences;
 	}
-	
-	
+
+	public int getDifficulte() {
+		return difficulte;
+	}
+
+	public void setDifficulte(int difficulte) {
+		this.difficulte = difficulte;
+	}
+
+	public List<Aventurier> getAventuriers() {
+		return aventuriers;
+	}
+
+	public void setAventuriers(List<Aventurier> aventuriers) {
+		this.aventuriers = aventuriers;
+	}
 
 }
