@@ -1,6 +1,5 @@
 package model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.*;
@@ -8,9 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "quete")
 public class Quete {
-
 	@Id
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "QTE_ID")
 	private int id;
 
@@ -20,11 +18,11 @@ public class Quete {
 	@Column(name = "QTE_ETAT")
 	private String Etat;
 
-//	@Column(name = "QTE_RECOMPENSE")
-//	private Equipement recompense;
+	// @Column(name = "QTE_RECOMPENSE")
+	// private Equipement recompense;
 
 	@Column(name = "QTE_PROBA_REUSSITE", precision = 10, scale = 2)
-	private BigDecimal probaReussite;
+	private int probaReussite;
 
 	@OneToMany(mappedBy = "quete")
 	private List<Aventurier> aventuriers;
@@ -33,7 +31,7 @@ public class Quete {
 		super();
 	}
 
-	public Quete(String intitule, String etat, BigDecimal probaReussite) {
+	public Quete(String intitule, String etat, int probaReussite) {
 		super();
 		this.intitule = intitule;
 		Etat = etat;
@@ -64,19 +62,19 @@ public class Quete {
 		Etat = etat;
 	}
 
-//	public Equipement getRecompense() {
-//		return recompense;
-//	}
-//
-//	public void setRecompense(Equipement recompense) {
-//		this.recompense = recompense;
-//	}
+	// public Equipement getRecompense() {
+	// return recompense;
+	// }
+	//
+	// public void setRecompense(Equipement recompense) {
+	// this.recompense = recompense;
+	// }
 
-	public BigDecimal getProbaReussite() {
+	public int getProbaReussite() {
 		return probaReussite;
 	}
 
-	public void setProbaReussite(BigDecimal probaReussite) {
+	public void setProbaReussite(int probaReussite) {
 		this.probaReussite = probaReussite;
 	}
 
@@ -87,9 +85,5 @@ public class Quete {
 	public void setAventuriers(List<Aventurier> aventuriers) {
 		this.aventuriers = aventuriers;
 	}
-
-	
-	
-	
 
 }
