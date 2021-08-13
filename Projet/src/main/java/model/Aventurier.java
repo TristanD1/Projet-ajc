@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -19,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 public class Aventurier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "AVE=ID")
+	@Column(name = "AVE_ID")
 	private int id;
 
 	@Column(name = "AVE_NOM", nullable = false)
@@ -29,12 +30,10 @@ public class Aventurier {
 	private int experience;
 
 	@ManyToOne
-	@Column(name = "AVE_QTE")
+	@JoinColumn(name = "AVE_QTE")
 	private Quete quete;
 
-	@ManyToMany
-	@JoinTable(name = "Attribution Equipement", joinColumns = @JoinColumn(name = "AVE_ID", referencedColumnName = "AVE_ID") , inverseJoinColumns = @JoinColumn(name = "EQU_ID", referencedColumnName = "EQU_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
-			"AVE_ID", "EQU_ID" }) )
+	@OneToMany(mappedBy = "aventurier")
 	private List<Equipement> equipements;
 
 	public String getNom() {

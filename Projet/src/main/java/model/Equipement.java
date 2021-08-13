@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class Equipement {
 	@Column(name = "EQU_NOM")
 	private String nom;
 
-	@ManyToMany(mappedBy = "equipements")
-	private List<Aventurier> aventuriers;
+	@ManyToOne
+	@JoinColumn(name = "EQU_AVENTURIER")
+	private Aventurier aventurier;
 
 	public int getId() {
 		return id;
@@ -39,12 +42,12 @@ public class Equipement {
 		this.nom = nom;
 	}
 
-	public List<Aventurier> getAventuriers() {
-		return aventuriers;
+	public Aventurier getAventurier() {
+		return aventurier;
 	}
 
-	public void setAventuriers(List<Aventurier> aventuriers) {
-		this.aventuriers = aventuriers;
+	public void setAventurier(Aventurier aventurier) {
+		this.aventurier = aventurier;
 	}
 
 	public Equipement() {

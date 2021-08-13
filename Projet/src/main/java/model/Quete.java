@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.*;
@@ -19,20 +20,20 @@ public class Quete {
 	@Column(name = "QTE_ETAT")
 	private String Etat;
 
-	// @OneToMany
-	private List<Equipement> recompenses;
+//	@Column(name = "QTE_RECOMPENSE")
+//	private Equipement recompense;
 
-	@Column(name = "QTE_PROBA_REUSSITE")
-	private double probaReussite;
+	@Column(name = "QTE_PROBA_REUSSITE", precision = 10, scale = 2)
+	private BigDecimal probaReussite;
 
-	// @OneToMany
-	private Aventurier aventurier;
+	@OneToMany(mappedBy = "quete")
+	private List<Aventurier> aventuriers;
 
 	public Quete() {
 		super();
 	}
 
-	public Quete(String intitule, String etat, double probaReussite) {
+	public Quete(String intitule, String etat, BigDecimal probaReussite) {
 		super();
 		this.intitule = intitule;
 		Etat = etat;
@@ -63,29 +64,31 @@ public class Quete {
 		Etat = etat;
 	}
 
-	public List<Equipement> getRecompenses() {
-		return recompenses;
-	}
+//	public Equipement getRecompense() {
+//		return recompense;
+//	}
+//
+//	public void setRecompense(Equipement recompense) {
+//		this.recompense = recompense;
+//	}
 
-	public void setRecompenses(List<Equipement> recompenses) {
-		this.recompenses = recompenses;
-	}
-
-	public double getProbaReussite() {
+	public BigDecimal getProbaReussite() {
 		return probaReussite;
 	}
 
-	public void setProbaReussite(double probaReussite) {
+	public void setProbaReussite(BigDecimal probaReussite) {
 		this.probaReussite = probaReussite;
 	}
 
-	public Aventurier getAventurier() {
-		return aventurier;
+	public List<Aventurier> getAventuriers() {
+		return aventuriers;
 	}
 
-	public void setAventurier(Aventurier aventurier) {
-		this.aventurier = aventurier;
+	public void setAventuriers(List<Aventurier> aventuriers) {
+		this.aventuriers = aventuriers;
 	}
+
+	
 	
 	
 
