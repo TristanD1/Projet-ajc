@@ -2,7 +2,7 @@ package Projet.Projet.DAO.Jpa;
 
 import java.util.List;
 
-import Projet.Projet.DAO.AbstractDaoJpa;
+import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
 import Projet.Projet.DAO.IAventurierDao;
 import model.Aventurier;
 

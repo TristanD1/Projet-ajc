@@ -9,8 +9,12 @@ import javax.persistence.Persistence;
 import Projet.Projet.DAO.IDAO;
 
 public abstract class AbstractDaoJpa<T,K> implements IDAO<T, K> {
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("AventureUnit");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetUnit");
 	protected EntityManager em = emf.createEntityManager();
+	
+	public static void close(){
+		emf.close();
+	}
 	
 	public T insert (T entity){
 		em.getTransaction().begin();

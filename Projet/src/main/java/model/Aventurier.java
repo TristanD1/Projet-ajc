@@ -36,6 +36,14 @@ public class Aventurier {
 	@OneToMany(mappedBy = "aventurier")
 	private List<Equipement> equipements;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -71,4 +79,7 @@ public class Aventurier {
 	public Aventurier() {
 
 	}
+
+
+	
 }
