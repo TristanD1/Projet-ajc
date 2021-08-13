@@ -18,7 +18,7 @@ public class App
     public static void main( String[] args )
     {
     	
-    	//createAventurier("Gimli", 0);
+    	createAventurier("Gimli", 0);
     	
     	
     	
