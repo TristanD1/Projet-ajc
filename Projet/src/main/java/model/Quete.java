@@ -97,4 +97,14 @@ public class Quete {
 		this.aventuriers = aventuriers;
 	}
 
+	public List<Competence> getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(List<Competence> competences) {
+		this.competences = competences;
+	}
+	
+	
+
 }

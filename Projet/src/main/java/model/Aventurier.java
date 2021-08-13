@@ -84,6 +84,16 @@ public class Aventurier {
 	public void setEquipements(List<Equipement> equipements) {
 		this.equipements = equipements;
 	}
+	
+	
+
+	public List<Competence> getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(List<Competence> competences) {
+		this.competences = competences;
+	}
 
 	public Aventurier() {
 
