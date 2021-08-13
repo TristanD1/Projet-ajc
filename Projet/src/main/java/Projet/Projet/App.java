@@ -15,8 +15,30 @@ import model.Etat;
 
 public class App {
 	public static void main(String[] args) {
+		// CreateAventurier("Aragorn", 15);
+		// CreateAventurier("Legolas", 15);
+		// CreateAventurier("Bilbon", 1);
+		// CreateAventurier("Gimli", 15);
+		// CreateAventurier("Gandalf", 100);
+		//
+		// CreateEquipement("Dague", 10);
+		// CreateEquipement("Epée", 30);
+		// CreateEquipement("Arc", 20);
+		// CreateEquipement("Fronde", 10);
+		// CreateEquipement("Hache", 40);
+		// CreateEquipement("Sortilege", 50);
+		//
+		// CreateQuete("Escorte de convoi", 50);
+		// CreateQuete("Protection de village", 100);
+		// CreateQuete("Protection de Minas Tirith", 500);
+		// CreateQuete("Attaque d'Isengard", 300);
+		// CreateQuete("Destruction de l'Anneau Unique", 1000);
 
+		AssocierEquipementAventurier(1, 3);
+		AssocierEquipementAventurier(4, 3);
+		AssocierEquipementAventurier(2, 1);
 		AssocierAventurierQuete(1, 1);
+		AssocierAventurierQuete(3, 1);
 		EnvoyerEnMission(1);
 
 		AbstractDaoJpa.close();
@@ -105,12 +127,12 @@ public class App {
 			System.out.println("pas d'aventuriers associés");
 		}
 	}
-	
-	public static void createCompetence(String nom,int bonus){
+
+	public static void createCompetence(String nom, int bonus) {
 		Competence competence = new Competence();
 		competence.setNom(nom);
 		competence.setBonus(bonus);
-		
+
 		new CompetenceDaoJpa().save(competence);
 	}
 }
