@@ -1,6 +1,5 @@
 package Projet.Projet;
 
-import java.util.List;
 import java.util.Random;
 
 import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
@@ -16,35 +15,45 @@ import model.Etat;
 
 public class App {
 	public static void main(String[] args) {
-//		 CreateAventurier("Aragorn", 15);
-//		 CreateAventurier("Legolas", 15);
-//		 CreateAventurier("Bilbon", 1);
-//		 CreateAventurier("Gimli", 15);
-//		 CreateAventurier("Gandalf", 100);
-//		
-//		 CreateEquipement("Dague", 10);
-//		 CreateEquipement("Epée", 30);
-//		 CreateEquipement("Arc", 20);
-//		 CreateEquipement("Fronde", 10);
-//		 CreateEquipement("Hache", 40);
-//		 CreateEquipement("Sortilege", 50);
-//		
-//		 CreateQuete("Escorte de convoi", 50);
-//		 CreateQuete("Protection de village", 100);
-//		 CreateQuete("Protection de Minas Tirith", 500);
-//		 CreateQuete("Attaque d'Isengard", 300);
-//		 CreateQuete("Destruction de l'Anneau Unique", 1000);
-
-		
-		
-		//AssocierEquipementAventurier(2, 1);
-		//AssocierAventurierCompetence(1,1);
-		//AssocierQueteCompetence(1, 1);
-//		AssocierEquipementAventurier(4, 3);
-//		AssocierEquipementAventurier(2, 1);
-//		AssocierAventurierQuete(1, 1);
-		//AssocierAventurierQuete(1, 1);
-		EnvoyerEnMission(1);
+		// CreateAventurier("Aragorn", 15);
+		// CreateAventurier("Legolas", 15);
+		// CreateAventurier("Bilbon", 1);
+		// CreateAventurier("Gimli", 15);
+		// CreateAventurier("Gandalf", 100);
+		//
+		// CreateEquipement("Dague", 10);
+		// CreateEquipement("Epée", 30);
+		// CreateEquipement("Arc", 20);
+		// CreateEquipement("Fronde", 10);
+		// CreateEquipement("Hache", 40);
+		// CreateEquipement("Sortilege", 50);
+		//
+		// CreateQuete("Escorte de convoi", 50);
+		// CreateQuete("Protection de village", 100);
+		// CreateQuete("Protection de Minas Tirith", 500);
+		// CreateQuete("Attaque d'Isengard", 300);
+		// CreateQuete("Destruction de l'Anneau Unique", 1000);
+		//
+		// CreateCompetence("Oeil de Lynx", 10);
+		// CreateCompetence("Bravoure", 15);
+		// CreateCompetence("Discretion", 5);
+		//
+		// AssocierEquipementAventurier(2, 1);
+		// AssocierEquipementAventurier(1, 2);
+		// AssocierEquipementAventurier(3, 2);
+		//
+		// AssocierAventurierCompetence(1, 2);
+		// AssocierAventurierCompetence(1, 3);
+		// AssocierAventurierCompetence(2, 1);
+		// AssocierAventurierCompetence(2, 3);
+		//
+		// AssocierQueteCompetence(1, 1);
+		// AssocierQueteCompetence(1, 3);
+		//
+		// AssocierAventurierQuete(1, 1);
+		// AssocierAventurierQuete(2, 1);
+		//
+		// EnvoyerEnMission(1);
 
 		AbstractDaoJpa.close();
 	}
@@ -74,6 +83,14 @@ public class App {
 		new QueteDaoJpa().save(maQuete);
 	}
 
+	public static void CreateCompetence(String nom, int bonus) {
+		Competence competence = new Competence();
+		competence.setNom(nom);
+		competence.setBonus(bonus);
+
+		new CompetenceDaoJpa().save(competence);
+	}
+
 	public static void AssocierEquipementAventurier(int equipementId, int aventurierId) {
 		Equipement monEquipement = new EquipementDaoJpa().findById(equipementId);
 		Aventurier monAventurier = new AventurierDaoJpa().findById(aventurierId);
@@ -90,9 +107,25 @@ public class App {
 		new AventurierDaoJpa().save(monAventurier);
 	}
 
+	public static void AssocierAventurierCompetence(int aventurierId, int competenceId) {
+		Aventurier monAventurier = new AventurierDaoJpa().findById(aventurierId);
+		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
+
+		monAventurier.getCompetences().add(maCompetence);
+		new AventurierDaoJpa().save(monAventurier);
+
+	}
+
+	public static void AssocierQueteCompetence(int queteId, int competenceId) {
+		Quete maQuete = new QueteDaoJpa().findById(queteId);
+		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
+
+		maQuete.getCompetences().add(maCompetence);
+		new QueteDaoJpa().save(maQuete);
+	}
+
 	public static void EnvoyerEnMission(int queteId) {
 		Quete maQuete = new QueteDaoJpa().findById(queteId);
-		
 
 		if (maQuete.getAventuriers().size() > 0) {
 			int proba = 0;
@@ -102,10 +135,10 @@ public class App {
 				for (Equipement e : a.getEquipements()) {
 					proba += e.getBonus();
 				}
-				for (Competence c : new CompetenceDaoJpa().findCommuneByAventurier(a)){
+				for (Competence c : new CompetenceDaoJpa().findCommuneByAventurier(a)) {
 					proba += c.getBonus();
 				}
-				
+
 			}
 
 			System.out.println("bonus : " + proba);
@@ -136,31 +169,5 @@ public class App {
 		} else {
 			System.out.println("pas d'aventuriers associés");
 		}
-	}
-
-	public static void createCompetence(String nom, int bonus) {
-		Competence competence = new Competence();
-		competence.setNom(nom);
-		competence.setBonus(bonus);
-
-		new CompetenceDaoJpa().save(competence);
-	}
-	
-	public static void AssocierAventurierCompetence(int aventurierId, int competenceId){
-		Aventurier monAventurier = new AventurierDaoJpa().findById(aventurierId);
-		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
-		
-		monAventurier.getCompetences().add(maCompetence);
-		new AventurierDaoJpa().save(monAventurier);
-		
-		
-	}
-	
-	public static void AssocierQueteCompetence(int queteId, int competenceId){
-		Quete maQuete = new QueteDaoJpa().findById(queteId);
-		Competence maCompetence = new CompetenceDaoJpa().findById(competenceId);
-		
-		maQuete.getCompetences().add(maCompetence);
-		new QueteDaoJpa().save(maQuete);
 	}
 }

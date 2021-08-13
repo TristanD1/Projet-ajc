@@ -10,7 +10,8 @@ public class CompetenceDaoJpa extends AbstractDaoJpa<Competence, Integer> implem
 
 	@Override
 	public List<Competence> findAll() {
-		List<Competence> mesCompetences = em.createQuery("select c from Competence c",Competence.class).getResultList();
+		List<Competence> mesCompetences = em.createQuery("select c from Competence c", Competence.class)
+				.getResultList();
 		return (mesCompetences);
 	}
 
@@ -21,16 +22,13 @@ public class CompetenceDaoJpa extends AbstractDaoJpa<Competence, Integer> implem
 
 	@Override
 	public List<Competence> findCommuneByAventurier(Aventurier aventurier) {
-		
+
 		return em
-//				.createQuery("select c from Competence c inner join c.aventuriers a inner join a.quete.competences cq where a.id = ?1 and c.id in cq.id", Competence.class)
-				.createQuery("select c from Competence c inner join c.aventuriers a where a.id = ?1 and c.id in "
-						+ "(select cq.id from Competence cq inner join cq.quetes q where q.id = ?2) ", Competence.class)
-				.setParameter(1, aventurier.getId())
-				.setParameter(2, aventurier.getQuete().getId())
-				.getResultList();
-		
-		
+				.createQuery(
+						"select c from Competence c inner join c.aventuriers a where a.id = ?1 and c.id in (select cq.id from Competence cq inner join cq.quetes q where q.id = ?2) ",
+						Competence.class)
+				.setParameter(1, aventurier.getId()).setParameter(2, aventurier.getQuete().getId()).getResultList();
+
 	}
 
 }
