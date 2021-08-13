@@ -4,9 +4,11 @@ import java.util.Random;
 
 import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
 import Projet.Projet.DAO.Jpa.AventurierDaoJpa;
+import Projet.Projet.DAO.Jpa.CompetenceDaoJpa;
 import Projet.Projet.DAO.Jpa.EquipementDaoJpa;
 import Projet.Projet.DAO.Jpa.QueteDaoJpa;
 import model.Aventurier;
+import model.Competence;
 import model.Equipement;
 import model.Quete;
 import model.Etat;
@@ -102,5 +104,13 @@ public class App {
 		} else {
 			System.out.println("pas d'aventuriers associés");
 		}
+	}
+	
+	public static void createCompetence(String nom,int bonus){
+		Competence competence = new Competence();
+		competence.setNom(nom);
+		competence.setBonus(bonus);
+		
+		new CompetenceDaoJpa().save(competence);
 	}
 }

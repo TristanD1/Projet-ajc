@@ -18,6 +18,17 @@ public class Quete {
 	@Column(name = "QTE_ETAT")
 	private String Etat;
 
+	
+	@ManyToMany
+	@JoinTable( 
+			name = "QTE_COMP", 
+			joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID"), 
+			inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID")
+			,uniqueConstraints = @UniqueConstraint(columnNames = { "IDQTE", "IDCOMP" })
+		)
+	private List<Competence> competences;
+	
+	
 	// @Column(name = "QTE_RECOMPENSE")
 	// private Equipement recompense;
 
