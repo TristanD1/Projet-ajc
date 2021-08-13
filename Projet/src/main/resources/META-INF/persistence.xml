@@ -8,7 +8,7 @@
 		<class>model.Aventurier</class>
 		<class>model.Equipement</class>
 		<class>model.Quete</class>
-		<class>model.Comptence</class>
+		<class>model.Competence</class>
 		<!-- Eventuellement d'autres classes d'Entité -->
 
 		<properties>
