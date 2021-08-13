@@ -18,7 +18,9 @@ public class App
     public static void main( String[] args )
     {
     	
-    	createAventurier("Toto", 1);
+    	//createAventurier("Gimli", 0);
+    	
+    	
     	
     	AbstractDaoJpa.close();
     
@@ -33,11 +35,7 @@ public class App
     	monAventurier.setNom(nom);
     	monAventurier.setExperience(exp);
     	
-    	daoAventurier.insert(monAventurier);
-    	
-
-    	
-    	
+    	daoAventurier.save(monAventurier);    	
     	
     }
 }
