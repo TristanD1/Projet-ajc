@@ -3,8 +3,8 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
+import Projet.Projet.model.Equipement;
 import Projet.Projet.DAO.IEquipementDao;
-import model.Equipement;
 
 public class EquipementDaoJpa extends AbstractDaoJpa<Equipement, Integer> implements IEquipementDao{
 

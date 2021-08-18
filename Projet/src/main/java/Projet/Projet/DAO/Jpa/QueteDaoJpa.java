@@ -3,9 +3,8 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
-
+import Projet.Projet.model.Quete;
 import Projet.Projet.DAO.IQueteDao;
-import model.Quete;
 
 public class QueteDaoJpa extends AbstractDaoJpa<Quete, Integer> implements IQueteDao{
 

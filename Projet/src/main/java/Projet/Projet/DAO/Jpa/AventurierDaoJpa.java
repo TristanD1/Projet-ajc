@@ -3,8 +3,8 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.Jpa.AbstractDaoJpa;
+import Projet.Projet.model.Aventurier;
 import Projet.Projet.DAO.IAventurierDao;
-import model.Aventurier;
 
 public class AventurierDaoJpa extends AbstractDaoJpa<Aventurier, Integer> implements IAventurierDao{
 

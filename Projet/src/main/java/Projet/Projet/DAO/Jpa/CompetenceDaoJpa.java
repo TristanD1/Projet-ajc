@@ -3,8 +3,8 @@ package Projet.Projet.DAO.Jpa;
 import java.util.List;
 
 import Projet.Projet.DAO.ICompetenceDao;
-import model.Aventurier;
-import model.Competence;
+import Projet.Projet.model.Aventurier;
+import Projet.Projet.model.Competence;
 
 public class CompetenceDaoJpa extends AbstractDaoJpa<Competence, Integer> implements ICompetenceDao {
 

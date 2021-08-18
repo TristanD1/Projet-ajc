@@ -1,6 +1,6 @@
 package Projet.Projet.DAO;
 
-import model.Equipement;
+import Projet.Projet.model.Equipement;
 
 public interface IEquipementDao extends IDAO<Equipement, Integer>{
 

@@ -7,36 +7,41 @@ import Projet.Projet.DAO.Jpa.AventurierDaoJpa;
 import Projet.Projet.DAO.Jpa.CompetenceDaoJpa;
 import Projet.Projet.DAO.Jpa.EquipementDaoJpa;
 import Projet.Projet.DAO.Jpa.QueteDaoJpa;
-import model.Aventurier;
-import model.Competence;
-import model.Equipement;
-import model.Quete;
-import model.Etat;
+import Projet.Projet.model.Aventurier;
+import Projet.Projet.model.Competence;
+import Projet.Projet.model.Equipement;
+import Projet.Projet.model.Etat;
+import Projet.Projet.model.Quete;
 
 public class App {
 	public static void main(String[] args) {
-		CreateAventurier("Aragorn", 15);
-		CreateAventurier("Legolas", 15);
-		CreateAventurier("Bilbon", 1);
-		CreateAventurier("Gimli", 15);
-		CreateAventurier("Gandalf", 100);
+		RecuperationAventurier();
+		RecuperationEquipement();
+		RecuperationCompetence();
+		RecuperationQuete();
 
-		CreateEquipement("Dague", 10);
-		CreateEquipement("Epée", 30);
-		CreateEquipement("Arc", 20);
-		CreateEquipement("Fronde", 10);
-		CreateEquipement("Hache", 40);
-		CreateEquipement("Sortilege", 50);
-
-		CreateQuete("Escorte de convoi", 50);
-		CreateQuete("Protection de village", 100);
-		CreateQuete("Protection de Minas Tirith", 500);
-		CreateQuete("Attaque d'Isengard", 300);
-		CreateQuete("Destruction de l'Anneau Unique", 1000);
-
-		CreateCompetence("Oeil de Lynx", 10);
-		CreateCompetence("Bravoure", 15);
-		CreateCompetence("Discretion", 5);
+		// CreateAventurier("Aragorn", 15);
+		// CreateAventurier("Legolas", 15);
+		// CreateAventurier("Bilbon", 1);
+		// CreateAventurier("Gimli", 15);
+		// CreateAventurier("Gandalf", 100);
+		//
+		// CreateEquipement("Dague", 10);
+		// CreateEquipement("Epée", 30);
+		// CreateEquipement("Arc", 20);
+		// CreateEquipement("Fronde", 10);
+		// CreateEquipement("Hache", 40);
+		// CreateEquipement("Sortilege", 50);
+		//
+		// CreateQuete("Escorte de convoi", 50);
+		// CreateQuete("Protection de village", 100);
+		// CreateQuete("Protection de Minas Tirith", 500);
+		// CreateQuete("Attaque d'Isengard", 300);
+		// CreateQuete("Destruction de l'Anneau Unique", 1000);
+		//
+		// CreateCompetence("Oeil de Lynx", 10);
+		// CreateCompetence("Bravoure", 15);
+		// CreateCompetence("Discretion", 5);
 
 		// AssocierEquipementAventurier(2, 1);
 		// AssocierEquipementAventurier(1, 2);
@@ -174,6 +179,30 @@ public class App {
 			}
 		} else {
 			System.out.println("pas d'aventuriers associés");
+		}
+	}
+
+	public static void RecuperationAventurier() {
+		for (Aventurier a : new AventurierDaoJpa().findAll()) {
+			System.out.println(a.getId() + " - " + a.getNom() + " - " + a.getExperience());
+		}
+	}
+
+	public static void RecuperationEquipement() {
+		for (Equipement e : new EquipementDaoJpa().findAll()) {
+			System.out.println(e.getId() + " - " + e.getNom() + " - " + e.getBonus());
+		}
+	}
+
+	public static void RecuperationQuete() {
+		for (Quete q : new QueteDaoJpa().findAll()) {
+			System.out.println(q.getId() + " - " + q.getIntitule() + " - " + q.getDifficulte() + " - " + q.getEtat());
+		}
+	}
+
+	public static void RecuperationCompetence() {
+		for (Competence c : new CompetenceDaoJpa().findAll()) {
+			System.out.println(c.getId() + " - " + c.getNom() + " - " + c.getBonus());
 		}
 	}
 }
