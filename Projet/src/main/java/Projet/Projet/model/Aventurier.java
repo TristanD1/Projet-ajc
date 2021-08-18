@@ -40,6 +40,9 @@ public class Aventurier {
 
 	@OneToMany(mappedBy = "aventurier")
 	private List<Equipement> equipements;
+	
+	@Column(name="AVE_ETAT")
+	private String etat;
 
 	public int getId() {
 		return id;
@@ -87,6 +90,14 @@ public class Aventurier {
 
 	public void setCompetences(List<Competence> competences) {
 		this.competences = competences;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 
 }
