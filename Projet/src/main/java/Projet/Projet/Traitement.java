@@ -36,6 +36,7 @@ public class Traitement {
 		Aventurier monAventurier = new Aventurier();
 		monAventurier.setNom(nom.toLowerCase());
 		monAventurier.setExperience(exp);
+		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
 
 		daoAventurier.save(monAventurier);
 	}
@@ -178,6 +179,7 @@ public class Traitement {
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
 		
 		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+		daoAventurier.save(monAventurier);
 		
 		System.out.println(monAventurier.getNom() + " a bien été soigné !!!");
 		
