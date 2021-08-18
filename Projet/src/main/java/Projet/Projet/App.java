@@ -59,8 +59,6 @@ public class App {
 		// AssocierAventurierQuete(2, 5);
 		//
 		// EnvoyerEnMission(5);
-
-		AbstractDaoJpa.close();
 	}
 
 	public static void CreateAventurier(String nom, int exp) {
