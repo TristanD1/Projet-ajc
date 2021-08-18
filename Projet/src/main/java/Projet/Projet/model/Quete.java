@@ -23,14 +23,19 @@ public class Quete {
 			"IDQTE", "IDCOMP" }) )
 	private List<Competence> competences;
 
-	// @Column(name = "QTE_RECOMPENSE")
-	// private Equipement recompense;
+	@OneToMany
+	@Column(name = "QTE_RECOMPENSE")
+	private List<Equipement> recompense;
 
 	@Column(name = "QTE_DIFFICULTE", precision = 10, scale = 2)
 	private int difficulte;
 
 	@OneToMany(mappedBy = "quete")
 	private List<Aventurier> aventuriers;
+	
+	@ManyToMany
+	@JoinTable(name = "QTE_RECO", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDRECO", referencedColumnName = "RECO_ID") )
+	private List<Catalogue> catalogue;
 
 	public int getId() {
 		return id;
@@ -78,6 +83,14 @@ public class Quete {
 
 	public void setAventuriers(List<Aventurier> aventuriers) {
 		this.aventuriers = aventuriers;
+	}
+
+	public List<Equipement> getRecompense() {
+		return recompense;
+	}
+
+	public void setRecompense(List<Equipement> recompense) {
+		this.recompense = recompense;
 	}
 
 }

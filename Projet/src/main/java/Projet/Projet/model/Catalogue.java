@@ -1,17 +1,18 @@
 package Projet.Projet.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "equipement")
-public class Equipement {
+@Table(name = "catalogue")
+public class Catalogue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -22,9 +23,8 @@ public class Equipement {
 	@Column(name = "EQU_BONUS")
 	private int bonus;
 
-	@ManyToOne
-	@JoinColumn(name = "EQU_AVENTURIER")
-	private Aventurier aventurier;
+	@ManyToMany(mappedBy = "catalogue")
+	private List<Quete> quetes;
 
 	public int getId() {
 		return id;
@@ -46,15 +46,15 @@ public class Equipement {
 		return bonus;
 	}
 
-	public void setBonus(int attaque) {
-		this.bonus = attaque;
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
 	}
 
-	public Aventurier getAventurier() {
-		return aventurier;
+	public List<Quete> getQuetes() {
+		return quetes;
 	}
 
-	public void setAventurier(Aventurier aventurier) {
-		this.aventurier = aventurier;
+	public void setQuetes(List<Quete> quetes) {
+		this.quetes = quetes;
 	}
 }

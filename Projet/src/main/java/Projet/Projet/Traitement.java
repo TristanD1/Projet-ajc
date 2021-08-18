@@ -81,7 +81,7 @@ public class Traitement {
 		if (monAventurier.getEtat().toString().equals(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase())) {
 			monAventurier.setQuete(maQuete);
 		} else {
-			System.out.println(monAventurier.getNom() + "est blessé !");
+			System.out.println(monAventurier.getNom() + " est blessé !");
 		}
 
 		daoAventurier.save(monAventurier);
