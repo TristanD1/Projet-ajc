@@ -5,10 +5,10 @@
 	<persistence-unit name="ProjetUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<class>model.Aventurier</class>
-		<class>model.Equipement</class>
-		<class>model.Quete</class>
-		<class>model.Competence</class>
+		<class>Projet.Projet.model.Aventurier</class>
+		<class>Projet.Projet.model.Equipement</class>
+		<class>Projet.Projet.model.Quete</class>
+		<class>Projet.Projet.model.Competence</class>
 		<!-- Eventuellement d'autres classes d'Entité -->
 
 		<properties>
