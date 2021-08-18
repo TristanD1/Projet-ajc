@@ -135,6 +135,7 @@ public class Traitement {
 			} else {
 				for (Aventurier a : maQuete.getAventuriers()) {
 					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());
+					System.out.println(a.getNom()+" a été blessé au combat");
 				}
 				System.out.println("Quete échouée");
 			}
@@ -171,5 +172,14 @@ public class Traitement {
 		for (Competence c : daoCompetence.findAll()) {
 			System.out.println(c.getId() + " - " + c.getNom() + " - " + c.getBonus());
 		}
+	}
+	
+	public void Soigner(int aventurierId){
+		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		
+		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+		
+		System.out.println(monAventurier.getNom() + " a bien été soigné !!!");
+		
 	}
 }
