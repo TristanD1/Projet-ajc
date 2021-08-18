@@ -22,13 +22,13 @@ import Projet.Projet.model.Quete;
 public class Traitement {
 	@Autowired
 	private IAventurierDaoJpaRepository daoAventurier;
-	
+
 	@Autowired
 	private ICompetenceDaoJpaRepository daoCompetence;
-	
+
 	@Autowired
 	private IEquipementDaoJpaRepository daoEquipement;
-	
+
 	@Autowired
 	private IQueteDaoJpaRepository daoQuete;
 
@@ -78,7 +78,12 @@ public class Traitement {
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 
-		monAventurier.setQuete(maQuete);
+		if (monAventurier.getEtat().toString().equals(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase())) {
+			monAventurier.setQuete(maQuete);
+		} else {
+			System.out.println(monAventurier.getNom() + "est blessé !");
+		}
+
 		daoAventurier.save(monAventurier);
 	}
 
@@ -136,7 +141,7 @@ public class Traitement {
 			} else {
 				for (Aventurier a : maQuete.getAventuriers()) {
 					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());
-					System.out.println(a.getNom()+" a été blessé au combat");
+					System.out.println(a.getNom() + " a été blessé au combat");
 				}
 				System.out.println("Quete échouée");
 			}
@@ -174,14 +179,14 @@ public class Traitement {
 			System.out.println(c.getId() + " - " + c.getNom() + " - " + c.getBonus());
 		}
 	}
-	
-	public void Soigner(int aventurierId){
+
+	public void Soigner(int aventurierId) {
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
-		
+
 		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
 		daoAventurier.save(monAventurier);
-		
+
 		System.out.println(monAventurier.getNom() + " a bien été soigné !!!");
-		
+
 	}
 }

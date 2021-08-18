@@ -50,13 +50,12 @@ public class App {
 		// traitement.AssocierQueteCompetence(5, 1);
 		// traitement.AssocierQueteCompetence(5, 3);
 
-//		traitement.AssocierAventurierQuete(1, 5);
-//		traitement.AssocierAventurierQuete(2, 5);
-//
-//		traitement.EnvoyerEnMission(5);
-		
+		traitement.AssocierAventurierQuete(1, 5);
+		traitement.AssocierAventurierQuete(2, 5);
+
+		traitement.EnvoyerEnMission(5);
+
 		traitement.Soigner(1);
-		traitement.Soigner(2);
 
 		myContext.close();
 	}
