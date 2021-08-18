@@ -32,7 +32,7 @@ public class Traitement {
 	@Autowired
 	private IQueteDaoJpaRepository daoQuete;
 
-	public void CreateAventurier(String nom, int exp) {
+	private void CreateAventurier(String nom, int exp) {
 		Aventurier monAventurier = new Aventurier();
 		monAventurier.setNom(nom.toLowerCase());
 		monAventurier.setExperience(exp);
@@ -41,7 +41,7 @@ public class Traitement {
 		daoAventurier.save(monAventurier);
 	}
 
-	public void CreateEquipement(String nom, int bonus) {
+	private void CreateEquipement(String nom, int bonus) {
 		Equipement monEquipement = new Equipement();
 		monEquipement.setNom(nom.toLowerCase());
 		monEquipement.setBonus(bonus);
@@ -49,7 +49,36 @@ public class Traitement {
 		daoEquipement.save(monEquipement);
 	}
 
-	public void CreateQuete(String nom, int difficulte) {
+	private void CreateCatalogue() {
+		CreateEquipement("Dague", 10);
+		CreateEquipement("Epée", 30);
+		CreateEquipement("Arc", 20);
+		CreateEquipement("Fronde", 10);
+		CreateEquipement("Hache", 40);
+		CreateEquipement("Sortilege", 50);
+	}
+
+	public void InitDatabase() {
+		CreateAventurier("Aragorn", 15);
+		CreateAventurier("Legolas", 15);
+		CreateAventurier("Bilbon", 1);
+		CreateAventurier("Gimli", 15);
+		CreateAventurier("Gandalf", 100);
+
+		CreateQuete("Escorte de convoi", 50);
+		CreateQuete("Protection de village", 100);
+		CreateQuete("Protection de Minas Tirith", 500);
+		CreateQuete("Attaque d'Isengard", 300);
+		CreateQuete("Destruction de l'Anneau Unique", 1000);
+
+		CreateCompetence("Oeil de Lynx", 10);
+		CreateCompetence("Bravoure", 15);
+		CreateCompetence("Discretion", 5);
+
+		CreateCatalogue();
+	}
+
+	private void CreateQuete(String nom, int difficulte) {
 		Quete maQuete = new Quete();
 		maQuete.setIntitule(nom.toLowerCase());
 		maQuete.setEtat(QueteEtat.INACHEVEE.toString().toLowerCase());
@@ -58,7 +87,7 @@ public class Traitement {
 		daoQuete.save(maQuete);
 	}
 
-	public void CreateCompetence(String nom, int bonus) {
+	private void CreateCompetence(String nom, int bonus) {
 		Competence competence = new Competence();
 		competence.setNom(nom);
 		competence.setBonus(bonus);
