@@ -1,13 +1,19 @@
 package Projet.Projet;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import Projet.Projet.config.AppConfig;
+
 public class App {
 	public static void main(String[] args) {
-		Traitement traitement = new Traitement();
-		
-		traitement.RecuperationAventurier();
-		traitement.RecuperationEquipement();
-		traitement.RecuperationCompetence();
-		traitement.RecuperationQuete();
+		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		Traitement traitement = myContext.getBean(Traitement.class);
+
+		// traitement.RecuperationAventurier();
+		// traitement.RecuperationEquipement();
+		// traitement.RecuperationCompetence();
+		// traitement.RecuperationQuete();
 
 		// CreateAventurier("Aragorn", 15);
 		// CreateAventurier("Legolas", 15);
@@ -32,22 +38,24 @@ public class App {
 		// CreateCompetence("Bravoure", 15);
 		// CreateCompetence("Discretion", 5);
 
-		// AssocierEquipementAventurier(2, 1);
-		// AssocierEquipementAventurier(1, 2);
-		// AssocierEquipementAventurier(3, 2);
+		// traitement.AssocierEquipementAventurier(2, 1);
+		// traitement.AssocierEquipementAventurier(1, 2);
+		// traitement.AssocierEquipementAventurier(3, 2);
 		//
-		// AssocierAventurierCompetence(1, 2);
-		// AssocierAventurierCompetence(1, 3);
-		// AssocierAventurierCompetence(2, 1);
-		// AssocierAventurierCompetence(2, 3);
+		// traitement.AssocierAventurierCompetence(1, 2);
+		// traitement.AssocierAventurierCompetence(1, 3);
+		// traitement.AssocierAventurierCompetence(2, 1);
+		// traitement.AssocierAventurierCompetence(2, 3);
 		//
-		// AssocierQueteCompetence(1, 1);
-		// AssocierQueteCompetence(1, 3);
-		//
-		// AssocierAventurierQuete(1, 5);
-		// AssocierAventurierQuete(2, 5);
-		//
-		// EnvoyerEnMission(5);
+		// traitement.AssocierQueteCompetence(1, 1);
+		// traitement.AssocierQueteCompetence(1, 3);
+
+		// traitement.AssocierAventurierQuete(1, 5);
+		// traitement.AssocierAventurierQuete(2, 5);
+
+		traitement.EnvoyerEnMission(5);
+
+		myContext.close();
 	}
 
 }

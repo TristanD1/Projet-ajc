@@ -2,27 +2,35 @@ package Projet.Projet;
 
 import java.util.Random;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Projet.Projet.DAO.IAventurierDaoJpaRepository;
 import Projet.Projet.DAO.ICompetenceDaoJpaRepository;
 import Projet.Projet.DAO.IEquipementDaoJpaRepository;
 import Projet.Projet.DAO.IQueteDaoJpaRepository;
-import Projet.Projet.config.AppConfig;
 import Projet.Projet.model.Aventurier;
 import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Etat;
 import Projet.Projet.model.Quete;
 
+@Service
 public class Traitement {
-	private AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
+	@Autowired
+	private IAventurierDaoJpaRepository daoAventurier;
 	
-	private IAventurierDaoJpaRepository daoAventurier = myContext.getBean(IAventurierDaoJpaRepository.class);
-	private ICompetenceDaoJpaRepository daoCompetence = myContext.getBean(ICompetenceDaoJpaRepository.class);
-	private IEquipementDaoJpaRepository daoEquipement = myContext.getBean(IEquipementDaoJpaRepository.class);
-	private IQueteDaoJpaRepository daoQuete = myContext.getBean(IQueteDaoJpaRepository.class);
+	@Autowired
+	private ICompetenceDaoJpaRepository daoCompetence;
 	
+	@Autowired
+	private IEquipementDaoJpaRepository daoEquipement;
+	
+	@Autowired
+	private IQueteDaoJpaRepository daoQuete;
+
 	public void CreateAventurier(String nom, int exp) {
 		Aventurier monAventurier = new Aventurier();
 		monAventurier.setNom(nom.toLowerCase());
@@ -59,7 +67,7 @@ public class Traitement {
 	public void AssocierEquipementAventurier(int equipementId, int aventurierId) {
 		Equipement monEquipement = daoEquipement.findById(equipementId).orElseThrow(RuntimeException::new);
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
-		
+
 		monEquipement.setAventurier(monAventurier);
 		daoEquipement.save(monEquipement);
 	}
@@ -72,30 +80,25 @@ public class Traitement {
 		daoAventurier.save(monAventurier);
 	}
 
+	@Transactional
 	public void AssocierAventurierCompetence(int aventurierId, int competenceId) {
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
-		try {
-			monAventurier.getCompetences().add(maCompetence);
-			daoAventurier.save(monAventurier);
-		} catch (Exception e) {
-
-		}
+		monAventurier.getCompetences().add(maCompetence);
+		daoAventurier.save(monAventurier);
 	}
 
+	@Transactional
 	public void AssocierQueteCompetence(int queteId, int competenceId) {
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
-		try {
-			maQuete.getCompetences().add(maCompetence);
-			daoQuete.save(maQuete);
-		} catch (Exception e) {
-
-		}
+		maQuete.getCompetences().add(maCompetence);
+		daoQuete.save(maQuete);
 	}
 
+	@Transactional
 	public void EnvoyerEnMission(int queteId) {
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 
@@ -107,7 +110,7 @@ public class Traitement {
 				for (Equipement e : a.getEquipements()) {
 					proba += e.getBonus();
 				}
-				for (Competence c : daoCompetence.findCommuneByAventurier(a)) {
+				for (Competence c : daoCompetence.findCommuneByAventurier(a.getId(), a.getQuete().getId())) {
 					proba += c.getBonus();
 				}
 			}
