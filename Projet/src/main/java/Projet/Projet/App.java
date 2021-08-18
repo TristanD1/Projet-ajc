@@ -47,11 +47,11 @@ public class App {
 		// traitement.AssocierAventurierCompetence(2, 1);
 		// traitement.AssocierAventurierCompetence(2, 3);
 		//
-		// traitement.AssocierQueteCompetence(1, 1);
-		// traitement.AssocierQueteCompetence(1, 3);
+		// traitement.AssocierQueteCompetence(5, 1);
+		// traitement.AssocierQueteCompetence(5, 3);
 
-		// traitement.AssocierAventurierQuete(1, 5);
-		// traitement.AssocierAventurierQuete(2, 5);
+		traitement.AssocierAventurierQuete(1, 5);
+		traitement.AssocierAventurierQuete(2, 5);
 
 		traitement.EnvoyerEnMission(5);
 
