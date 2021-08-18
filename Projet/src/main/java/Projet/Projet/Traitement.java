@@ -14,6 +14,7 @@ import Projet.Projet.DAO.IQueteDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
 import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
+import Projet.Projet.model.EtatAventurier;
 import Projet.Projet.model.QueteEtat;
 import Projet.Projet.model.Quete;
 
@@ -132,6 +133,9 @@ public class Traitement {
 
 				System.out.println("Quete réussie");
 			} else {
+				for (Aventurier a : maQuete.getAventuriers()) {
+					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());
+				}
 				System.out.println("Quete échouée");
 			}
 
