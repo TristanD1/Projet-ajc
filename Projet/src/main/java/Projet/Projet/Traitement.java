@@ -14,7 +14,7 @@ import Projet.Projet.DAO.IQueteDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
 import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
-import Projet.Projet.model.Etat;
+import Projet.Projet.model.QueteEtat;
 import Projet.Projet.model.Quete;
 
 @Service
@@ -50,7 +50,7 @@ public class Traitement {
 	public void CreateQuete(String nom, int difficulte) {
 		Quete maQuete = new Quete();
 		maQuete.setIntitule(nom.toLowerCase());
-		maQuete.setEtat(Etat.INACHEVEE.toString().toLowerCase());
+		maQuete.setEtat(QueteEtat.INACHEVEE.toString().toLowerCase());
 		maQuete.setDifficulte(difficulte);
 
 		daoQuete.save(maQuete);
@@ -123,7 +123,7 @@ public class Traitement {
 			// Faire le test de reussite
 			if (r < (double) proba / (proba + maQuete.getDifficulte())) {
 				// Changer le status de la quete si reussite
-				maQuete.setEtat(Etat.ACHEVEE.toString().toLowerCase());
+				maQuete.setEtat(QueteEtat.ACHEVEE.toString().toLowerCase());
 				daoQuete.save(maQuete);
 
 				for (Aventurier a : maQuete.getAventuriers()) {
