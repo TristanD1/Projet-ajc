@@ -118,20 +118,44 @@ public class Traitement {
 
 	@Transactional
 	public void AssocierAventurierCompetence(int aventurierId, int competenceId) {
+		boolean isAttribuee = false;
+
 		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
-		monAventurier.getCompetences().add(maCompetence);
-		daoAventurier.save(monAventurier);
+		for (Competence c : monAventurier.getCompetences()) {
+			if (c.getId() == maCompetence.getId()) {
+				System.out.println("Compétence déjà attribuée !");
+				isAttribuee = true;
+				break;
+			}
+		}
+
+		if (!isAttribuee) {
+			monAventurier.getCompetences().add(maCompetence);
+			daoAventurier.save(monAventurier);
+		}
 	}
 
 	@Transactional
 	public void AssocierQueteCompetence(int queteId, int competenceId) {
+		boolean isAttribuee = false;
+
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
-		maQuete.getCompetences().add(maCompetence);
-		daoQuete.save(maQuete);
+		for (Competence c : maQuete.getCompetences()) {
+			if (c.getId() == maCompetence.getId()) {
+				System.out.println("Compétence déjà attribuée !");
+				isAttribuee = true;
+				break;
+			}
+		}
+
+		if (!isAttribuee) {
+			maQuete.getCompetences().add(maCompetence);
+			daoQuete.save(maQuete);
+		}
 	}
 
 	@Transactional

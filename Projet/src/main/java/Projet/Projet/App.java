@@ -9,12 +9,11 @@ public class App {
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
 		Traitement traitement = myContext.getBean(Traitement.class);
-		
-		// TODO LISTE
-		// try catch pour les compétences, sysout("compétence déjà attribuée")
-	    // construire les association catalogue <-> equipement
 
-		traitement.InitDatabase();
+		// TODO LISTE
+		// construire les association catalogue <-> equipement
+
+		// traitement.InitDatabase();
 
 		traitement.AssocierEquipementAventurier(2, 1);
 		traitement.AssocierEquipementAventurier(1, 2);
