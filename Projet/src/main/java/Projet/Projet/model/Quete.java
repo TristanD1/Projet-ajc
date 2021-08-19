@@ -33,9 +33,17 @@ public class Quete {
 	@OneToMany(mappedBy = "quete")
 	private List<Aventurier> aventuriers;
 	
-//	@ManyToMany
-//	@JoinTable(name = "QTE_RECO", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDRECO", referencedColumnName = "RECO_ID") )
-//	private List<Catalogue> catalogue;
+	@ManyToMany
+	@JoinTable(name = "QTE_RECO", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDRECO", referencedColumnName = "RECO_ID") )
+	private List<Catalogue> catalogue;
+
+	public List<Catalogue> getCatalogue() {
+		return catalogue;
+	}
+
+	public void setCatalogue(List<Catalogue> catalogue) {
+		this.catalogue = catalogue;
+	}
 
 	public int getId() {
 		return id;

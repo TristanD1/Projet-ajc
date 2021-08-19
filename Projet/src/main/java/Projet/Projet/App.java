@@ -35,6 +35,7 @@ public class App {
 		traitement.Soigner(1);
 
 		myContext.close();
+		
 	}
 
 }
