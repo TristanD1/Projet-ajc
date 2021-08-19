@@ -26,7 +26,9 @@ public class App {
 		// traitement.AssocierQueteCompetence(5, 3);
 
 		// traitement.AssocierQueteRecompense(1, 2);
-
+		
+		traitement.DissocierAventurierCompetence(1, 3);
+		
 		traitement.AssocierAventurierQuete(1, 1);
 		traitement.AssocierAventurierQuete(2, 1);
 		traitement.AssocierAventurierQuete(3, 1);

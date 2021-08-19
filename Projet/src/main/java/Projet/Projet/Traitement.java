@@ -170,6 +170,33 @@ public class Traitement {
 	}
 
 	@Transactional
+	public void DissocierAventurierCompetence(int aventurierId, int competenceId) {
+		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
+
+		monAventurier.getCompetences().remove(maCompetence);
+		daoAventurier.save(monAventurier);
+	}
+
+	@Transactional
+	public void DissocierQueteCompetence(int queteId, int competenceId) {
+		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
+		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
+
+		maQuete.getCompetences().remove(maCompetence);
+		daoQuete.save(maQuete);
+	}
+
+	@Transactional
+	public void DissocierQueteRecompense(int queteId, int recompenseId) {
+		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
+		Recompense maRecompense = daoRecompense.findById(recompenseId).orElseThrow(RuntimeException::new);
+
+		maQuete.getRecompenses().remove(maRecompense);
+		daoQuete.save(maQuete);
+	}
+
+	@Transactional
 	public void EnvoyerEnMission(int queteId) {
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 
