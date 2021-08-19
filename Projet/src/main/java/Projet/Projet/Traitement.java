@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Projet.Projet.DAO.IAventurierDaoJpaRepository;
-import Projet.Projet.DAO.ICatalogueDaoJpaRepository;
+import Projet.Projet.DAO.IRecompenseDaoJpaRepository;
 import Projet.Projet.DAO.ICompetenceDaoJpaRepository;
 import Projet.Projet.DAO.IEquipementDaoJpaRepository;
 import Projet.Projet.DAO.IQueteDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
-import Projet.Projet.model.Catalogue;
+import Projet.Projet.model.Recompense;
 import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.EtatAventurier;
@@ -36,8 +36,7 @@ public class Traitement {
 	private IQueteDaoJpaRepository daoQuete;
 
 	@Autowired
-	private ICatalogueDaoJpaRepository daoCatalogue;
-	
+	private IRecompenseDaoJpaRepository daoRecompense;
 
 	private void CreateAventurier(String nom, int exp) {
 		Aventurier monAventurier = new Aventurier();
@@ -48,21 +47,21 @@ public class Traitement {
 		daoAventurier.save(monAventurier);
 	}
 
-	private void CreateEquipement(String nom, int bonus) {
-		Equipement monEquipement = new Equipement();
-		monEquipement.setNom(nom.toLowerCase());
-		monEquipement.setBonus(bonus);
+	private void CreateRecompense(String nom, int bonus) {
+		Recompense maRecompense = new Recompense();
+		maRecompense.setNom(nom.toLowerCase());
+		maRecompense.setBonus(bonus);
 
-		daoEquipement.save(monEquipement);
+		daoRecompense.save(maRecompense);
 	}
 
-	private void CreateCatalogue() {
-		CreateEquipement("Dague", 10);
-		CreateEquipement("Epée", 30);
-		CreateEquipement("Arc", 20);
-		CreateEquipement("Fronde", 10);
-		CreateEquipement("Hache", 40);
-		CreateEquipement("Sortilege", 50);
+	private void CreateRecompenses() {
+		CreateRecompense("Dague", 10);
+		CreateRecompense("Epée", 30);
+		CreateRecompense("Arc", 20);
+		CreateRecompense("Fronde", 10);
+		CreateRecompense("Hache", 40);
+		CreateRecompense("Sortilege", 50);
 	}
 
 	public void InitDatabase() {
@@ -82,7 +81,7 @@ public class Traitement {
 		CreateCompetence("Bravoure", 15);
 		CreateCompetence("Discretion", 5);
 
-		CreateCatalogue();
+		CreateRecompenses();
 	}
 
 	private void CreateQuete(String nom, int difficulte) {
@@ -165,26 +164,15 @@ public class Traitement {
 		}
 	}
 
-	public void AssocierQueteCatalogue (int queteId, int catalogueId){
-		boolean isAttribuee = false;
-
+	@Transactional
+	public void AssocierQueteRecompense(int queteId, int recompenseId) {
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
-		Catalogue monCatalogue = daoCatalogue.findById(catalogueId).orElseThrow(RuntimeException::new);
+		Recompense maRecompense = daoRecompense.findById(recompenseId).orElseThrow(RuntimeException::new);
 
-		for (Competence c : maQuete.getCompetences()) {
-			if (c.getId() == monCatalogue.getId()) {
-				System.out.println("Compétence déjà attribuée !");
-				isAttribuee = true;
-				break;
-			}
-		}
-
-		if (!isAttribuee) {
-			maQuete.getCatalogue().add(monCatalogue);
-			daoQuete.save(maQuete);
-		}
+		maQuete.getRecompenses().add(maRecompense);
+		daoQuete.save(maQuete);
 	}
-	
+
 	@Transactional
 	public void EnvoyerEnMission(int queteId) {
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
@@ -214,19 +202,24 @@ public class Traitement {
 				daoQuete.save(maQuete);
 
 				for (Aventurier a : maQuete.getAventuriers()) {
-					a.setExperience(a.getExperience() + maQuete.getDifficulte());
+					a.setExperience(a.getExperience() + maQuete.getDifficulte() / maQuete.getAventuriers().size());
 				}
 
 				System.out.println("Quete réussie");
-				
-				//Choix aleatoire de la recompence parmis le catalogue de la quete
-				double r2=new Random().nextDouble();
-				Equipement recompense = new Equipement();
-				List<Catalogue> catalogue = maQuete.getCatalogue();
-				recompense.setNom(catalogue.get((int)r2*catalogue.size()).getNom());
-				recompense.setBonus(catalogue.get((int)r2*catalogue.size()).getBonus());
-				daoEquipement.save(recompense);
-				
+
+				// Choix aleatoire de la recompence parmis le catalogue de la
+				// quete
+				List<Recompense> mesRecompenses = maQuete.getRecompenses();
+				if (mesRecompenses.size() > 0) {
+					double r2 = new Random().nextDouble();
+					Equipement monEquipement = new Equipement();
+					monEquipement.setNom(mesRecompenses.get((int) r2 * mesRecompenses.size()).getNom());
+					monEquipement.setBonus(mesRecompenses.get((int) r2 * mesRecompenses.size()).getBonus());
+					daoEquipement.save(monEquipement);
+				} else {
+					System.out.println("Pas de récompenses disponibles !");
+				}
+
 			} else {
 				for (Aventurier a : maQuete.getAventuriers()) {
 					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());

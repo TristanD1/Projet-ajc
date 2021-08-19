@@ -11,19 +11,20 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "catalogue")
-public class Catalogue {
+@Table(name = "recompense")
+public class Recompense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "RECO_ID")
 	private int id;
 
-	@Column(name = "EQU_NOM")
+	@Column(name = "RECO_NOM")
 	private String nom;
 
-	@Column(name = "EQU_BONUS")
+	@Column(name = "RECO_BONUS")
 	private int bonus;
 
-	@ManyToMany(mappedBy = "catalogue")
+	@ManyToMany(mappedBy = "recompenses")
 	private List<Quete> quetes;
 
 	public int getId() {
