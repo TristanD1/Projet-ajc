@@ -15,9 +15,6 @@ public class App {
 
 		// traitement.InitDatabase();
 
-		traitement.Soigner(1);
-		traitement.Soigner(2);
-
 		traitement.AssocierEquipementAventurier(1, 1);
 
 		// traitement.AssocierAventurierCompetence(1, 2);

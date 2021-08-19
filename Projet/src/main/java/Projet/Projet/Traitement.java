@@ -55,15 +55,6 @@ public class Traitement {
 		daoRecompense.save(maRecompense);
 	}
 
-	private void CreateRecompenses() {
-		CreateRecompense("Dague", 10);
-		CreateRecompense("Epée", 30);
-		CreateRecompense("Arc", 20);
-		CreateRecompense("Fronde", 10);
-		CreateRecompense("Hache", 40);
-		CreateRecompense("Sortilege", 50);
-	}
-
 	public void InitDatabase() {
 		CreateAventurier("Aragorn", 15);
 		CreateAventurier("Legolas", 15);
@@ -81,7 +72,12 @@ public class Traitement {
 		CreateCompetence("Bravoure", 15);
 		CreateCompetence("Discretion", 5);
 
-		CreateRecompenses();
+		CreateRecompense("Dague", 10);
+		CreateRecompense("Epée", 30);
+		CreateRecompense("Arc", 20);
+		CreateRecompense("Fronde", 10);
+		CreateRecompense("Hache", 40);
+		CreateRecompense("Sortilege", 50);
 	}
 
 	private void CreateQuete(String nom, int difficulte) {
