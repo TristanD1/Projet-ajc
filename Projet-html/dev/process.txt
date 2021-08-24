@@ -1,0 +1,8 @@
+Procedure envoyer en mission :
+1) Choisir quete
+2) Lancer quete
+3) Choisir personnage - nouvelle page (cachée)
+	3)a) Changer équipement - nouvelle page (cachée)
+4) Départ
+
+Si le départ en mission est invalide, le bouton fuit !
