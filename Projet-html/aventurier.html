@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aventuriers</title>
 
-	<link rel="stylesheet" href="style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<link rel="stylesheet" href="aventurierStyle.css">
 
 	<script defer src="aventurier.js"></script>
 </head>
@@ -32,6 +33,8 @@
 	</nav>
 
     <form method="POST">
+		<h2>Ajouter un aventurier</h2>
+
 		<div>
 			<label for="nom">Nom de l'aventurier :</label>
 			<input type="text" id="nom" name="nom" />
@@ -54,9 +57,11 @@
 	</form>
 
 	<section>
-		<button id="btn-vider">Renvoyer</button>
+		<h2>Vos aventuriers</h2>
 
-		<table>
+		<button id="btn-vider">Renvoyer tout le monde</button>
+
+		<table class="table table-dark">
 			<thead>
 				<tr>
 					<th>Nom</th>
