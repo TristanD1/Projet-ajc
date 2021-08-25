@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aventuriers</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aventuriers</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<link rel="stylesheet" href="aventurierStyle.css">
 
 	<script defer src="aventurier.js"></script>
 </head>
+
 <body>
 	<header>
 		<h1>Aventuriers</h1>
 	</header>
 
-    <nav>
+	<nav>
 		<ul>
 			<li>
-                <a href="accueil.html"><img src="dev/accueil.svg" width="100"> Accueil</a>
-            </li>
+				<a href="accueil.html"><img src="dev/accueil.svg" width="100"> Accueil</a>
+			</li>
 
 			<li>
 				<a href="equipement.html"><img src="dev/equipement.svg">Equipements</a>
 			</li>
 
-            <li>
+			<li>
 				<a href="quete.html"><img src="dev/quete.svg"> Quetes</a>
 			</li>
 		</ul>
 	</nav>
 
-    <form method="POST">
+	<form method="POST">
 		<h2>Ajouter un aventurier</h2>
 
 		<div>
@@ -46,22 +49,38 @@
 		</div>
 
 		<div>
-			<label for="etatAventurier">Etat de santé :</label>
-			<select id="etatAventurier" name="etatAventurier">
-			</select>
+			<label for="prix">Prix :</label>
+			<input type="text" id="prix" name="prix" />
 		</div>
 
 		<div>
-			<input type="submit" value="Ajouter" onclick="ajouterAventurier(); return false;" />
+			<input type="submit" value="Ajouter" onclick="ajouterAventurierRecrutement(); return false;" />
 		</div>
 	</form>
 
 	<section>
+		<h2>Recruter un aventurier</h2>
+
+		<button id="btn-supprimer">Supprimer</button>
+
+		<table id="recrutement" class="table table-dark">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Expérience</th>
+					<th>Prix</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				
+			</tbody>
+		</table>
+
 		<h2>Vos aventuriers</h2>
 
-		<button id="btn-vider">Renvoyer tout le monde</button>
-
-		<table class="table table-dark">
+		<table id="guilde" class="table table-dark">
 			<thead>
 				<tr>
 					<th>Nom</th>
@@ -71,13 +90,10 @@
 			</thead>
 
 			<tbody>
-				<tr>
-					<td>Le nom</td>
-					<td>L'expérience</td>
-					<td>L'état de santé</td>
-				</tr>
+
 			</tbody>
 		</table>
 	</section>
 </body>
+
 </html>

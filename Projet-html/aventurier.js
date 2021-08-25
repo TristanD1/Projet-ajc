@@ -4,8 +4,6 @@ let etatsAventurier = [
 ];
 
 for (let e of etatsAventurier) {
-    document.querySelector("select[name='etatAventurier']").innerHTML += `<option value="${e.id}">${e.nom}</option>`;
-
     let option = document.createElement("option");
     option.setAttribute("value", e.id);
     option.textContent = e.nom;
@@ -21,24 +19,26 @@ if (mesAventuriers != null) {
     }
 }
 
-function ajouterAventurier() {
+function ajouterAventurierRecrutement() {
     let nomAventurier = document.querySelector("[name = 'nom']").value;
     let experienceAventurier = document.querySelector("[name = 'experience']").value;
-    let etatAventurier = document.querySelector("[name = 'etatAventurier']").value;
-    let etatNom = "";
-
-    let etatTrouve = etatsAventurier.find(e => e.id == etatAventurier);
-
-    etatNom = etatTrouve.nom;
+    let prixAventurier = document.querySelector("[name = 'prix']").value;
 
     let aventurier = {
         nom: nomAventurier,
         experience: experienceAventurier,
-        etat: etatNom
+        prix: prixAventurier
     };
 
-    creerLigne(aventurier);
-    sauvegarder(aventurier);
+    creerLigne(aventurier, "recrutement");
+    sauvegarder(aventurier, "recrutement");
+}
+
+function ajouterAventurierGuilde(aventurier) {
+    aventurier.etat = etatsAventurier.find(e => e.id == 1).nom
+
+    creerLigne(aventurier, "guilde");
+    sauvegarder(aventurier, "guilde");
 }
 
 function sauvegarder(aventurier) {
@@ -53,20 +53,25 @@ function sauvegarder(aventurier) {
     localStorage.setItem("aventuriers", JSON.stringify(aventuriers));
 }
 
-function creerLigne(aventurier) {
+function creerLigne(aventurier, id) {
     let ligneTableau = document.createElement("tr");
     ligneTableau.innerHTML = `
     <td>${aventurier.nom}</td>
     <td>${aventurier.experience}</td>
-    <td>${aventurier.etat}</td>
+    <td>${aventurier.prix}</td>
+    <td><button id='btn-recruter'>Recruter</button></td>
     `;
 
-    document.querySelector("table tbody").append(ligneTableau);
+    document.querySelector(`#${id} tbody`).append(ligneTableau);
 }
 
-document.querySelector("#btn-vider").addEventListener("click", () => {
+document.querySelector("#btn-supprimer").addEventListener("click", () => {
     document.querySelector("table tbody").innerHTML = "";
     localStorage.setItem("aventuriers", null);
+})
+
+document.querySelector("#btn-recruter").addEventListener("click", () => {
+    document.querySelector("#recrutement tbody tr").innerHTML = "";
 })
 
 document.querySelector('input[name="nom"]').addEventListener('keyup', () => {

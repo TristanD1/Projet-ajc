@@ -83,6 +83,22 @@ section h2 {
     padding-top: 20px;
 }
 
+section button {
+	width: 120px;
+	padding: 10px 20px;
+	border: solid 1px #eee;
+	border-radius: 4px;
+	background: #D65050;
+	color: white;
+	cursor: pointer;
+	transition: background 0.25s ease-in;
+	animation: bounce 2s infinite;
+}
+
+section button:hover {
+	background: #333;
+}
+
 form {
 	padding: 20px;
 }
