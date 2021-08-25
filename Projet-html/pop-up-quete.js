@@ -10,7 +10,6 @@ var clicks = 1;
 
 function onClick() {
     clicks += 1;
-    document.getElementById("clicks").innerHTML = clicks;
 };
 
 document.querySelector('#ajout').addEventListener('click', () => {
