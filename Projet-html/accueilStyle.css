@@ -79,18 +79,26 @@ section {
 	margin: 100px 20px;
 	padding: 10px 20px;*/
 	background-image: url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
-	background-size: 1000px 500px;
+	background-size: 1100px 750px;
 	background-repeat: no-repeat;
-	background-position-x: 330px;
+	background-position-x: 280px;
 	margin: 100px 0px;
+	font-size: large;
 }
 
 section div{
-		padding-top: 130px;
-		padding-left: 520px;
-		padding-right: 520px;
+		padding-top: 150px;
+		margin-left: 520px;
+		margin-right: 520px;
 }
 
+section div h3{
+	font-weight: bolder;
+}
+
+#intro{
+	font-weight: bold;
+}
 
 footer {
 	position: fixed;
