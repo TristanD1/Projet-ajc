@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipement</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="import" href="aventurier.html">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="equipementStyle.css">
+
+    <script defer src="equipement.js"></script>
 </head>
+
 <body>
-    <h1> Inventaire </h1>
+    <header>
+        <h1> Inventaire </h1>
+    </header>
+
     <nav>
         <ul>
             <li>
@@ -27,42 +35,47 @@
         </ul>
     </nav>
 
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th >Nom</th>
-                <th >Score d'équipement</th>
-                <th >Quantité</th>
-                <!-- <th>Aventurier associé</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Epée</td>
-                <td>15</td>
-                <td>3</td>
-                <!-- <td>
+    <form>
+        <h2>Vos équipements</h2>
+        
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Score d'équipement</th>
+                    <th>Quantité</th>
+                    <!-- <th>Aventurier associé</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Epée</td>
+                    <td>15</td>
+                    <td>3</td>
+                    <!-- <td>
                     <select name="Aventurier">
                         <option value="0">NULL</option>
                         <option value="1">Aragorn</option>
                         <option value="2">Legolas</option>
                     </select>
                 </td> -->
-            </tr>
-            <tr>
-                <td>dague</td>
-                <td>10</td>
-                <td>1</td>
-                <!-- <td>
+                </tr>
+                <tr>
+                    <td>dague</td>
+                    <td>10</td>
+                    <td>1</td>
+                    <!-- <td>
                     <select name="Aventurier">
                         <option value="0">NULL</option>
                         <option value="1">Aragorn</option>
                         <option value="2">Legolas</option>
                     </select>
                 </td> -->
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 
 </body>
+
 </html>
