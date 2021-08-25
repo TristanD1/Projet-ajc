@@ -74,22 +74,23 @@ nav a:hover::before {
 }
 
 section {
-	display: block;
+	display: flex;
 	/*background-color: rgb(230, 196, 146);
 	margin: 100px 20px;
 	padding: 10px 20px;*/
 	background-image: url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
 	background-size: 1100px 750px;
 	background-repeat: no-repeat;
-	background-position-x: 280px;
+	background-position: center;
 	margin: 100px 0px;
 	font-size: large;
+	justify-content: center;
+	align-items: center;
 }
 
 section div{
-		padding-top: 150px;
-		margin-left: 520px;
-		margin-right: 520px;
+	padding-top: 130px;
+	width: 680px;
 }
 
 section div h3{
