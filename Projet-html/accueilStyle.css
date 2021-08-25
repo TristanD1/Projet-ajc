@@ -2,7 +2,9 @@ body {
 	margin: 0;
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
-    background-image: url("dev/guilde2.jpg");
+	background-image: url("dev/guilde3.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 header {
