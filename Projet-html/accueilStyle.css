@@ -9,7 +9,7 @@ body {
 
 header {
 	font-size: 36px;
-	padding: 5px 48%;
+	padding: 5px 45%;
 	border-bottom: solid 2px #333;
     background-color: #333;
     color: white;
@@ -74,35 +74,23 @@ nav a:hover::before {
 }
 
 section {
-	padding: 0 20px;
+	display: block;
+	/*background-color: rgb(230, 196, 146);
+	margin: 100px 20px;
+	padding: 10px 20px;*/
+	background-image: url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
+	background-size: 1000px 500px;
+	background-repeat: no-repeat;
+	background-position-x: 330px;
+	margin: 100px 0px;
 }
 
-section h2 {
-	padding-left: 20px;
-	padding-bottom: 5px;
-	margin-left: -20px;
-	margin-right: -20px;
-	border-bottom: solid 1px #D65050;
+section div{
+		padding-top: 130px;
+		padding-left: 520px;
+		padding-right: 520px;
 }
 
-section h3 {
-	padding: 5px;
-	padding-left: 20px;
-	margin-left: -20px;
-	margin-right: -20px;
-	background: #D65050;
-	color: white;
-}
-
-section .important {
-	font-weight: bold;
-	color: #D65050;
-}
-
-section video {
-	width: 500px;
-	max-width: 90%;
-}
 
 footer {
 	position: fixed;
