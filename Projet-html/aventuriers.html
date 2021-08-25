@@ -34,24 +34,24 @@
 		</div>
 
 		<div>
-			<label for="prix">Expérience de l'aventurier :</label>
-			<input type="text" id="prix" name="prix" />
+			<label for="experience">Expérience :</label>
+			<input type="text" id="experience" name="experience" />
 		</div>
 
 		<div>
-			<label for="fournisseur">Fournisseur du produit :</label>
-			<select id="fournisseur" name="fournisseur">
+			<label for="etatAventurier">Etat de santé :</label>
+			<select id="etatAventurier" name="etatAventurier">
 			</select>
 		</div>
 
 		<div>
-			<input type="submit" value="Ajouter" onclick="ajouterProduit(); return false;" />
+			<input type="submit" value="Ajouter" onclick="ajouterAventurier(); return false;" />
 		</div>
 	</form>
 
 	<section>
 		<p>
-			Vous allez ajouter le produit<span id="new-produit"></span>
+			Vous allez ajouter l'aventurier<span id="new-aventurier"></span>
 		</p>
 
 		<button id="btn-vider">Vider</button>
@@ -60,16 +60,16 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Prix</th>
-					<th>Fournisseur</th>
+					<th>Expérience</th>
+					<th>Etat de santé</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<tr>
 					<td>Le nom</td>
-					<td>Le prix</td>
-					<td>Le fournisseur</td>
+					<td>L'expérience</td>
+					<td>L'état de santé</td>
 				</tr>
 			</tbody>
 		</table>
