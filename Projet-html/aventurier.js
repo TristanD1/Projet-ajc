@@ -1,8 +1,23 @@
-let mesProduits = JSON.parse(localStorage.getItem("produits"));
+let etatsAventurier = [
+    { id: 1, nom: "EN PLEINE FORME" },
+    { id: 2, nom: "BLESSE" },
+];
 
-if (mesProduits != null) {
-    for (let p of mesProduits) {
-        creerLigne(p);
+for (let e of etatsAventurier) {
+    document.querySelector("select[name='etatAventurier']").innerHTML += `<option value="${e.id}">${e.nom}</option>`;
+
+    let option = document.createElement("option");
+    option.setAttribute("value", e.id);
+    option.textContent = e.nom;
+
+    document.querySelector("select[name='etatAventurier']").append(option);
+}
+
+let mesAventuriers = JSON.parse(localStorage.getItem("aventuriers"));
+
+if (mesAventuriers != null) {
+    for (let a of mesAventuriers) {
+        creerLigne(a);
     }
 }
 
@@ -10,11 +25,16 @@ function ajouterAventurier() {
     let nomAventurier = document.querySelector("[name = 'nom']").value;
     let experienceAventurier = document.querySelector("[name = 'experience']").value;
     let etatAventurier = document.querySelector("[name = 'etatAventurier']").value;
+    let etatNom = "";
+
+    let etatTrouve = etatsAventurier.find(e => e.id == etatAventurier);
+
+    etatNom = etatTrouve.nom;
 
     let aventurier = {
         nom: nomAventurier,
         experience: experienceAventurier,
-        etatAventurier: etatAventurier
+        etat: etatNom
     };
 
     creerLigne(aventurier);
@@ -38,7 +58,7 @@ function creerLigne(aventurier) {
     ligneTableau.innerHTML = `
     <td>${aventurier.nom}</td>
     <td>${aventurier.experience}</td>
-    <td>${aventurier.etatAventurier}</td>
+    <td>${aventurier.etat}</td>
     `;
 
     document.querySelector("table tbody").append(ligneTableau);
