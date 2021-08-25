@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventuriers</title>
+</head>
+<body>
+    <nav>
+		<ul>
+			<li>
+				<a href="accueil.html">Accueil</a>
+			</li>
+
+			<li>
+				<a href="aventuriers.html">Aventuriers</a>
+			</li>
+
+			<li>
+				<a href="equipements.html">Equipements</a>
+			</li>
+
+            <li>
+				<a href="quetes.html">Quetes</a>
+			</li>
+		</ul>
+	</nav>
+
+    <form method="POST">
+		<div>
+			<label for="nom">Nom de l'aventurier :</label>
+			<input type="text" id="nom" name="nom" />
+		</div>
+
+		<div>
+			<label for="prix">Expérience de l'aventurier :</label>
+			<input type="text" id="prix" name="prix" />
+		</div>
+
+		<div>
+			<label for="fournisseur">Fournisseur du produit :</label>
+			<select id="fournisseur" name="fournisseur">
+			</select>
+		</div>
+
+		<div>
+			<input type="submit" value="Ajouter" onclick="ajouterProduit(); return false;" />
+		</div>
+	</form>
+
+	<section>
+		<p>
+			Vous allez ajouter le produit<span id="new-produit"></span>
+		</p>
+
+		<button id="btn-vider">Vider</button>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Fournisseur</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Le nom</td>
+					<td>Le prix</td>
+					<td>Le fournisseur</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+</html>
