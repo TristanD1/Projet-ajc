@@ -78,7 +78,7 @@ nav a img {
 
 nav a:hover {
 	padding: 5px 20px;
-	animation: wobble 2s;
+	color: white;
 }
 
 nav a:hover::before {
@@ -114,7 +114,11 @@ section h2 {
 	
 }
 
-#livre{
+#btn-details{
 	width: 10%;
+}
+
+#btn-details:hover{
+	animation: heartBeat 1s infinite ;
 }
 
