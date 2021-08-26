@@ -11,11 +11,18 @@ for (let e of etatsAventurier) {
     document.querySelector("select[name='etatAventurier']").append(option);
 }
 
-let mesAventuriers = JSON.parse(localStorage.getItem("aventuriers"));
+let mesAventuriersRecrutement = JSON.parse(localStorage.getItem("aventuriersRecrutement"));
+let mesAventuriersGuilde = JSON.parse(localStorage.getItem("aventuriersGuilde"));
 
-if (mesAventuriers != null) {
-    for (let a of mesAventuriers) {
-        creerLigne(a);
+if (mesAventuriersRecrutement != null) {
+    for (let a of mesAventuriersRecrutement) {
+        creerLigneRecrutement(a);
+    }
+}
+
+if (mesAventuriersGuilde != null) {
+    for (let a of mesAventuriersGuilde) {
+        creerLigneGuilde(a);
     }
 }
 
@@ -30,30 +37,42 @@ function ajouterAventurierRecrutement() {
         prix: prixAventurier
     };
 
-    creerLigne(aventurier, "recrutement");
-    sauvegarder(aventurier, "recrutement");
+    creerLigneRecrutement(aventurier);
+    sauvegarderRecrutement(aventurier);
 }
 
 function ajouterAventurierGuilde(aventurier) {
     aventurier.etat = etatsAventurier.find(e => e.id == 1).nom
 
-    creerLigne(aventurier, "guilde");
-    sauvegarder(aventurier, "guilde");
+    creerLigneGuilde(aventurier);
+    sauvegarderGuilde(aventurier);
 }
 
-function sauvegarder(aventurier) {
-    let aventuriers = JSON.parse(localStorage.getItem("aventuriers"));
+function sauvegarderRecrutement(aventurier) {
+    let aventuriersRecrutement = JSON.parse(localStorage.getItem("aventuriersRecrutement"));
 
-    if (aventuriers == null) {
-        aventuriers = [];
+    if (aventuriersRecrutement == null) {
+        aventuriersRecrutement = [];
     }
 
-    aventuriers.push(aventurier);
+    aventuriersRecrutement.push(aventurier);
 
-    localStorage.setItem("aventuriers", JSON.stringify(aventuriers));
+    localStorage.setItem("aventuriersRecrutement", JSON.stringify(aventuriersRecrutement));
 }
 
-function creerLigne(aventurier, id) {
+function sauvegarderGuilde(aventurier) {
+    let aventuriersGuilde = JSON.parse(localStorage.getItem("aventuriersGuilde"));
+
+    if (aventuriersGuilde == null) {
+        aventuriersGuilde = [];
+    }
+
+    aventuriersGuilde.push(aventurier);
+
+    localStorage.setItem("aventuriersGuilde", JSON.stringify(aventuriersGuilde));
+}
+
+function creerLigneRecrutement(aventurier) {
     let ligneTableau = document.createElement("tr");
     ligneTableau.innerHTML = `
     <td>${aventurier.nom}</td>
@@ -62,16 +81,27 @@ function creerLigne(aventurier, id) {
     <td><button id='btn-recruter'>Recruter</button></td>
     `;
 
-    document.querySelector(`#${id} tbody`).append(ligneTableau);
+    document.querySelector("#recrutement tbody").append(ligneTableau);
+}
+
+function creerLigneGuilde(aventurier) {
+    let ligneTableau = document.createElement("tr");
+    ligneTableau.innerHTML = `
+    <td>${aventurier.nom}</td>
+    <td>${aventurier.experience}</td>
+    <td>${aventurier.etat}</td>
+    `;
+
+    document.querySelector("#guilde tbody").append(ligneTableau);
 }
 
 document.querySelector("#btn-supprimer").addEventListener("click", () => {
-    document.querySelector("table tbody").innerHTML = "";
-    localStorage.setItem("aventuriers", null);
+    document.querySelector("#recrutement tbody").innerHTML = "";
+    localStorage.setItem("aventuriersRecrutement", null);
 })
 
 document.querySelector("#btn-recruter").addEventListener("click", () => {
-    document.querySelector("#recrutement tbody tr").innerHTML = "";
+    localStorage.setItem("aventuriersRecrutement", null);
 })
 
 document.querySelector('input[name="nom"]').addEventListener('keyup', () => {
