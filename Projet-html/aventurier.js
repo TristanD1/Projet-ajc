@@ -78,6 +78,7 @@ function creerLigneRecrutement(aventurier) {
     <td>${aventurier.experience}</td>
     <td>${aventurier.prix}</td>
     <td><button id='btn-recruter'>Recruter</button></td>
+    <td><button id="btn-supprimer">Supprimer</button></td>
     `;
 
     document.querySelector("#recrutement tbody").append(ligneTableau);
@@ -96,6 +97,19 @@ function creerLigneRecrutement(aventurier) {
 
         ajouterAventurierGuilde(aventurier);
     })
+
+    ligneTableau.querySelector("#btn-supprimer").addEventListener("click", () => {
+        let aventuriersRecrutement = JSON.parse(localStorage.getItem("aventuriersRecrutement"));
+
+        if (aventuriersRecrutement != null) {
+            let index = aventuriersRecrutement.indexOf(aventurier);
+
+            aventuriersRecrutement.splice(index, 1);
+            localStorage.setItem("aventuriersRecrutement", JSON.stringify(aventuriersRecrutement));
+        }
+
+        ligneTableau.remove();
+    })
 }
 
 function creerLigneGuilde(aventurier) {
@@ -104,15 +118,24 @@ function creerLigneGuilde(aventurier) {
     <td>${aventurier.nom}</td>
     <td>${aventurier.experience}</td>
     <td>${aventurier.etat}</td>
+    <td><button id="btn-renvoyer">Renvoyer</button></td>
     `;
 
     document.querySelector("#guilde tbody").append(ligneTableau);
-}
 
-document.querySelector("#btn-supprimer").addEventListener("click", () => {
-    document.querySelector("#recrutement tbody").innerHTML = "";
-    localStorage.setItem("aventuriersRecrutement", null);
-})
+    ligneTableau.querySelector("#btn-renvoyer").addEventListener("click", () => {
+        let aventuriersGuilde = JSON.parse(localStorage.getItem("aventuriersGuilde"));
+
+        if (aventuriersGuilde != null) {
+            let index = aventuriersGuilde.indexOf(aventurier);
+
+            aventuriersGuilde.splice(index, 1);
+            localStorage.setItem("aventuriersGuilde", JSON.stringify(aventuriersGuilde));
+        }
+
+        ligneTableau.remove();
+    })
+}
 
 document.querySelector('input[name="nom"]').addEventListener('keyup', () => {
     document.querySelector('#new-aventurier').textContent = document.querySelector('input[name="nom"]').value;
