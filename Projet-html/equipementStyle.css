@@ -2,6 +2,9 @@ body {
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
 	background-color: tan;
+	background-image: url("dev/forge.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 header {
@@ -80,7 +83,8 @@ nav a:hover::before {
 }
 
 section {
-	padding: 0 20px;
+	padding: 50px 20px;
+	
 }
 
 section h2 {
