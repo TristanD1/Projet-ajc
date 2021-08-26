@@ -3,6 +3,7 @@ var listStatut = document.querySelectorAll(`#statut`);
 var listEquipement = document.querySelectorAll('#eq');
 var listBtnChoix = document.querySelectorAll('#btn-choix');
 var listDropMenu = document.querySelectorAll('#dropdownMenu');
+var listBtnDetails = document.querySelectorAll('#btn-details');
 
 for (let btn of listBtnAjouter) {
     btn.addEventListener('click', () => {
@@ -35,14 +36,18 @@ document.querySelector(`#close`).addEventListener('click', () => {
 
 for (let btnChoix of listBtnChoix) {
     btnChoix.addEventListener('click', () => {
-        document.querySelector(`#intituleQuete`).textContent = btn.closest('tr').querySelector('#intitule').textContent;
+        document.querySelector(`#intituleQueteChoisir`).textContent = btnChoix.closest('tr').querySelector('#intitule').textContent;
     })
 };
 
-
+for (let btnDetails of listBtnDetails) {
+    btnDetails.addEventListener('click', () =>{
+        document.querySelector(`#intituleQueteDetails`).textContent = btnDetails.closest('tr').querySelector('#intitule').textContent;
+    })
+    
+}
 
 for (let equipement of listEquipement) {
-
     equipement.addEventListener('click', () => {
         equipement.closest('div').querySelector('#dropdownMenu').textContent = equipement.textContent;
 

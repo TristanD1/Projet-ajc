@@ -2,6 +2,10 @@ body {
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
 	background-color: tan;
+	background-image: url("dev/papyrus.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	
 }
 
 header {
@@ -24,6 +28,8 @@ h2 {
 	margin-left: -20px;
 	margin-right: -20px;
 	border-bottom: solid 1px #D65050;
+	width: 75.4%;
+	
 }
 
 nav {
@@ -90,4 +96,26 @@ section h2 {
 /* section > table {
 	display: block;
 	margin-left: 10%;
+} */
+
+#tableauQuete {
+	width: 74.2%;
+} 
+
+#imageDroite{
+	width:23%;
+	position: fixed;
+	right: 0;
+	top: 53px;
+	height: 100%;
+	opacity: 0.5;
+	background-attachment: fixed;
+}
+
+/* #papyrus{
+	width: 64%;
+	position: fixed;
+	top : 53px;
+	height: 100%;
+	background-attachment: fixed;
 } */
