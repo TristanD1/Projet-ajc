@@ -9,12 +9,12 @@ for (let btn of listBtnAjouter) {
     btn.addEventListener('click', () => {
 
         if (btn.textContent == 'Enlever') {
-            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-x-fill"></i>';
+            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-x-fill" id="imageStatut"></i>';
             btn.textContent = 'Ajouter';
         }
 
         else {
-            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-check-fill"></i>';
+            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-check-fill" id="imageStatut"></i>';
             btn.textContent = 'Enlever'
         }
     })
@@ -23,7 +23,7 @@ for (let btn of listBtnAjouter) {
 
 document.querySelector(`#close`).addEventListener('click', () => {
     for (let statut of listStatut) {
-        statut.innerHTML = '<i class="bi bi-person-x-fill"></i>';
+        statut.innerHTML = '<i class="bi bi-person-x-fill" id="imageStatut"></i>';
     }
     for (let btnAjout of listBtnAjouter) {
         btnAjout.textContent = 'Ajouter';
