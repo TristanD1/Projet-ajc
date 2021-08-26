@@ -3,14 +3,6 @@ let etatsAventurier = [
     { id: 2, nom: "BLESSE" },
 ];
 
-for (let e of etatsAventurier) {
-    let option = document.createElement("option");
-    option.setAttribute("value", e.id);
-    option.textContent = e.nom;
-
-    document.querySelector("select[name='etatAventurier']").append(option);
-}
-
 let mesAventuriersRecrutement = JSON.parse(localStorage.getItem("aventuriersRecrutement"));
 let mesAventuriersGuilde = JSON.parse(localStorage.getItem("aventuriersGuilde"));
 
@@ -42,10 +34,17 @@ function ajouterAventurierRecrutement() {
 }
 
 function ajouterAventurierGuilde(aventurier) {
-    aventurier.etat = etatsAventurier.find(e => e.id == 1).nom
+    let nomAventurier = aventurier.nom;
+    let experienceAventurier = aventurier.experience;
 
-    creerLigneGuilde(aventurier);
-    sauvegarderGuilde(aventurier);
+    let monAventurier = {
+        nom: nomAventurier,
+        experience: experienceAventurier,
+        etat: etatsAventurier.find(e => e.id == 1).nom
+    };
+
+    creerLigneGuilde(monAventurier);
+    sauvegarderGuilde(monAventurier);
 }
 
 function sauvegarderRecrutement(aventurier) {
@@ -82,6 +81,21 @@ function creerLigneRecrutement(aventurier) {
     `;
 
     document.querySelector("#recrutement tbody").append(ligneTableau);
+
+    ligneTableau.querySelector("#btn-recruter").addEventListener("click", () => {
+        let aventuriersRecrutement = JSON.parse(localStorage.getItem("aventuriersRecrutement"));
+
+        if (aventuriersRecrutement != null) {
+            let index = aventuriersRecrutement.indexOf(aventurier);
+
+            aventuriersRecrutement.splice(index, 1);
+            localStorage.setItem("aventuriersRecrutement", JSON.stringify(aventuriersRecrutement));
+        }
+
+        ligneTableau.remove();
+
+        ajouterAventurierGuilde(aventurier);
+    })
 }
 
 function creerLigneGuilde(aventurier) {
@@ -97,10 +111,6 @@ function creerLigneGuilde(aventurier) {
 
 document.querySelector("#btn-supprimer").addEventListener("click", () => {
     document.querySelector("#recrutement tbody").innerHTML = "";
-    localStorage.setItem("aventuriersRecrutement", null);
-})
-
-document.querySelector("#btn-recruter").addEventListener("click", () => {
     localStorage.setItem("aventuriersRecrutement", null);
 })
 
