@@ -1,30 +1,50 @@
 var listBtnAjouter = document.querySelectorAll("#ajout");
+var listStatut = document.querySelectorAll(`#statut`);
+var listEquipement = document.querySelectorAll('#eq');
+var listBtnChoix = document.querySelectorAll('#btn-choix');
+var listDropMenu = document.querySelectorAll('#dropdownMenu');
 
 for (let btn of listBtnAjouter) {
     btn.addEventListener('click', () => {
 
-        if (btn.innerHTML == 'Enlever') {
-            document.querySelector(`#statut`).innerHTML = '<i class="bi bi-person-x-fill"></i>';
-            btn.innerHTML = 'Ajouter';
+        if (btn.textContent == 'Enlever') {
+            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-x-fill"></i>';
+            btn.textContent = 'Ajouter';
         }
 
         else {
-            document.querySelector(`#statut`).innerHTML = '<i class="bi bi-person-check-fill"></i>';
-            btn.innerHTML = 'Enlever'
+            btn.closest('tr').querySelector(`#statut`).innerHTML = '<i class="bi bi-person-check-fill"></i>';
+            btn.textContent = 'Enlever'
         }
-        document.querySelector(`#close`).addEventListener('click', () => {
-            document.querySelector(`#statut`).innerHTML = '<i class="bi bi-person-x-fill"></i>';
-            btn.innerHTML = 'Ajouter';
-        })
     })
 };
 
 
-// document.querySelector(`#btn-choix1`).addEventListener('click', () =>{
-//     document.querySelector(`#intituleQuete`).textContent = document.querySelector(`#intitule1`).textContent;
-// })
+document.querySelector(`#close`).addEventListener('click', () => {
+    for (let statut of listStatut) {
+        statut.innerHTML = '<i class="bi bi-person-x-fill"></i>';
+    }
+    for (let btnAjout of listBtnAjouter) {
+        btnAjout.textContent = 'Ajouter';
+    }
+    for (let equipement of listEquipement) {
+        equipement.closest('div').querySelector('#dropdownMenu').textContent = 'Choisir un équipement'
+        }
+});
 
-// document.querySelector('#eq1').addEventListener('click', () =>{
-//     document.querySelector('#dropdownMenuButton1').textContent = document.querySelector('#eq1').textContent;
 
-// })
+for (let btnChoix of listBtnChoix) {
+    btnChoix.addEventListener('click', () => {
+        document.querySelector(`#intituleQuete`).textContent = btn.closest('tr').querySelector('#intitule').textContent;
+    })
+};
+
+
+
+for (let equipement of listEquipement) {
+
+    equipement.addEventListener('click', () => {
+        equipement.closest('div').querySelector('#dropdownMenu').textContent = equipement.textContent;
+
+    })
+};
