@@ -9,5 +9,10 @@ $(document).ready(function(){
          html: true,
           placement: "right"
     }); 
+    $('#tooltipLameTonerre').tooltip({
+        title: `<h3>Lame Tonerre</h3> <img src=dev/LameTonerre.jpg> <p> <i> Lame ayant appartenus au prince Thunderaan "Le Cherchevent". Elle a fais objet de nombreuses légendes mais nul ne connaît vraiment l'étendue de son pouvoir. </i> </p>`,
+         html: true,
+          placement: "right"
+    }); 
   });
 
