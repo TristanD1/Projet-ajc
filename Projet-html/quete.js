@@ -33,7 +33,6 @@ document.querySelector(`#close`).addEventListener('click', () => {
         }
 });
 
-
 for (let btnChoix of listBtnChoix) {
     btnChoix.addEventListener('click', () => {
         document.querySelector(`#intituleQueteChoisir`).textContent = btnChoix.closest('tr').querySelector('#intitule').textContent;
@@ -53,3 +52,7 @@ for (let equipement of listEquipement) {
 
     })
 };
+
+document.querySelector('#btn-choix2').addEventListener('click', () =>{
+    document.querySelector('#intituleQueteChoisir').textContent = document.querySelector('#intituleQueteDetails').textContent;
+});
