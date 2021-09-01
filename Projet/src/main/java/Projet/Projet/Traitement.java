@@ -8,11 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Projet.Projet.DAO.IAventurierDaoJpaRepository;
-import Projet.Projet.DAO.IRecompenseDaoJpaRepository;
-import Projet.Projet.DAO.ICompetenceDaoJpaRepository;
-import Projet.Projet.DAO.IEquipementDaoJpaRepository;
-import Projet.Projet.DAO.IQueteDaoJpaRepository;
+import Projet.Projet.dao.IAventurierDaoJpaRepository;
+import Projet.Projet.dao.ICompetenceDaoJpaRepository;
+import Projet.Projet.dao.IEquipementDaoJpaRepository;
+import Projet.Projet.dao.IQueteDaoJpaRepository;
+import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
 import Projet.Projet.model.Recompense;
 import Projet.Projet.model.Competence;

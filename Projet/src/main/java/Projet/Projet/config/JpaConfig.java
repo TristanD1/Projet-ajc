@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("Projet.Projet.DAO")
+@EnableJpaRepositories("Projet.Projet.dao")
 public class JpaConfig {
 	
 	@Bean
