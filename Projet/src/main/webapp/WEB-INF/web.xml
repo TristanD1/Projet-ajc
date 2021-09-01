@@ -27,7 +27,7 @@
 		<!-- Fichier de configuration JAVA -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>fr.formation.config.AppConfig</param-value>
+			<param-value>Projet.Projet.config.AppConfig</param-value>
 		</init-param>
 
 		<!-- Démarrage de la Servlet au lancement du serveur -->

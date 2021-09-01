@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	padding-left: 250px;
+	font-family: 'Roboto', sans-serif;
+	background-image: url("dev/guilde3.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+header {
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	border-bottom: solid 2px #333;
+    background-color: #333;
+    color: white;
+}
+
+h1 {
+	font-size: 36px;
+	margin: 0;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	background: #333;
+	color: white;
+}
+
+nav ul {
+	padding: 0;
+}
+
+nav li {
+	display: block;
+	margin-bottom: 10px;
+}
+
+nav a {
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+	color: white;
+	text-decoration: initial;
+	transition: all 0.5s ease-in-out;
+}
+
+nav a::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 50px;
+	background: #D65050;
+	transition: width 0.25s ease-in;
+	z-index: -1;
+}
+
+nav a img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+nav a:hover {
+	padding: 5px 20px;
+	animation: wobble 2s;
+}
+
+nav a:hover::before {
+	width: 100%;
+}
+
+section {
+	display: flex;
+	/*background-color: rgb(230, 196, 146);
+	margin: 100px 20px;
+	padding: 10px 20px;*/
+	background-image: url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
+	background-size: 1100px 750px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 100px 0px;
+	font-size: large;
+	justify-content: center;
+	align-items: center;
+}
+
+section div{
+	padding-top: 130px;
+	width: 680px;
+}
+
+section div h3{
+	font-weight: bolder;
+}
+
+#intro{
+	font-weight: bold;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	padding: 20px;
+	border-top: solid 2px #eee;
+	background: white;
+}
