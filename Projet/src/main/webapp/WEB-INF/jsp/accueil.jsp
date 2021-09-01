@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet</title>
 <meta name="description" content="Gérez votre guilde d'aventuriers !" />
-<link rel="stylesheet" href="/webapp/assets/css/accueilStyle.css">
+<link rel="stylesheet" href="/css/accueilStyle.css">
 </head>
 <body>
 	<header>
@@ -37,13 +37,13 @@
 	</section>
 	<nav>
 		<ul>
-			<li><a href="aventurier.html"><img src="/webapp/assets/img/aventurier.svg">Aventuriers</a>
+			<li><a href="aventurier.jsp"><img src="/img/aventurier.svg">Aventuriers</a>
 			</li>
 
-			<li><a href="equipement.html"><img src="/webapp/assets/img/equipement.svg">Equipements</a>
+			<li><a href="equipement.jsp"><img src="/img/equipement.svg">Equipements</a>
 			</li>
 
-			<li><a href="quete.html"><img src="/webapp/assets/img/quete.svg">
+			<li><a href="quete.jsp"><img src="/img/quete.svg">
 					Quetes</a></li>
 		</ul>
 	</nav>
