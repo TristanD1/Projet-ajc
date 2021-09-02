@@ -51,11 +51,12 @@
 						<td id="intitule">${ quete.intitule }</td>
 						<td>${ quete.difficulte }</td>
 						<td><input type="image" src="assets/img/livre.svg"
-							data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight-${ quete.id }"
+							data-bs-toggle="offcanvas"
+							data-bs-target="#offcanvasRight-${ quete.id }"
 							aria-controls="offcanvasRight" id="btn-details"></td>
 						<td><button type="button" class="btn btn-success"
-								data-bs-toggle="modal" data-bs-target="#ModalChoix-${ quete.id }"
-								id="btn-choix">Choisir</button></td>
+								data-bs-toggle="modal"
+								data-bs-target="#ModalChoix-${ quete.id }" id="btn-choix">Choisir</button></td>
 					</tr>
 
 				</c:forEach>
@@ -89,26 +90,28 @@
 													<button class="btn btn-secondary dropdown-toggle"
 														type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 														aria-expanded="false">Choisir un equipement</button>
-													<c:forEach items="${equipements}" var="equipement">
-														<ul class="dropdown-menu"
-															aria-labelledby="dropdownMenuButton1">
+
+													<ul class="dropdown-menu"
+														aria-labelledby="dropdownMenuButton1">
+														<c:forEach items="${equipements}" var="equipement">
 															<li><a class="dropdown-item" href="#" id="eq">${equipement.recompense.nom}</a></li>
-														</ul>
-													</c:forEach>
+														</c:forEach>
+													</ul>
+
 												</div>
 											</td>
 											<td><a class="btn btn-danger" id="ajout">Ajouter</a></td>
 											<td id="statut"><i class="bi bi-person-x-fill"
 												id="imageStatut"></i></td>
-	
+
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
 						<div class="modal-footer">
-							<a type="submit" href ="lancer-quete" class="btn btn-danger"> <i class="bi-flower1"></i> Lancer
-								la quête <i class="bi-flower1"></i>
+							<a type="submit" href="lancer-quete" class="btn btn-danger">
+								<i class="bi-flower1"></i> Lancer la quête <i class="bi-flower1"></i>
 							</a>
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" id="close">Annuler</button>
@@ -116,10 +119,11 @@
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="offcanvas offcanvas-end" tabindex="-1"
-				id="offcanvasRight-${ quete.id }" aria-labelledby="offcanvasRightLabel">
+				id="offcanvasRight-${ quete.id }"
+				aria-labelledby="offcanvasRightLabel">
 				<div class="offcanvas-header">
 					<h5 id="intituleQueteDetails">${quete.intitule}</h5>
 					<button type="button" class="btn-close text-reset"
@@ -127,9 +131,9 @@
 				</div>
 				<div class="offcanvas-body">
 					<h6>Description :</h6>
-	
+
 					<p id="description">${ quete.description }</p>
-	
+
 					<footer>
 						<button type="button" class="btn btn-success"
 							data-bs-toggle="modal" data-bs-target="#ModalChoix-${ quete.id }"
@@ -138,7 +142,7 @@
 				</div>
 			</div>
 		</c:forEach>
-		
+
 	</section>
 	<img src="assets/img/FondDeQuete.jpg" id="imageDroite">
 
