@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +24,43 @@ public class Recompense {
 
 	@Column(name = "RECO_BONUS")
 	private int bonus;
+	
+	@Column(name="RECO_IMG")
+	private String image;
+
+	@Column(name="RECO_DESCR")
+	private String description;
+	
+	@OneToMany(mappedBy="recompense")
+	private List<Equipement> equipements;
+
+	public List<Equipement> getEquipements() {
+		return equipements;
+	}
+
+	public void setEquipements(List<Equipement> equipements) {
+		this.equipements = equipements;
+	}
 
 	@ManyToMany(mappedBy = "recompenses")
 	private List<Quete> quetes;
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public int getId() {
 		return id;
 	}

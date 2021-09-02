@@ -45,17 +45,17 @@
 				<tr>
 					<th>Nom</th>
 					<th>Score d'équipement</th>
-					<!-- 					<th>Quantité</th> -->
+					<th>Quantité</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${equipements}" var="equipement">
 					<tr>
 						<td>
-							<button class="btn btn-success btn-md" id="tooltip">${equipement.nom}</button>
+							<button class="btn btn-success btn-md" id="tooltip">${equipement.recompense.nom}</button>
 						</td>
-						<td>${equipement.bonus}</td>
-						<!-- 					<td>3</td> -->
+						<td>${equipement.recompense.bonus}</td>
+<%-- 						<td>${equipement.recompense.equipements.lenght()}</td> --%>
 					</tr>
 				</c:forEach>
 			</tbody>
