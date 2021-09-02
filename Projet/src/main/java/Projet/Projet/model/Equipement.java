@@ -16,11 +16,9 @@ public class Equipement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "EQU_NOM")
-	private String nom;
-
-	@Column(name = "EQU_BONUS")
-	private int bonus;
+	@ManyToOne
+	@JoinColumn(name="EQU_RECO")
+	private Recompense recompense;
 
 	@ManyToOne
 	@JoinColumn(name = "EQU_AVENTURIER")
@@ -34,20 +32,12 @@ public class Equipement {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public Recompense getRecompense() {
+		return recompense;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public int getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(int attaque) {
-		this.bonus = attaque;
+	public void setRecompense(Recompense recompense) {
+		this.recompense = recompense;
 	}
 
 	public AventurierGuilde getAventurier() {

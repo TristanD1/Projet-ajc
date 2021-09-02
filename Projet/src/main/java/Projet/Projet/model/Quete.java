@@ -32,6 +32,17 @@ public class Quete {
 	@ManyToMany
 	@JoinTable(name = "QTE_RECO", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDRECO", referencedColumnName = "RECO_ID") )
 	private List<Recompense> recompenses;
+	
+	@Column(name = "QTE_DESCRIPTION")
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public List<Recompense> getRecompenses() {
 		return recompenses;
