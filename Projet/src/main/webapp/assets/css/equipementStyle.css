@@ -2,7 +2,7 @@ body {
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
 	background-color: tan;
-	background-image: url("dev/forge.jpg");
+	background-image: url("assets/img/forge.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 }

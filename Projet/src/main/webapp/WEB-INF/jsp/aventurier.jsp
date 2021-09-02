@@ -26,13 +26,13 @@
 
 	<nav>
 		<ul>
-			<li><a href="accueil.html"><img src="dev/accueil.svg"
+			<li><a href="accueil"><img src="assets/img/accueil.svg"
 					width="100"> Accueil</a></li>
 
-			<li><a href="equipement.html"><img src="dev/equipement.svg">Equipements</a>
+			<li><a href="equipement"><img src="assets/img/equipement.svg">Equipements</a>
 			</li>
 
-			<li><a href="quete.html"><img src="dev/quete.svg">
+			<li><a href="quete"><img src="assets/img/quete.svg">
 					Quetes</a></li>
 		</ul>
 	</nav>

@@ -14,7 +14,7 @@
 	rel="stylesheet"
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="equipementStyle.css">
+<link rel="stylesheet" href="css/equipementStyle.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
@@ -32,13 +32,13 @@
 
 	<nav>
 		<ul>
-			<li><a href="accueil.html"><img src="dev/accueil.svg"
+			<li><a href="accueil"><img src="assets/img/accueil.svg"
 					width="100"> Accueil</a></li>
 
-			<li><a href="aventurier.html"><img src="dev/aventurier.svg">
+			<li><a href="aventurier"><img src="assets/img/aventurier.svg">
 					Aventuriers</a></li>
 
-			<li><a href="quete.html"><img src="dev/quete.svg">
+			<li><a href="quete"><img src="assets/img/quete.svg">
 					Quête</a></li>
 		</ul>
 	</nav>

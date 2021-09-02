@@ -21,7 +21,7 @@
 	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
 	crossorigin="anonymous"></script>
 <script defer src="quete.js"></script>
-<link rel="stylesheet" href="queteStyle.css">
+<link rel="stylesheet" href="css/queteStyle.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
@@ -29,12 +29,12 @@
 <body>
 	<nav>
 		<ul>
-			<li><a href="accueil.html"> <img src="dev/accueil.svg"
-					width="100"> Acceuil
+			<li><a href="accueil"> <img src="assets/img/accueil.svg"
+					width="100"> Accueil
 			</a></li>
-			<li><a href="aventurier.html"> <img src="dev/aventurier.svg">Aventuriers
+			<li><a href="aventurier"> <img src="assets/img/aventurier.svg">Aventuriers
 			</a></li>
-			<li><a href="equipement.html"> <img src="dev/equipement.svg">
+			<li><a href="equipement"> <img src="assets/img/equipement.svg">
 					Equipements
 			</a></li>
 		</ul>
