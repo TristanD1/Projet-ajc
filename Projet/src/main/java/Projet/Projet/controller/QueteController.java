@@ -9,4 +9,6 @@ public class QueteController {
 	public String quete() {
 		return "quete";
 	}
+	
+	
 }
