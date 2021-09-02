@@ -107,7 +107,7 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<a class="btn btn-danger"> <i class="bi-flower1"></i> Lancer
+							<a type="submit" href ="lancer-quete" class="btn btn-danger"> <i class="bi-flower1"></i> Lancer
 								la quête <i class="bi-flower1"></i>
 							</a>
 							<button type="button" class="btn btn-secondary"
@@ -132,7 +132,7 @@
 	
 					<footer>
 						<button type="button" class="btn btn-success"
-							data-bs-toggle="modal" data-bs-target="#ModalChoix"
+							data-bs-toggle="modal" data-bs-target="#ModalChoix-${ quete.id }"
 							id="btn-choix2">Choisir</button>
 					</footer>
 				</div>

@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import Projet.Projet.dao.IAventurierDaoJpaRepository;
+
+import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
-import Projet.Projet.dao.IRecompenseDaoJpaRepository;
+
 
 @Controller
 public class QueteController {
@@ -17,7 +18,7 @@ public class QueteController {
 	private IQueteDaoJpaRepository daoQuete;
 	
 	@Autowired
-	private IAventurierDaoJpaRepository daoAventurier;
+	private IAventurierGuildeDaoJpaRepository daoAventurier;
 	
 	@Autowired
 	private IEquipementDaoJpaRepository daoEquipement;
@@ -32,6 +33,17 @@ public class QueteController {
 		model.addAttribute("equipements", daoEquipement.findAll());
 		
 		return "quete";
+	}
+	
+	@GetMapping("/lancer-quete")
+	public String add(){
+		return "quete";
+	}
+	
+	@PostMapping("/lancer-quete")
+	public String lancerQuete(){
+		
+		return "redirect:/accueil";
 	}
 	
 	
