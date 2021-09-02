@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Recompense {
 	@Column(name="RECO_DESCR")
 	private String description;
 	
-	@OneToMany(mappedBy="recompense")
+	@OneToMany(mappedBy="recompense", fetch=FetchType.EAGER)
 	private List<Equipement> equipements;
 
 	public List<Equipement> getEquipements() {

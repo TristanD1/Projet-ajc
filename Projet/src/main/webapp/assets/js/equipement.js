@@ -1,9 +1,11 @@
-$(document).ready(function(){
-    $('#tooltip').tooltip({
-        //title: "<h3>${equipement.recomprense.nom}</h3> <img ${equipement.recompense.image}> <p> <i> ${equipement.recompense.description} </i> </p>",
-        title: "<h3>bob</h3>",
-         html: true,
-          placement: "right"
-    }); 
-  });
 
+
+$(document).ready(function(){
+    $('#tooltip').each(function() {
+    	$(this).tooltip({
+            title: "<h3>" + $(this).data('nom') + "</h3> <img src='" + $(this).data('img') + "'> <p> <i>" + $(this).data('descr') + "</i> </p>",
+             html: true,
+              placement: "right"
+        }); 
+    })
+  });

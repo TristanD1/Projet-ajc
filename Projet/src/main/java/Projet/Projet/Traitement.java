@@ -206,7 +206,7 @@ public class Traitement {
 			for (Aventurier a : maQuete.getAventuriers()) {
 				proba += a.getExperience();
 				for (Equipement e : a.getEquipements()) {
-					proba += e.getBonus();
+					proba += e.getRecompense().getBonus();
 				}
 				for (Competence c : daoCompetence.findCommuneByAventurier(a.getId(), a.getQuete().getId())) {
 					proba += c.getBonus();
@@ -236,8 +236,8 @@ public class Traitement {
 				if (mesRecompenses.size() > 0) {
 					double r2 = new Random().nextDouble();
 					Equipement monEquipement = new Equipement();
-					monEquipement.setNom(mesRecompenses.get((int) r2 * mesRecompenses.size()).getNom());
-					monEquipement.setBonus(mesRecompenses.get((int) r2 * mesRecompenses.size()).getBonus());
+					monEquipement.getRecompense().setNom(mesRecompenses.get((int) r2 * mesRecompenses.size()).getNom());
+					monEquipement.getRecompense().setBonus(mesRecompenses.get((int) r2 * mesRecompenses.size()).getBonus());
 					daoEquipement.save(monEquipement);
 				} else {
 					System.out.println("Pas de récompenses disponibles !");
@@ -269,7 +269,7 @@ public class Traitement {
 
 	public void RecuperationEquipement() {
 		for (Equipement e : daoEquipement.findAll()) {
-			System.out.println(e.getId() + " - " + e.getNom() + " - " + e.getBonus());
+			System.out.println(e.getId() + " - " + e.getRecompense().getNom() + " - " + e.getRecompense().getBonus());
 		}
 	}
 
