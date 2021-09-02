@@ -9,12 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet</title>
 <meta name="description" content="Gérez votre guilde d'aventuriers !" />
-<link rel="stylesheet" href="css/accueilStyle.css">
+<link rel="stylesheet" href="assets/css/accueilStyle.css">
 </head>
 <body>
 	<header>
 		<h1>Accueil</h1>
 	</header>
+		
 	<section>
 		<div>
 			<h2>Bienvenue à l'auberge du sanglier assoifé, celle-ci servira

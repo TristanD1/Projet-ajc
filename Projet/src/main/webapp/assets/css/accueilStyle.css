@@ -2,8 +2,8 @@ body {
 	margin: 0;
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
-	background-image: url("assets/img/guilde3.jpg");
-	background-size: 100%;
+	background-image: url("/Projet/assets/img/guilde3.jpg");
+	imackground-size: 100%;
 	background-repeat: no-repeat;
 }
 
@@ -12,8 +12,8 @@ header {
 	display: flex;
 	justify-content: center;
 	border-bottom: solid 2px #333;
-    background-color: #333;
-    color: white;
+	background-color: #333;
+	color: white;
 }
 
 h1 {
@@ -79,7 +79,8 @@ section {
 	/*background-color: rgb(230, 196, 146);
 	margin: 100px 20px;
 	padding: 10px 20px;*/
-	background-image: url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
+	background-image:
+		url("http://creationchezkatou.c.r.pic.centerblog.net/8viy0qom.gif" );
 	background-size: 1100px 750px;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -89,16 +90,16 @@ section {
 	align-items: center;
 }
 
-section div{
+section div {
 	padding-top: 130px;
 	width: 680px;
 }
 
-section div h3{
+section div h3 {
 	font-weight: bolder;
 }
 
-#intro{
+#intro {
 	font-weight: bold;
 }
 
