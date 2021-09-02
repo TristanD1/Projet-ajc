@@ -45,7 +45,7 @@
 				<tr>
 					<th>Nom</th>
 					<th>Score d'équipement</th>
-					<th>Quantité</th>
+<!-- 					<th>Quantité</th> -->
 				</tr>
 			</thead>
 			<tbody>
