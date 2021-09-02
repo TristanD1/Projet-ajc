@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,9 @@
 	<header>
 		<h1>Accueil</h1>
 	</header>
-		
+
+	<t:layout></t:layout>
+
 	<section>
 		<div>
 			<h2>Bienvenue à l'auberge du sanglier assoifé, celle-ci servira
@@ -37,17 +40,5 @@
 			<br>
 		</div>
 	</section>
-	<nav>
-		<ul>
-			<li><a href="aventurier"><img
-					src="assets/img/aventurier.svg">Aventuriers</a></li>
-
-			<li><a href="equipement"><img
-					src="assets/img/equipement.svg">Equipements</a></li>
-
-			<li><a href="quete"><img src="assets/img/quete.svg">
-					Quetes</a></li>
-		</ul>
-	</nav>
 </body>
 </html>

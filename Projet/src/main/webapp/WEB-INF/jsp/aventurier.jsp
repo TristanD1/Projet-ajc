@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,25 +16,13 @@
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/aventurierStyle.css">
-<!-- <script defer src="assets/js/aventurier.js"></script> -->
 </head>
 <body>
 	<header>
 		<h1>Aventuriers</h1>
 	</header>
 
-	<nav>
-		<ul>
-			<li><a href="accueil"><img src="assets/img/accueil.svg"
-					width="100"> Accueil</a></li>
-
-			<li><a href="equipement"><img
-					src="assets/img/equipement.svg">Equipements</a></li>
-
-			<li><a href="quete"><img src="assets/img/quete.svg">
-					Quetes</a></li>
-		</ul>
-	</nav>
+	<t:layout></t:layout>
 
 	<form method="POST">
 		<h2>Ajouter un aventurier</h2>
@@ -133,5 +122,4 @@
 		</table>
 	</section>
 </body>
-
 </html>
