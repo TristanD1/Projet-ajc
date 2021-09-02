@@ -25,7 +25,7 @@ public class Competence {
 	private int bonus;
 
 	@ManyToMany(mappedBy = "competences")
-	private List<Aventurier> aventuriers;
+	private List<AventurierGuilde> aventuriers;
 
 	@ManyToMany(mappedBy = "competences")
 	private List<Quete> quetes;
@@ -54,11 +54,11 @@ public class Competence {
 		this.bonus = bonus;
 	}
 
-	public List<Aventurier> getAventuriers() {
+	public List<AventurierGuilde> getAventuriers() {
 		return aventuriers;
 	}
 
-	public void setAventuriers(List<Aventurier> aventuriers) {
+	public void setAventuriers(List<AventurierGuilde> aventuriers) {
 		this.aventuriers = aventuriers;
 	}
 

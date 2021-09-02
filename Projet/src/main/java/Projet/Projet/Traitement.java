@@ -8,12 +8,14 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Projet.Projet.dao.IAventurierDaoJpaRepository;
+import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
+import Projet.Projet.dao.IAventurierRecrutementDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
-import Projet.Projet.model.Aventurier;
+import Projet.Projet.model.AventurierGuilde;
+import Projet.Projet.model.AventurierRecrutement;
 import Projet.Projet.model.Recompense;
 import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
@@ -24,7 +26,10 @@ import Projet.Projet.model.Quete;
 @Service
 public class Traitement {
 	@Autowired
-	private IAventurierDaoJpaRepository daoAventurier;
+	private IAventurierRecrutementDaoJpaRepository daoAventurierRecrutement;
+
+	@Autowired
+	private IAventurierGuildeDaoJpaRepository daoAventurierGuilde;
 
 	@Autowired
 	private ICompetenceDaoJpaRepository daoCompetence;
@@ -38,29 +43,12 @@ public class Traitement {
 	@Autowired
 	private IRecompenseDaoJpaRepository daoRecompense;
 
-	private void CreateAventurier(String nom, int exp) {
-		Aventurier monAventurier = new Aventurier();
-		monAventurier.setNom(nom.toLowerCase());
-		monAventurier.setExperience(exp);
-		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
-
-		daoAventurier.save(monAventurier);
-	}
-
-	private void CreateRecompense(String nom, int bonus) {
-		Recompense maRecompense = new Recompense();
-		maRecompense.setNom(nom.toLowerCase());
-		maRecompense.setBonus(bonus);
-
-		daoRecompense.save(maRecompense);
-	}
-
 	public void InitDatabase() {
-		CreateAventurier("Aragorn", 15);
-		CreateAventurier("Legolas", 15);
-		CreateAventurier("Bilbon", 1);
-		CreateAventurier("Gimli", 15);
-		CreateAventurier("Gandalf", 100);
+		CreateAventurier("Aragorn", 15, 750);
+		CreateAventurier("Legolas", 15, 750);
+		CreateAventurier("Bilbon", 1, 50);
+		CreateAventurier("Gimli", 15, 750);
+		CreateAventurier("Gandalf", 100, 5000);
 
 		CreateQuete("Escorte de convoi", 50);
 		CreateQuete("Protection de village", 100);
@@ -73,11 +61,28 @@ public class Traitement {
 		CreateCompetence("Discretion", 5);
 
 		CreateRecompense("Dague", 10);
-		CreateRecompense("Epée", 30);
+		CreateRecompense("Ep�e", 30);
 		CreateRecompense("Arc", 20);
 		CreateRecompense("Fronde", 10);
 		CreateRecompense("Hache", 40);
 		CreateRecompense("Sortilege", 50);
+	}
+
+	private void CreateAventurier(String nom, int exp, int cout) {
+		AventurierRecrutement monAventurier = new AventurierRecrutement();
+		monAventurier.setNom(nom.toLowerCase());
+		monAventurier.setExperience(exp);
+		monAventurier.setCout(cout);
+
+		daoAventurierRecrutement.save(monAventurier);
+	}
+
+	private void CreateRecompense(String nom, int bonus) {
+		Recompense maRecompense = new Recompense();
+		maRecompense.setNom(nom.toLowerCase());
+		maRecompense.setBonus(bonus);
+
+		daoRecompense.save(maRecompense);
 	}
 
 	private void CreateQuete(String nom, int difficulte) {
@@ -97,16 +102,36 @@ public class Traitement {
 		daoCompetence.save(competence);
 	}
 
+	public void RecruterAventurier(int id) {
+		AventurierRecrutement aventurierRecrutement = daoAventurierRecrutement.findById(id).get();
+		AventurierGuilde aventurierGuilde = new AventurierGuilde();
+
+		aventurierGuilde.setNom(aventurierRecrutement.getNom());
+		aventurierGuilde.setExperience(aventurierRecrutement.getExperience());
+		aventurierGuilde.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+
+		daoAventurierGuilde.save(aventurierGuilde);
+		daoAventurierRecrutement.deleteById(id);
+	}
+
+	public void SupprimerAventurier(int id) {
+		daoAventurierRecrutement.deleteById(id);
+	}
+
+	public void RenvoyerAventurier(int id) {
+		daoAventurierGuilde.deleteById(id);
+	}
+
 	public void AssocierEquipementAventurier(int equipementId, int aventurierId) {
 		Equipement monEquipement = daoEquipement.findById(equipementId).orElseThrow(RuntimeException::new);
-		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		AventurierGuilde monAventurier = daoAventurierGuilde.findById(aventurierId).orElseThrow(RuntimeException::new);
 
 		monEquipement.setAventurier(monAventurier);
 		daoEquipement.save(monEquipement);
 	}
 
 	public void AssocierAventurierQuete(int aventurierId, int queteId) {
-		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		AventurierGuilde monAventurier = daoAventurierGuilde.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Quete maQuete = daoQuete.findById(queteId).orElseThrow(RuntimeException::new);
 
 		if (monAventurier.getEtat().toString().equals(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase())) {
@@ -115,14 +140,14 @@ public class Traitement {
 			System.out.println(monAventurier.getNom() + " est blessé !");
 		}
 
-		daoAventurier.save(monAventurier);
+		daoAventurierGuilde.save(monAventurier);
 	}
 
 	@Transactional
 	public void AssocierAventurierCompetence(int aventurierId, int competenceId) {
 		boolean isAttribuee = false;
 
-		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		AventurierGuilde monAventurier = daoAventurierGuilde.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
 		for (Competence c : monAventurier.getCompetences()) {
@@ -135,7 +160,7 @@ public class Traitement {
 
 		if (!isAttribuee) {
 			monAventurier.getCompetences().add(maCompetence);
-			daoAventurier.save(monAventurier);
+			daoAventurierGuilde.save(monAventurier);
 		}
 	}
 
@@ -171,11 +196,11 @@ public class Traitement {
 
 	@Transactional
 	public void DissocierAventurierCompetence(int aventurierId, int competenceId) {
-		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		AventurierGuilde monAventurier = daoAventurierGuilde.findById(aventurierId).orElseThrow(RuntimeException::new);
 		Competence maCompetence = daoCompetence.findById(competenceId).orElseThrow(RuntimeException::new);
 
 		monAventurier.getCompetences().remove(maCompetence);
-		daoAventurier.save(monAventurier);
+		daoAventurierGuilde.save(monAventurier);
 	}
 
 	@Transactional
@@ -203,7 +228,7 @@ public class Traitement {
 		if (maQuete.getAventuriers().size() > 0) {
 			int proba = 0;
 
-			for (Aventurier a : maQuete.getAventuriers()) {
+			for (AventurierGuilde a : maQuete.getAventuriers()) {
 				proba += a.getExperience();
 				for (Equipement e : a.getEquipements()) {
 					proba += e.getBonus();
@@ -224,7 +249,7 @@ public class Traitement {
 				maQuete.setEtat(QueteEtat.ACHEVEE.toString().toLowerCase());
 				daoQuete.save(maQuete);
 
-				for (Aventurier a : maQuete.getAventuriers()) {
+				for (AventurierGuilde a : maQuete.getAventuriers()) {
 					a.setExperience(a.getExperience() + maQuete.getDifficulte() / maQuete.getAventuriers().size());
 				}
 
@@ -244,7 +269,7 @@ public class Traitement {
 				}
 
 			} else {
-				for (Aventurier a : maQuete.getAventuriers()) {
+				for (AventurierGuilde a : maQuete.getAventuriers()) {
 					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());
 					System.out.println(a.getNom() + " a été blessé au combat");
 				}
@@ -252,9 +277,9 @@ public class Traitement {
 			}
 
 			// desassocier les aventuriers
-			for (Aventurier a : maQuete.getAventuriers()) {
+			for (AventurierGuilde a : maQuete.getAventuriers()) {
 				a.setQuete(null);
-				daoAventurier.save(a);
+				daoAventurierGuilde.save(a);
 			}
 		} else {
 			System.out.println("pas d'aventuriers associés");
@@ -262,7 +287,7 @@ public class Traitement {
 	}
 
 	public void RecuperationAventurier() {
-		for (Aventurier a : daoAventurier.findAll()) {
+		for (AventurierGuilde a : daoAventurierGuilde.findAll()) {
 			System.out.println(a.getId() + " - " + a.getNom() + " - " + a.getExperience());
 		}
 	}
@@ -286,10 +311,10 @@ public class Traitement {
 	}
 
 	public void Soigner(int aventurierId) {
-		Aventurier monAventurier = daoAventurier.findById(aventurierId).orElseThrow(RuntimeException::new);
+		AventurierGuilde monAventurier = daoAventurierGuilde.findById(aventurierId).orElseThrow(RuntimeException::new);
 
 		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
-		daoAventurier.save(monAventurier);
+		daoAventurierGuilde.save(monAventurier);
 
 		System.out.println(monAventurier.getNom() + " a bien été soigné !!!");
 

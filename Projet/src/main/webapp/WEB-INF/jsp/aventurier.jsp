@@ -1,24 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aventuriers</title>
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="aventurierStyle.css">
-
-<script defer src="aventurier.js"></script>
+<link rel="stylesheet" href="assets/css/aventurierStyle.css">
+<!-- <script defer src="assets/js/aventurier.js"></script> -->
 </head>
-
 <body>
 	<header>
 		<h1>Aventuriers</h1>
@@ -29,8 +27,8 @@
 			<li><a href="accueil"><img src="assets/img/accueil.svg"
 					width="100"> Accueil</a></li>
 
-			<li><a href="equipement"><img src="assets/img/equipement.svg">Equipements</a>
-			</li>
+			<li><a href="equipement"><img
+					src="assets/img/equipement.svg">Equipements</a></li>
 
 			<li><a href="quete"><img src="assets/img/quete.svg">
 					Quetes</a></li>
@@ -40,24 +38,42 @@
 	<form method="POST">
 		<h2>Ajouter un aventurier</h2>
 
-		<div>
-			<label for="nom">Nom de l'aventurier :</label> <input type="text"
-				id="nom" name="nom" />
+		<div class="row">
+			<div class="col-2 col-form-label">
+				<label for="nom" class="form-label">Nom de l'aventurier :</label>
+			</div>
+
+			<div class="col-10">
+				<input class="form-control" type="text" id="nom" name="nom"
+					value="${ aventurier.nom }" />
+			</div>
 		</div>
 
-		<div>
-			<label for="experience">Expérience :</label> <input type="text"
-				id="experience" name="experience" />
+		<div class="row">
+			<div class="col-2 col-form-label">
+				<label for="experience" class="form-label">Expérience de
+					l'aventurier :</label>
+			</div>
+
+			<div class="col-10">
+				<input class="form-control" type="text" id="experience"
+					name="experience" value="${ aventurier.experience }" />
+			</div>
 		</div>
 
-		<div>
-			<label for="prix">Prix :</label> <input type="text" id="prix"
-				name="prix" />
+		<div class="row">
+			<div class="col-2 col-form-label">
+				<label for="cout" class="form-label">Cout de l'aventurier :</label>
+			</div>
+
+			<div class="col-10">
+				<input class="form-control" type="text" id="cout" name="cout"
+					value="${ aventurier.cout }" />
+			</div>
 		</div>
 
-		<div>
-			<input type="submit" value="Ajouter"
-				onclick="ajouterAventurierRecrutement(); return false;" />
+		<div class="row">
+			<input type="submit" class="btn btn-success" value="Ajouter" />
 		</div>
 	</form>
 
@@ -69,14 +85,24 @@
 				<tr>
 					<th>Nom</th>
 					<th>Expérience</th>
-					<th>Prix</th>
-					<th></th>
+					<th>Coût</th>
 					<th></th>
 				</tr>
 			</thead>
 
 			<tbody>
+				<c:forEach items="${ aventurierRecrutement }" var="aventurier">
+					<tr>
+						<td>${ aventurier.nom }</td>
+						<td>${ aventurier.experience }</td>
+						<td>${ aventurier.cout }</td>
 
+						<td><a href="recruter-aventurier?id=${ aventurier.id }"
+							class="btn btn-info">Recruter</a> <a
+							href="supprimer-aventurier?id=${ aventurier.id }"
+							class="btn btn-danger">Supprimer</a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 
@@ -93,7 +119,16 @@
 			</thead>
 
 			<tbody>
+				<c:forEach items="${ aventurierGuilde }" var="aventurier">
+					<tr>
+						<td>${ aventurier.nom }</td>
+						<td>${ aventurier.experience }</td>
+						<td>${ aventurier.etat }</td>
 
+						<td><a href="renvoyer-aventurier?id=${ aventurier.id }"
+							class="btn btn-danger">Renvoyer</a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</section>

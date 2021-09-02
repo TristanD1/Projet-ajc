@@ -77,8 +77,10 @@ function creerLigneRecrutement(aventurier) {
     <td>${aventurier.nom}</td>
     <td>${aventurier.experience}</td>
     <td>${aventurier.prix}</td>
-    <td><button id='btn-recruter'>Recruter</button></td>
-    <td><button id="btn-supprimer">Supprimer</button></td>
+    <td>
+    <button id='btn-recruter'>Recruter</button>
+    <button id="btn-supprimer">Supprimer</button>
+    </td>
     `;
 
     document.querySelector("#recrutement tbody").append(ligneTableau);
@@ -118,7 +120,9 @@ function creerLigneGuilde(aventurier) {
     <td>${aventurier.nom}</td>
     <td>${aventurier.experience}</td>
     <td>${aventurier.etat}</td>
-    <td><button id="btn-renvoyer">Renvoyer</button></td>
+    <td>
+    <button id="btn-renvoyer">Renvoyer</button>
+    </td>
     `;
 
     document.querySelector("#guilde tbody").append(ligneTableau);

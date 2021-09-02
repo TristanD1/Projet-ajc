@@ -16,8 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aventurier")
-public class Aventurier {
+@Table(name = "aventurierGuilde")
+public class AventurierGuilde {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AVE_ID")

@@ -39,8 +39,6 @@
 	</section>
 	<nav>
 		<ul>
-			<li><a href="accueil"><img src="assets/img/accueil.svg">Accueil</a></li>
-
 			<li><a href="aventurier"><img
 					src="assets/img/aventurier.svg">Aventuriers</a></li>
 

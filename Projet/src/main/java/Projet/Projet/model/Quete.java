@@ -27,7 +27,7 @@ public class Quete {
 	private int difficulte;
 
 	@OneToMany(mappedBy = "quete")
-	private List<Aventurier> aventuriers;
+	private List<AventurierGuilde> aventuriers;
 	
 	@ManyToMany
 	@JoinTable(name = "QTE_RECO", joinColumns = @JoinColumn(name = "IDQTE", referencedColumnName = "QTE_ID") , inverseJoinColumns = @JoinColumn(name = "IDRECO", referencedColumnName = "RECO_ID") )
@@ -81,11 +81,11 @@ public class Quete {
 		this.difficulte = difficulte;
 	}
 
-	public List<Aventurier> getAventuriers() {
+	public List<AventurierGuilde> getAventuriers() {
 		return aventuriers;
 	}
 
-	public void setAventuriers(List<Aventurier> aventuriers) {
+	public void setAventuriers(List<AventurierGuilde> aventuriers) {
 		this.aventuriers = aventuriers;
 	}
 

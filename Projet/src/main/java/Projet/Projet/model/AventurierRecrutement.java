@@ -5,26 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "equipement")
-public class Equipement {
+@Table(name = "aventurierRecrutement")
+public class AventurierRecrutement {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "AVE_ID")
 	private int id;
 
-	@Column(name = "EQU_NOM")
+	@Column(name = "AVE_NOM", nullable = false)
 	private String nom;
 
-	@Column(name = "EQU_BONUS")
-	private int bonus;
+	@Column(name = "AVE_EXP")
+	private int experience;
 
-	@ManyToOne
-	@JoinColumn(name = "EQU_AVENTURIER")
-	private AventurierGuilde aventurier;
+	@Column(name = "AVE_COUT")
+	private int cout;
 
 	public int getId() {
 		return id;
@@ -42,19 +41,20 @@ public class Equipement {
 		this.nom = nom;
 	}
 
-	public int getBonus() {
-		return bonus;
+	public int getExperience() {
+		return experience;
 	}
 
-	public void setBonus(int attaque) {
-		this.bonus = attaque;
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+	
+	public int getCout() {
+		return cout;
 	}
 
-	public AventurierGuilde getAventurier() {
-		return aventurier;
+	public void setCout(int cout) {
+		this.cout = cout;
 	}
 
-	public void setAventurier(AventurierGuilde aventurier) {
-		this.aventurier = aventurier;
-	}
 }
