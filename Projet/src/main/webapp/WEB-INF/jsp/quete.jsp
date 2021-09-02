@@ -79,70 +79,28 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td></td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-secondary dropdown-toggle"
-												type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-												aria-expanded="false">Choisir un equipement</button>
-											<ul class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton1">
-												<li><a class="dropdown-item" href="#" id="eq">Action</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Another
-														action</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Something
-														else here</a></li>
-											</ul>
-										</div>
-									</td>
-									<td><a class="btn btn-danger" id="ajout">Ajouter</a></td>
-									<td id="statut"><i class="bi bi-person-x-fill"
-										id="imageStatut"></i></td>
+								<c:forEach items="${aventuriers}" var="aventurier">
+									<tr>
+										<td>${aventurier.nom}</td>
+										<td>
+											<div class="dropdown">
+												<button class="btn btn-secondary dropdown-toggle"
+													type="button" id="dropdownMenu" data-bs-toggle="dropdown"
+													aria-expanded="false">Choisir un equipement</button>
+												<c:forEach items="${equipements}" var="equipement">
+													<ul class="dropdown-menu"
+														aria-labelledby="dropdownMenuButton1">
+														<li><a class="dropdown-item" href="#" id="eq">${equipement.nom}</a></li>
+													</ul>
+												</c:forEach>
+											</div>
+										</td>
+										<td><a class="btn btn-danger" id="ajout">Ajouter</a></td>
+										<td id="statut"><i class="bi bi-person-x-fill"
+											id="imageStatut"></i></td>
 
-								</tr>
-								<tr>
-									<td></td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-secondary dropdown-toggle"
-												type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-												aria-expanded="false">Choisir un equipement</button>
-											<ul class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton1">
-												<li><a class="dropdown-item" href="#" id="eq">Action2</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Another
-														action2</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Something
-														else here2</a></li>
-											</ul>
-										</div>
-									</td>
-									<td><a class="btn btn-danger" id="ajout">Ajouter</a></td>
-									<td id="statut"><i class="bi bi-person-x-fill"
-										id="imageStatut"></i></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-secondary dropdown-toggle"
-												type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-												aria-expanded="false">Choisir un equipement</button>
-											<ul class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton1">
-												<li><a class="dropdown-item" href="#" id="eq">Action</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Another
-														action</a></li>
-												<li><a class="dropdown-item" href="#" id="eq">Something
-														else here</a></li>
-											</ul>
-										</div>
-									</td>
-									<td><a class="btn btn-danger" id="ajout">Ajouter</a></td>
-									<td id="statut"><i class="bi bi-person-x-fill"
-										id="imageStatut"></i></td>
-								</tr>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -166,7 +124,9 @@
 			</div>
 			<div class="offcanvas-body">
 				<h6>Description :</h6>
-				<p id="description">Blablabla</p>
+				<c:forEach items="${quetes}" var="quete">
+					<p id="description">${ quete.description }</p>
+				</c:forEach>
 				<footer>
 					<button type="button" class="btn btn-success"
 						data-bs-toggle="modal" data-bs-target="#ModalChoix"

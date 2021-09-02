@@ -13,9 +13,9 @@ public class App {
 		// TODO LISTE
 		// construire les association catalogue <-> equipement
 
-		// traitement.InitDatabase();
+		 traitement.InitDatabase();
 
-		traitement.AssocierEquipementAventurier(1, 1);
+		//traitement.AssocierEquipementAventurier(1, 1);
 
 		// traitement.AssocierAventurierCompetence(1, 2);
 		// traitement.AssocierAventurierCompetence(1, 3);
@@ -27,13 +27,13 @@ public class App {
 
 		// traitement.AssocierQueteRecompense(1, 2);
 		
-		traitement.DissocierAventurierCompetence(1, 3);
-		
-		traitement.AssocierAventurierQuete(1, 1);
-		traitement.AssocierAventurierQuete(2, 1);
-		traitement.AssocierAventurierQuete(3, 1);
-
-		traitement.EnvoyerEnMission(1);
+//		traitement.DissocierAventurierCompetence(1, 3);
+//		
+//		traitement.AssocierAventurierQuete(1, 1);
+//		traitement.AssocierAventurierQuete(2, 1);
+//		traitement.AssocierAventurierQuete(3, 1);
+//
+//		traitement.EnvoyerEnMission(1);
 
 		myContext.close();
 
