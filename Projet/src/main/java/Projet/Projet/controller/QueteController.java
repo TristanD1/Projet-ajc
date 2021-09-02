@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
+import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 
 @Controller
 public class QueteController {
@@ -23,11 +24,12 @@ public class QueteController {
 	
 	
 	
+	
 	@GetMapping("/quete")
 	public String quete(Model model) {
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
-		//model.addAttribute("equipements", daoEquipement.find);
+		model.addAttribute("equipements", daoEquipement.findAll());
 		
 		return "quete";
 	}
