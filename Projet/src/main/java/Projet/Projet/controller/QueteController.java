@@ -101,13 +101,10 @@ public class QueteController {
 	public String associerEquipementAventurier (@RequestParam int idAventurier, @RequestParam int idEquipement){
 		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
 		Equipement equipement = daoEquipement.findById(idEquipement).get();
-		
-		
-		
+				
 		equipement.setAventurier(aventurier);
 		daoEquipement.save(equipement);
-		
-		
+				
 		return "redirect:/quete";
 	}
 }
