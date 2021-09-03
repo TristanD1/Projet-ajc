@@ -52,7 +52,7 @@
 				<c:forEach items="${equipements}" var="equipement">
 					<tr>
 						<td>
-							<button class="btn btn-success btn-md" id="tooltip" data-nom="${ equipement.nom }" data-img="${ equipement.image }" data-descr="${ equipement.description }">${equipement.nom}</button>
+							<button class="btn btn-dark btn-md" data-nom="${ equipement.nom }" data-img="${ equipement.image }" data-descr="${ equipement.description }">${equipement.nom}</button>
 						</td>
 						<td>${equipement.bonus}</td>
 						<td>${equipement.getEquipements().size()}</td>
