@@ -52,7 +52,7 @@ public class AventurierController {
 
 		daoAventurierRecrutement.deleteById(id);
 		daoAventurierGuilde.save(aventurierGuilde);
-		
+
 		return "redirect:/aventurier";
 	}
 
@@ -65,7 +65,7 @@ public class AventurierController {
 
 	@GetMapping("/renvoyer-aventurier")
 	public String renvoyer(@RequestParam int id) {
-		daoAventurierGuilde.delete(daoAventurierGuilde.findById(id).get());
+		daoAventurierGuilde.deleteById(id);
 
 		return "redirect:/aventurier";
 	}
