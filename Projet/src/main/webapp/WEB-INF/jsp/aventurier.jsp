@@ -59,6 +59,7 @@
 					<th>Nom</th>
 					<th>Expérience</th>
 					<th>Etat de santé</th>
+					<th>Equipement</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -69,7 +70,11 @@
 						<td>${ aventurier.nom }</td>
 						<td>${ aventurier.experience }</td>
 						<td>${ aventurier.etat }</td>
-
+						<td>
+						<c:forEach items="${ aventurier.equipements }" var="equipement">
+							<a id="equipement" href="desequiper-aventurier?equipementId=${equipement.id }" class="btn btn-dark"> <img src="${ equipement.recompense.image }" id="equipement"/> </a>
+						</c:forEach>
+						</td>
 						<td><a href="renvoyer-aventurier?id=${ aventurier.id }"
 							class="btn btn-danger">Renvoyer</a></td>
 					</tr>

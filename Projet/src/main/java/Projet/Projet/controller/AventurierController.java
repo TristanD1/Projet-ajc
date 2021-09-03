@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
 import Projet.Projet.dao.IAventurierRecrutementDaoJpaRepository;
+import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.model.AventurierGuilde;
 import Projet.Projet.model.AventurierRecrutement;
+import Projet.Projet.model.Equipement;
 import Projet.Projet.model.EtatAventurier;
 
 @Controller
@@ -22,6 +24,9 @@ public class AventurierController {
 
 	@Autowired
 	IAventurierRecrutementDaoJpaRepository daoAventurierRecrutement;
+	
+	@Autowired
+	IEquipementDaoJpaRepository daoEquipement;
 
 	@GetMapping("/aventurier")
 	public String findAll(Model model) {
@@ -89,6 +94,20 @@ public class AventurierController {
 	public String renvoyer(@RequestParam int id) {
 		daoAventurierGuilde.deleteById(id);
 
+		return "redirect:/aventurier";
+	}
+	
+	@GetMapping("desequiper-aventurier")
+	public String desequiper(@RequestParam int equipementId,Model model){
+		List<AventurierRecrutement> aventuriersRecrutement = daoAventurierRecrutement.findAll();
+		List<AventurierGuilde> aventuriersGuilde = daoAventurierGuilde.findAll();
+
+		model.addAttribute("aventurierRecrutement", aventuriersRecrutement);
+		model.addAttribute("aventurierGuilde", aventuriersGuilde);
+		
+		Equipement monEquipement = daoEquipement.findById(equipementId).get();
+		monEquipement.setAventurier(null);
+		daoEquipement.save(monEquipement);
 		return "redirect:/aventurier";
 	}
 

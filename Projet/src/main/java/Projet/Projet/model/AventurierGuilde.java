@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +40,7 @@ public class AventurierGuilde {
 	@JoinColumn(name = "AVE_QTE")
 	private Quete quete;
 
-	@OneToMany(mappedBy = "aventurier")
+	@OneToMany(mappedBy = "aventurier", fetch=FetchType.EAGER)
 	private List<Equipement> equipements;
 	
 	@Column(name="AVE_ETAT")
