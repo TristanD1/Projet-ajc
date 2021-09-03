@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.Equipement;
@@ -20,6 +21,8 @@ public class EquipementController {
 	IEquipementDaoJpaRepository daoEquipement;
 	@Autowired
 	IRecompenseDaoJpaRepository daoRecompense;
+	@Autowired
+	IAventurierGuildeDaoJpaRepository daoAventurier;
 	
 	@GetMapping("/equipement")
 	public String equipement(Model model) {
@@ -33,6 +36,7 @@ public class EquipementController {
 				mesRecompenses.add(rec);
 			}
 		};
+		model.addAttribute("aventuriers",daoAventurier.findAll());
 		model.addAttribute("equipements", mesRecompenses);
 		return "equipement";
 	}

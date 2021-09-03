@@ -46,20 +46,70 @@
 					<th>Nom</th>
 					<th>Score d'équipement</th>
 					<th>Quantité</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${equipements}" var="equipement">
 					<tr>
-						<td>
+						<td id="infobulle">
 							<button class="btn btn-dark btn-md" data-nom="${ equipement.nom }" data-img="${ equipement.image }" data-descr="${ equipement.description }">${equipement.nom}</button>
 						</td>
 						<td>${equipement.bonus}</td>
 						<td>${equipement.getEquipements().size()}</td>
+						<td><button type="button" class="btn btn-success"
+								data-bs-toggle="modal"
+								data-bs-target="#ModalChoix-${ equipement.id }" id="btn-choix">equiper</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<c:forEach items="${ equipements }" var="equipement">
+			<div class="modal fade" id="ModalChoix-${ equipement.id }" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5>${equipement.nom}</h5>
+						</div>
+						<div class="modal-body">
+							<table class="table table-striped table-hover" id="tableauPopup">
+								<thead>
+									<tr>
+										<th>nom</th>
+										<th>id</th>
+										<th>Aventurier</th>
+										<th>Equiper</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${equipement.equipements}" var="equip">
+										<tr>
+											<td>${equipement.nom}</td>
+											<td>${equip.id}</td>
+											<td>
+												<select name="aventuriers">
+													<option value="0"> N'est pas équipé </option>
+													<c:forEach items="${aventuriers}" var="aventurier">
+														<c:if test="${ aventurier.id == equip.aventurier.id }">
+															<option value="${ aventurier.id }" selected> ${ aventurier.nom } </option>
+														</c:if>
+														<c:if test="${ aventurier.id != equip.aventurier.id }">
+															<option value="${ aventurier.id }"> ${ aventurier.nom } </option>
+														</c:if>
+													</c:forEach>
+												</select>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 	</section>
 
 </body>

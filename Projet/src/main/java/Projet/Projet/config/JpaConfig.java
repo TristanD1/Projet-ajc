@@ -27,7 +27,7 @@ public class JpaConfig {
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/projet-ajc");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgres");
+		dataSource.setPassword("Dogdogdog_1");
 		dataSource.setMaxTotal(10);
 		
 		return dataSource;
