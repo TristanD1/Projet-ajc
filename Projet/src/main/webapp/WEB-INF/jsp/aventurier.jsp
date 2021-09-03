@@ -24,54 +24,6 @@
 
 	<t:layout></t:layout>
 
-	<form method="POST">
-		<h2>Ajouter un aventurier</h2>
-
-		<div class="row">
-			<div class="col-2 col-form-label">
-				<label for="nom" class="form-label">Nom de l'aventurier :</label>
-			</div>
-
-			<div class="col-10">
-				<input class="form-control" type="text" id="nom" name="nom"
-					value="${ aventurier.nom }" />
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-2 col-form-label">
-				<label for="experience" class="form-label">Expérience de
-					l'aventurier :</label>
-			</div>
-
-			<div class="col-10">
-				<input class="form-control" type="text" id="experience"
-					name="experience" value="${ aventurier.experience }" />
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-2 col-form-label">
-				<label for="cout" class="form-label">Cout de l'aventurier :</label>
-			</div>
-
-			<div class="col-10">
-				<input class="form-control" type="text" id="cout" name="cout"
-					value="${ aventurier.cout }" />
-			</div>
-		</div>
-
-		<div class="row">
-			<c:if test="${ aventurier == null }">
-				<input type="submit" class="btn btn-success" value="Ajouter" />
-			</c:if>
-
-			<c:if test="${ aventurier != null }">
-				<input type="submit" class="btn btn-warning" value="Modifier" />
-			</c:if>
-		</div>
-	</form>
-
 	<section>
 		<h2>Recruter un aventurier</h2>
 
@@ -93,11 +45,7 @@
 						<td>${ aventurier.cout }</td>
 
 						<td><a href="recruter-aventurier?id=${ aventurier.id }"
-							class="btn btn-info">Recruter</a> <a
-							href="modifier-aventurier?id=${ aventurier.id }"
-							class="btn btn-warning">Modifier</a> <a
-							href="supprimer-aventurier?id=${ aventurier.id }"
-							class="btn btn-danger">Supprimer</a></td>
+							class="btn btn-info">Recruter</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
