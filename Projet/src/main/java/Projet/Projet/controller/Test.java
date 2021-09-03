@@ -5,5 +5,9 @@ public class Test {
 	public void mickael() {
 		
 	}
+	
+	public String Afficher() {
+		return "";
+	}
 
 }
