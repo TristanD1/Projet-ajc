@@ -14,7 +14,6 @@ import Projet.Projet.dao.IAventurierRecrutementDaoJpaRepository;
 import Projet.Projet.model.AventurierGuilde;
 import Projet.Projet.model.AventurierRecrutement;
 import Projet.Projet.model.EtatAventurier;
-import Projet.Projet.model.Recompense;
 
 @Controller
 public class AventurierController {
@@ -35,26 +34,33 @@ public class AventurierController {
 		return "aventurier";
 	}
 	
+	@GetMapping("/ajouter-aventurier")
+	public String ajouter(Model model) {
+		List<AventurierRecrutement> aventuriers = daoAventurierRecrutement.findAll();
+
+		model.addAttribute("aventurierRecrutement", aventuriers);
+		
+		return "creationAventurier";
+	}
+	
 	@GetMapping("/modifier-aventurier")
 	public String modifier(@RequestParam int id, Model model) {
-		List<AventurierRecrutement> aventuriersRecrutement = daoAventurierRecrutement.findAll();
-		List<AventurierGuilde> aventuriersGuilde = daoAventurierGuilde.findAll();
+		List<AventurierRecrutement> aventuriers = daoAventurierRecrutement.findAll();
 
-		model.addAttribute("aventurierRecrutement", aventuriersRecrutement);
-		model.addAttribute("aventurierGuilde", aventuriersGuilde);
-
+		model.addAttribute("aventurierRecrutement", aventuriers);
+		
 		AventurierRecrutement aventurier = daoAventurierRecrutement.findById(id).get();
 
 		model.addAttribute("aventurier", aventurier);
 
-		return "aventurier";
+		return "creationAventurier";
 	}
 
-	@PostMapping({"/aventurier", "/modifier-aventurier"})
-	public String ajouter(AventurierRecrutement aventurier) {
+	@PostMapping({"/ajouter-aventurier", "/modifier-aventurier"})
+	public String sauvegarder(AventurierRecrutement aventurier) {
 		daoAventurierRecrutement.save(aventurier);
 
-		return "redirect:/aventurier";
+		return "redirect:/ajouter-aventurier";
 	}
 
 	@GetMapping("/recruter-aventurier")
@@ -76,7 +82,7 @@ public class AventurierController {
 	public String supprimer(@RequestParam int id) {
 		daoAventurierRecrutement.delete(daoAventurierRecrutement.findById(id).get());
 
-		return "redirect:/aventurier";
+		return "redirect:/ajouter-aventurier";
 	}
 
 	@GetMapping("/renvoyer-aventurier")
