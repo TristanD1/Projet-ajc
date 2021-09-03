@@ -11,6 +11,8 @@ import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
+import Projet.Projet.model.AventurierGuilde;
+import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Quete;
 
 @Controller
@@ -75,5 +77,37 @@ public class QueteController {
 		daoQuete.deleteById(id);
 
 		return "redirect:/ajouter-quete";
+	}
+
+	@GetMapping("/associer-quete-aventurier")
+	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
+		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+		Quete quete = daoQuete.findById(idQuete).get();
+
+		try{
+			if (quete.getId() == aventurier.getQuete().getId()) {
+				aventurier.setQuete(null);
+			} 
+		}catch (Exception e){
+			aventurier.setQuete(quete);
+		}finally{
+			daoAventurier.save(aventurier);
+		}
+		
+		return "redirect:/quete";
+	}
+	
+	@GetMapping("/associer-equipement-aventurier")
+	public String associerEquipementAventurier (@RequestParam int idAventurier, @RequestParam int idEquipement){
+		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+		Equipement equipement = daoEquipement.findById(idEquipement).get();
+		
+		
+		
+		equipement.setAventurier(aventurier);
+		daoEquipement.save(equipement);
+		
+		
+		return "redirect:/quete";
 	}
 }
