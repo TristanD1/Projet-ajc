@@ -14,6 +14,7 @@ import Projet.Projet.dao.IAventurierRecrutementDaoJpaRepository;
 import Projet.Projet.model.AventurierGuilde;
 import Projet.Projet.model.AventurierRecrutement;
 import Projet.Projet.model.EtatAventurier;
+import Projet.Projet.model.Recompense;
 
 @Controller
 public class AventurierController {
@@ -33,8 +34,23 @@ public class AventurierController {
 
 		return "aventurier";
 	}
+	
+	@GetMapping("/modifier-aventurier")
+	public String modifier(@RequestParam int id, Model model) {
+		List<AventurierRecrutement> aventuriersRecrutement = daoAventurierRecrutement.findAll();
+		List<AventurierGuilde> aventuriersGuilde = daoAventurierGuilde.findAll();
 
-	@PostMapping("/aventurier")
+		model.addAttribute("aventurierRecrutement", aventuriersRecrutement);
+		model.addAttribute("aventurierGuilde", aventuriersGuilde);
+
+		AventurierRecrutement aventurier = daoAventurierRecrutement.findById(id).get();
+
+		model.addAttribute("aventurier", aventurier);
+
+		return "aventurier";
+	}
+
+	@PostMapping({"/aventurier", "/modifier-aventurier"})
 	public String ajouter(AventurierRecrutement aventurier) {
 		daoAventurierRecrutement.save(aventurier);
 

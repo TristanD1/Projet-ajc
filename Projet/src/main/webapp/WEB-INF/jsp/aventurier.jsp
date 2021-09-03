@@ -62,7 +62,13 @@
 		</div>
 
 		<div class="row">
-			<input type="submit" class="btn btn-success" value="Ajouter" />
+			<c:if test="${ aventurier == null }">
+				<input type="submit" class="btn btn-success" value="Ajouter" />
+			</c:if>
+
+			<c:if test="${ aventurier != null }">
+				<input type="submit" class="btn btn-warning" value="Modifier" />
+			</c:if>
 		</div>
 	</form>
 
@@ -88,6 +94,8 @@
 
 						<td><a href="recruter-aventurier?id=${ aventurier.id }"
 							class="btn btn-info">Recruter</a> <a
+							href="modifier-aventurier?id=${ aventurier.id }"
+							class="btn btn-warning">Modifier</a> <a
 							href="supprimer-aventurier?id=${ aventurier.id }"
 							class="btn btn-danger">Supprimer</a></td>
 					</tr>

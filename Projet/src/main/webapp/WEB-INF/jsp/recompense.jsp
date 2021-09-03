@@ -26,6 +26,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="assets/js/equipement.js"></script>
 
 </head>
 
@@ -57,22 +58,23 @@
 			</div>
 
 			<div class="col-10">
-				<input class="form-control" type="text" id="bonus"
-					name="bonus" value="${ recompense.bonus }" />
+				<input class="form-control" type="text" id="bonus" name="bonus"
+					value="${ recompense.bonus }" />
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-2 col-form-label">
-				<label for="cout" class="form-label">Description de l'équipement :</label>
+				<label for="cout" class="form-label">Description de
+					l'équipement :</label>
 			</div>
 
 			<div class="col-10">
-				<input class="form-control" type="text" id="description" name="description"
-					value="${ recompense.description }" />
+				<input class="form-control" type="text" id="description"
+					name="description" value="${ recompense.description }" />
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-2 col-form-label">
 				<label for="cout" class="form-label">Image de l'équipement :</label>
@@ -85,7 +87,13 @@
 		</div>
 
 		<div class="row">
-			<input type="submit" class="btn btn-success" value="Ajouter" />
+			<c:if test="${ recompense == null }">
+				<input type="submit" class="btn btn-success" value="Ajouter" />
+			</c:if>
+
+			<c:if test="${ recompense != null }">
+				<input type="submit" class="btn btn-warning" value="Modifier" />
+			</c:if>
 		</div>
 	</form>
 
@@ -106,8 +114,10 @@
 								data-nom="${ recompense.nom }" data-img="${ recompense.image }"
 								data-descr="${ recompense.description }">${ recompense.nom }</button>
 						</td>
-						<td>${equipement.bonus}</td>
-						<td><a href="supprimer-recompense?id=${ recompense.id }"
+						<td>${ recompense.bonus }</td>
+						<td><a href="modifier-recompense?id=${ recompense.id }"
+							class="btn btn-warning">Modifier</a> <a
+							href="supprimer-recompense?id=${ recompense.id }"
 							class="btn btn-danger">Supprimer</a></td>
 					</tr>
 				</c:forEach>
