@@ -22,15 +22,18 @@ for (let btn of listBtnAjouter) {
 
 
 document.querySelector(`#close`).addEventListener('click', () => {
-    for (let statut of listStatut) {
-        statut.innerHTML = '<i class="bi bi-person-x-fill" id="imageStatut"></i>';
-    }
+//    for (let statut of listStatut) {
+//        statut.innerHTML = '<i class="bi bi-person-x-fill" id="imageStatut"></i>';
+//    }
     for (let btnAjout of listBtnAjouter) {
+        if(btnAjout.textContent == 'Ajouter'){
         btnAjout.textContent = 'Ajouter';
-    }
-    for (let equipement of listEquipement) {
-        equipement.closest('div').querySelector('#dropdownMenu').textContent = 'Choisir un équipement'
         }
+        else{btnAjout.textContent = 'Enlever';}
+    }
+//    for (let equipement of listEquipement) {
+//        equipement.closest('div').querySelector('#dropdownMenu').textContent = 'Choisir un équipement'
+//        }
 });
 
 for (let btnChoix of listBtnChoix) {

@@ -89,23 +89,36 @@
 											<td>${aventurier.nom}</td>
 											<td>
 												<div class="dropdown">
-													<button class="btn btn-secondary dropdown-toggle"
-														type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-														aria-expanded="false">Choisir un equipement</button>
+													<c:if test="${equipement.id != equipement.aventurier.id }">
+														<button class="btn btn-secondary dropdown-toggle"
+															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
+															aria-expanded="false">Choisir un equipement</button>
+													</c:if>
+													<c:if test="${equipement.id == equipement.aventurier.id }">
+														<button class="btn btn-secondary dropdown-toggle"
+															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
+															aria-expanded="false">${recompense.nom}</button>
+													</c:if>
 													<ul class="dropdown-menu"
 														aria-labelledby="dropdownMenuButton1">
 														<c:forEach items="${equipements}" var="equipement">
 															<li><a
 																href="associer-equipement-aventurier?idEquipement=${equipement.id}&idAventurier=${aventurier.id }"
-																class="dropdown-item" href="#" id="eq">${equipement.recompense.nom}</a></li>
+																class="dropdown-item" id="eq">${equipement.recompense.nom}</a></li>
 														</c:forEach>
 													</ul>
 
 												</div>
 											</td>
-											<td><a
-												href="associer-quete-aventurier?idAventurier=${aventurier.id }&idQuete=${quete.id}"
-												class="btn btn-danger" id="ajout">Ajouter</a></td>
+											<td><c:if test="${quete.id != aventurier.quete.id}">
+													<a
+														href="associer-quete-aventurier?idAventurier=${aventurier.id }&idQuete=${quete.id}"
+														class="btn btn-danger" id="ajout">Ajouter</a>
+												</c:if> <c:if test="${quete.id == aventurier.quete.id}">
+													<a
+														href="associer-quete-aventurier?idAventurier=${aventurier.id }&idQuete=${quete.id}"
+														class="btn btn-danger" id="ajout">Enlever</a>
+												</c:if></td>
 											<td id="statut"><i class="bi bi-person-x-fill"
 												id="imageStatut"></i></td>
 
@@ -118,7 +131,7 @@
 							<a type="submit" href="lancer-quete" class="btn btn-danger">
 								<i class="bi-flower1"></i> Lancer la quête <i class="bi-flower1"></i>
 							</a>
-							<button type="button" class="btn btn-secondary"
+							<button href="quete" type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" id="close">Annuler</button>
 						</div>
 					</div>
