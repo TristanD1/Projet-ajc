@@ -1,7 +1,5 @@
 package Projet.Projet.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,44 +22,36 @@ public class AventurierController {
 
 	@Autowired
 	IAventurierRecrutementDaoJpaRepository daoAventurierRecrutement;
-	
+
 	@Autowired
 	IEquipementDaoJpaRepository daoEquipement;
 
 	@GetMapping("/aventurier")
 	public String findAll(Model model) {
-		List<AventurierRecrutement> aventuriersRecrutement = daoAventurierRecrutement.findAll();
-		List<AventurierGuilde> aventuriersGuilde = daoAventurierGuilde.findAll();
-
-		model.addAttribute("aventurierRecrutement", aventuriersRecrutement);
-		model.addAttribute("aventurierGuilde", aventuriersGuilde);
+		model.addAttribute("aventurierRecrutement", daoAventurierRecrutement.findAll());
+		model.addAttribute("aventurierGuilde", daoAventurierGuilde.findAll());
 
 		return "aventurier";
 	}
-	
+
 	@GetMapping("/ajouter-aventurier")
 	public String ajouter(Model model) {
-		List<AventurierRecrutement> aventuriers = daoAventurierRecrutement.findAll();
+		model.addAttribute("aventurierRecrutement", daoAventurierRecrutement.findAll());
+		model.addAttribute(daoAventurierGuilde.findAll());
 
-		model.addAttribute("aventurierRecrutement", aventuriers);
-		
 		return "creationAventurier";
 	}
-	
+
 	@GetMapping("/modifier-aventurier")
 	public String modifier(@RequestParam int id, Model model) {
-		List<AventurierRecrutement> aventuriers = daoAventurierRecrutement.findAll();
-
-		model.addAttribute("aventurierRecrutement", aventuriers);
-		
-		AventurierRecrutement aventurier = daoAventurierRecrutement.findById(id).get();
-
-		model.addAttribute("aventurier", aventurier);
+		model.addAttribute("aventurierRecrutement", daoAventurierRecrutement.findAll());
+		model.addAttribute("aventurier", daoAventurierRecrutement.findById(id).get());
+		model.addAttribute(daoAventurierGuilde.findAll());
 
 		return "creationAventurier";
 	}
 
-	@PostMapping({"/ajouter-aventurier", "/modifier-aventurier"})
+	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
 	public String sauvegarder(AventurierRecrutement aventurier) {
 		daoAventurierRecrutement.save(aventurier);
 
@@ -96,15 +86,12 @@ public class AventurierController {
 
 		return "redirect:/aventurier";
 	}
-	
-	@GetMapping("desequiper-aventurier")
-	public String desequiper(@RequestParam int equipementId,Model model){
-		List<AventurierRecrutement> aventuriersRecrutement = daoAventurierRecrutement.findAll();
-		List<AventurierGuilde> aventuriersGuilde = daoAventurierGuilde.findAll();
 
-		model.addAttribute("aventurierRecrutement", aventuriersRecrutement);
-		model.addAttribute("aventurierGuilde", aventuriersGuilde);
-		
+	@GetMapping("desequiper-aventurier")
+	public String desequiper(@RequestParam int equipementId, Model model) {
+		model.addAttribute("aventurierRecrutement", daoAventurierRecrutement.findAll());
+		model.addAttribute("aventurierGuilde", daoAventurierGuilde.findAll());
+
 		Equipement monEquipement = daoEquipement.findById(equipementId).get();
 		monEquipement.setAventurier(null);
 		daoEquipement.save(monEquipement);
