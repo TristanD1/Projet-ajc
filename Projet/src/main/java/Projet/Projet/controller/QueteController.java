@@ -88,10 +88,15 @@ public class QueteController {
 		try {
 			if (quete.getId() == aventurier.getQuete().getId()) {
 				aventurier.setQuete(null);
+				daoAventurier.save(aventurier);
+			} else {
+				aventurier.setQuete(null);
+				daoAventurier.save(aventurier);
+				aventurier.setQuete(quete);
+				daoAventurier.save(aventurier);
 			}
 		} catch (Exception e) {
 			aventurier.setQuete(quete);
-		} finally {
 			daoAventurier.save(aventurier);
 		}
 
