@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Equipement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="EQU_ID")
 	private int id;
 
 	@ManyToOne

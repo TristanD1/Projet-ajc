@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
-import Projet.Projet.model.AventurierGuilde;
-import Projet.Projet.model.AventurierRecrutement;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Recompense;
 

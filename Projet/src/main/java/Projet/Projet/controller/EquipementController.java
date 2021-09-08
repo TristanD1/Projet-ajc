@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
-import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Recompense;
 
 @Controller
