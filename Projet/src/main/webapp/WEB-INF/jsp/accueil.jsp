@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet</title>
-<meta name="description" content="Gérez votre guilde d'aventuriers !" />
+<meta name="description" content="Gï¿½rez votre guilde d'aventuriers !" />
 <link rel="stylesheet" href="assets/css/accueilStyle.css">
 </head>
 <body>
@@ -21,22 +21,22 @@
 
 	<section>
 		<div>
-			<h2>Bienvenue à l'auberge du sanglier assoifé, celle-ci servira
-				de quartier général aux opérations de votre guilde d'aventuriers.</h2>
+			<h2>Bienvenue ï¿½ l'auberge du sanglier assoifï¿½, celle-ci servira
+				de quartier gï¿½nï¿½ral aux opï¿½rations de votre guilde d'aventuriers.</h2>
 			<h3>Voici quelques conseils pour bien commencer en tant que
-				maître de guilde :</h3>
+				maï¿½tre de guilde :</h3>
 			<p id="intro">
-				- Dans l'onglet <i>Aventuriers</i>, vous aurez accés aux différents
+				- Dans l'onglet <i>Aventuriers</i>, vous aurez accï¿½s aux diffï¿½rents
 				membres de votre guilde ainsi qu'a leur statistiques. <br> <br>
-				- Les différents objets que vous avez achetés ou gagnés lors de vos
+				- Les diffï¿½rents objets que vous avez achetï¿½s ou gagnï¿½s lors de vos
 				aventures sont accessibles dans l'onglet <i>Equipement</i>. <br>
-				<br> - Les quêtes disponibles sont accessibles dans l'onglet <i>Quête</i>.<br>
+				<br> - Les quï¿½tes disponibles sont accessibles dans l'onglet <i>Quï¿½te</i>.<br>
 				<br> - Pour lancer une mission, vous devrez tout d'abord
-				choisir la quête. Vous pourrez ensuite selectionner les aventuriers
+				choisir la quï¿½te. Vous pourrez ensuite selectionner les aventuriers
 				que vous voulez voir participer a cette aventure ainsi que leur
-				attribuer leurs équipements.<br>
+				attribuer leurs ï¿½quipements.<br>
 			</p>
-			<h3>Vous êtes maintenant prêt. Bonne chance !</h3>
+			<h3>Vous ï¿½tes maintenant prï¿½t. Bonne chance !</h3>
 			<br>
 		</div>
 	</section>

@@ -84,27 +84,27 @@ public class QueteController {
 		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
 		Quete quete = daoQuete.findById(idQuete).get();
 
-		try{
+		try {
 			if (quete.getId() == aventurier.getQuete().getId()) {
 				aventurier.setQuete(null);
-			} 
-		}catch (Exception e){
+			}
+		} catch (Exception e) {
 			aventurier.setQuete(quete);
-		}finally{
+		} finally {
 			daoAventurier.save(aventurier);
 		}
-		
+
 		return "redirect:/quete";
 	}
-	
+
 	@GetMapping("/associer-equipement-aventurier")
-	public String associerEquipementAventurier (@RequestParam int idAventurier, @RequestParam int idEquipement){
+	public String associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
 		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
 		Equipement equipement = daoEquipement.findById(idEquipement).get();
-				
+
 		equipement.setAventurier(aventurier);
 		daoEquipement.save(equipement);
-				
+
 		return "redirect:/quete";
 	}
 }
