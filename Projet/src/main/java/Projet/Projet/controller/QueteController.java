@@ -50,7 +50,16 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
-		model.addAttribute("recompensesQuete", daoQuete.f)
+		List<Recompense> mesRecompenses = new ArrayList<Recompense>();
+		
+		for(Quete q:daoQuete.findAll()){
+			Hibernate.initialize(q.getR);
+			if(q.getEquipements().isEmpty()){}
+			else {
+				mesRecompenses.add(rec);
+			}
+		}
+
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
