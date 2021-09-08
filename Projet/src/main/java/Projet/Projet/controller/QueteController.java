@@ -1,5 +1,8 @@
 package Projet.Projet.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.AventurierGuilde;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Quete;
+import Projet.Projet.model.Recompense;
 
 @Controller
 public class QueteController {
@@ -50,6 +54,8 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
+		model.addAttribute("recompensesQuete", daoRecompense.findAll());
+
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
@@ -67,7 +73,12 @@ public class QueteController {
 	}
 
 	@PostMapping({ "/ajouter-quete", "/modifier-quete" })
-	public String sauvegarder(Quete quete) {
+	public String sauvegarder(@RequestParam int recompenseId, Quete quete) {
+		List<Recompense> recompenses = new ArrayList<Recompense>();
+
+		quete.setRecompenses(recompenses);
+		quete.getRecompenses().add(daoRecompense.findById(recompenseId).get());
+
 		daoQuete.save(quete);
 
 		return "redirect:/ajouter-quete";

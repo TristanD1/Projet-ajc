@@ -77,7 +77,7 @@
 						</div>
 
 						<div class="col-10">
-							<select class="form-select" name="recompense.id">
+							<select class="form-select" name="recompenseId">
 								<c:forEach items="${ recompenses }" var="recompense">
 									<option value="${ recompense.id }">${ recompense.nom }</option>
 								</c:forEach>
