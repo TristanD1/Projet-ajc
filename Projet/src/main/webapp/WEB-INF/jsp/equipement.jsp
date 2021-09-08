@@ -34,7 +34,7 @@
 					src="assets/img/aventurier.svg"> Aventuriers</a></li>
 
 			<li><a href="quete"><img src="assets/img/quete.svg">
-					Quête</a></li>
+					Quï¿½te</a></li>
 		</ul>
 	</nav>
 
@@ -44,8 +44,8 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Score d'équipement</th>
-					<th>Quantité</th>
+					<th>Score d'ï¿½quipement</th>
+					<th>Quantitï¿½</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -90,7 +90,7 @@
 											<td>${equip.id}</td>
 											<td>
 												<select name="aventuriers">
-													<option value="0"> N'est pas équipé </option>
+													<option value="0"> N'est pas ï¿½quipï¿½ </option>
 													<c:forEach items="${aventuriers}" var="aventurier">
 														<c:if test="${ aventurier.id == equip.aventurier.id }">
 															<option value="${ aventurier.id }" selected> ${ aventurier.nom } </option>
@@ -101,6 +101,7 @@
 													</c:forEach>
 												</select>
 											</td>
+											<td></td>
 										</tr>
 									</c:forEach>
 								</tbody>
