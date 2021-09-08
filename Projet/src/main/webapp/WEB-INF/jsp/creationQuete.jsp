@@ -113,16 +113,18 @@
 						</thead>
 
 						<tbody>
-							<c:forEach items="${ quetes }" var="quete"></c:forEach>
-							<tr>
-								<td>${ quete.intitule }</td>
-								<td>${ quete.difficulte }</td>
-								<td>${ quete.description }</td>
-								<td>${ quete.recompense.nom }</td>
-								<td><a href="modifier-quete?id=${ quete.id }" class="btn btn-warning">Modifier</a> <a
-										href="supprimer-quete?id=${ quete.id }" class="btn btn-danger">Supprimer</a>
-								</td>
-							</tr>
+							<c:forEach items="${ quetes }" var="quete">
+								<tr>
+									<td>${ quete.intitule }</td>
+									<td>${ quete.difficulte }</td>
+									<td>${ quete.description }</td>
+									<c:forEach items="${ recompensesQuete }" var="recompense">
+										<td>${ recompense.nom }</td>
+									</c:forEach>
+									<td><a href="modifier-quete?id=${ quete.id }" class="btn btn-warning">Modifier</a>
+										<a href="supprimer-quete?id=${ quete.id }" class="btn btn-danger">Supprimer</a>
+									</td>
+								</tr>
 							</c:forEach>
 						</tbody>
 					</table>

@@ -50,6 +50,7 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
+		model.addAttribute("recompensesQuete", daoQuete.f)
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
