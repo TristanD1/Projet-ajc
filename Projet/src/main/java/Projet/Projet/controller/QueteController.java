@@ -84,13 +84,18 @@ public class QueteController {
 		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
 		Quete quete = daoQuete.findById(idQuete).get();
 
-		try{
+		try {
 			if (quete.getId() == aventurier.getQuete().getId()) {
 				aventurier.setQuete(null);
-			} 
-		}catch (Exception e){
+				daoAventurier.save(aventurier);
+			} else {
+				aventurier.setQuete(null);
+				daoAventurier.save(aventurier);
+				aventurier.setQuete(quete);
+				daoAventurier.save(aventurier);
+			}
+		} catch (Exception e) {
 			aventurier.setQuete(quete);
-		}finally{
 			daoAventurier.save(aventurier);
 		}
 		
