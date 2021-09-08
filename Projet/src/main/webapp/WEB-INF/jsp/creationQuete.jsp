@@ -20,8 +20,6 @@
 					crossorigin="anonymous">
 				<link rel="stylesheet"
 					href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-				<link rel="stylesheet"
-					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 				<link rel="stylesheet" href="assets/css/creationQueteStyle.css">
 
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
@@ -118,9 +116,11 @@
 									<td>${ quete.intitule }</td>
 									<td>${ quete.difficulte }</td>
 									<td>${ quete.description }</td>
-									<c:forEach items="${ recompensesQuete }" var="recompense">
-										<td>${ recompense.nom }</td>
-									</c:forEach>
+									<td>
+										<c:forEach items="${ quete.getRecompenses() }" var="recompense">
+											${ recompense.nom }
+										</c:forEach>
+									</td>
 									<td><a href="modifier-quete?id=${ quete.id }" class="btn btn-warning">Modifier</a>
 										<a href="supprimer-quete?id=${ quete.id }" class="btn btn-danger">Supprimer</a>
 									</td>

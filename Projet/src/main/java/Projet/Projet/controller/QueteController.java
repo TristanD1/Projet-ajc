@@ -1,5 +1,9 @@
 package Projet.Projet.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +18,7 @@ import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.AventurierGuilde;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Quete;
+import Projet.Projet.model.Recompense;
 
 @Controller
 public class QueteController {
@@ -50,20 +55,11 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
-		List<Recompense> mesRecompenses = new ArrayList<Recompense>();
-		
-		for(Quete q:daoQuete.findAll()){
-			Hibernate.initialize(q.getR);
-			if(q.getEquipements().isEmpty()){}
-			else {
-				mesRecompenses.add(rec);
-			}
-		}
-
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
 		return "creationQuete";
+
 	}
 
 	@GetMapping("/modifier-quete")
