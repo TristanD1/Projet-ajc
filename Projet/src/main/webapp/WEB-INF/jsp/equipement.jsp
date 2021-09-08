@@ -85,24 +85,27 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${equipement.equipements}" var="equip">
-										<tr>
-											<td>${equipement.nom}</td>
-											<td>${equip.id}</td>
-											<td>
-												<select name="aventuriers">
-													<option value="0"> N'est pas �quip� </option>
-													<c:forEach items="${aventuriers}" var="aventurier">
-														<c:if test="${ aventurier.id == equip.aventurier.id }">
-															<option value="${ aventurier.id }" selected> ${ aventurier.nom } </option>
-														</c:if>
-														<c:if test="${ aventurier.id != equip.aventurier.id }">
-															<option value="${ aventurier.id }"> ${ aventurier.nom } </option>
-														</c:if>
-													</c:forEach>
-												</select>
-											</td>
-											<td></td>
-										</tr>
+										<c:if test="${equip.aventurier == null }">
+											<tr>
+												<td>${equipement.nom}</td>
+												<td>${equip.id}</td>
+												<td>
+													<div class="dropdown">
+														<button class="btn btn-secondary dropdown-toggle"
+															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
+															aria-expanded="false">Choisir un aventurier</button>
+														<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+															<c:forEach items="${aventuriers}" var="aventurier">
+																<li>
+																	<a href="associer-equipement?idEquipement=${equip.id}&idAventurier=${aventurier.id }"
+																		class="dropdown-item">${aventurier.nom}</a>
+																</li>
+															</c:forEach>
+														</ul>
+													</div>
+												</td>
+											</tr>
+										</c:if>
 									</c:forEach>
 								</tbody>
 							</table>
