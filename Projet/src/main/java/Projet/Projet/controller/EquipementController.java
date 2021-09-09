@@ -38,6 +38,7 @@ public class EquipementController {
 				mesRecompenses.add(rec);
 			}
 		};
+		model.addAttribute("argent", 10000);
 		model.addAttribute("aventuriers",daoAventurier.findAll());
 		model.addAttribute("equipements", mesRecompenses);
 		return "equipement";
