@@ -35,9 +35,6 @@ public class Recompense {
 	@OneToMany(mappedBy="recompense", fetch=FetchType.EAGER)
 	private List<Equipement> equipements;
 
-	@Column(name="RECO_SELL")
-	private Boolean isSellable = false;
-
 	@ManyToMany(mappedBy = "recompenses")
 	private List<Quete> quetes;
 
@@ -98,6 +95,7 @@ public class Recompense {
 	}
 
 	public Boolean isSellable(){
+		Boolean isSellable=false;
 		for (Equipement equipement : equipements) {
 			if (equipement.getAventurier()==null){
 				isSellable=true;
