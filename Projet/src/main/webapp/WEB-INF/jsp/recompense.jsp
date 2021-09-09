@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ADMIN - Création / Modification des équipements</title>
+<title>ADMIN - Crï¿½ation / Modification des ï¿½quipements</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -26,7 +26,6 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script defer src="assets/js/equipement.js"></script>
 
 </head>
 
@@ -38,11 +37,11 @@
 	<t:layout></t:layout>
 
 	<form method="POST">
-		<h2>Ajouter un équipement</h2>
+		<h2>Ajouter un ï¿½quipement</h2>
 
 		<div class="row">
 			<div class="col-2 col-form-label">
-				<label for="nom" class="form-label">Nom de l'équipement :</label>
+				<label for="nom" class="form-label">Nom de l'ï¿½quipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -54,7 +53,7 @@
 		<div class="row">
 			<div class="col-2 col-form-label">
 				<label for="experience" class="form-label">Bonus de
-					l'équipement :</label>
+					l'ï¿½quipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -66,7 +65,7 @@
 		<div class="row">
 			<div class="col-2 col-form-label">
 				<label for="cout" class="form-label">Description de
-					l'équipement :</label>
+					l'ï¿½quipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -77,7 +76,7 @@
 
 		<div class="row">
 			<div class="col-2 col-form-label">
-				<label for="cout" class="form-label">Image de l'équipement :</label>
+				<label for="cout" class="form-label">Image de l'ï¿½quipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -102,7 +101,7 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Bonus d'équipement</th>
+					<th>Bonus d'ï¿½quipement</th>
 					<th></th>
 				</tr>
 			</thead>
