@@ -77,11 +77,13 @@
 						</div>
 
 						<div class="col-10">
-							<select class="form-select" name="recompenseId">
-								<c:forEach items="${ recompenses }" var="recompense">
-									<option value="${ recompense.id }">${ recompense.nom }</option>
-								</c:forEach>
-							</select>
+							<c:forEach items="${recompenses}" var="recompense">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="${recompense.id}"
+										name="recompensesId" id="flexCheckDefault">
+									<a>${recompense.nom}</a>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 
@@ -118,7 +120,7 @@
 									<td>${ quete.description }</td>
 									<td>
 										<c:forEach items="${ quete.getRecompenses() }" var="recompense">
-											${ recompense.nom }
+											<p>${ recompense.nom }</p>
 										</c:forEach>
 									</td>
 									<td><a href="modifier-quete?id=${ quete.id }" class="btn btn-warning">Modifier</a>

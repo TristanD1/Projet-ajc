@@ -54,13 +54,10 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
-		model.addAttribute("recompensesQuete", daoRecompense.findAll());
-
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
 		return "creationQuete";
-
 	}
 
 	@GetMapping("/modifier-quete")
@@ -73,11 +70,12 @@ public class QueteController {
 	}
 
 	@PostMapping({ "/ajouter-quete", "/modifier-quete" })
-	public String sauvegarder(@RequestParam int recompenseId, Quete quete) {
-		List<Recompense> recompenses = new ArrayList<Recompense>();
+	public String sauvegarder(@RequestParam List<Integer> recompensesId, Quete quete) {
+		quete.setRecompenses(new ArrayList<Recompense>());
 
-		quete.setRecompenses(recompenses);
-		quete.getRecompenses().add(daoRecompense.findById(recompenseId).get());
+		for (int i : recompensesId) {
+			quete.getRecompenses().add(daoRecompense.findById(i).get());
+		}
 
 		daoQuete.save(quete);
 
