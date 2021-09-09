@@ -35,5 +35,12 @@ public class Argent {
         this.somme = somme;
     }
     
+    public void addSomme(Integer somme){
+        this.somme += somme;
+    }
+
+    public void subSomme(Integer somme){
+        this.somme -= somme;
+    }
     
 }

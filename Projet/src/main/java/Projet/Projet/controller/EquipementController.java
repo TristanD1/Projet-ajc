@@ -71,6 +71,7 @@ public class EquipementController {
 		Recompense maRecompense = daoRecompense.findById(idRec).get();
 		for(Equipement equip:maRecompense.getEquipements()){
 			if(equip.getAventurier()==null){
+				daoArgent.findById(1).get().addSomme(equip.getRecompense().getValeur());
 				daoEquipement.delete(equip);
 				return "redirect:/equipement";
 			}

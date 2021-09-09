@@ -38,12 +38,23 @@ public class Recompense {
 	@ManyToMany(mappedBy = "recompenses")
 	private List<Quete> quetes;
 
+	@Column(name="RECO_VAL")
+	private Integer valeur;
+
 	public List<Equipement> getEquipements() {
 		return equipements;
 	}
 
 	public void setEquipements(List<Equipement> equipements) {
 		this.equipements = equipements;
+	}
+
+	public Integer getValeur() {
+		return valeur;
+	}
+
+	public void setValeur(Integer valeur) {
+		this.valeur = valeur;
 	}
 
 	public String getImage() {
