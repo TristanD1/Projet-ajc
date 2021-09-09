@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
+import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
-import Projet.Projet.model.AventurierGuilde;
+import Projet.Projet.model.Aventurier;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Quete;
 
@@ -28,7 +28,7 @@ public class API {
 	private IQueteDaoJpaRepository daoQuete;
 
 	@Autowired
-	private IAventurierGuildeDaoJpaRepository daoAventurier;
+	private IAventurierDaoJpaRepository daoAventurier;
 
 	@Autowired
 	private IEquipementDaoJpaRepository daoEquipement;
@@ -38,7 +38,7 @@ public class API {
 
 	@GetMapping("/associer-quete-aventurier")
 	public void associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete, Model model) {
-		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+		Aventurier aventurier = daoAventurier.findById(idAventurier).get();
 		Quete quete = daoQuete.findById(idQuete).get();
 
 		// traitement
@@ -63,7 +63,7 @@ public class API {
 
 	@GetMapping("/associer-equipement-aventurier")
 	public void associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
-		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+		Aventurier aventurier = daoAventurier.findById(idAventurier).get();
 		Equipement equipement = daoEquipement.findById(idEquipement).get();
 
 		List<Equipement> equipements = daoEquipement.findAll();
