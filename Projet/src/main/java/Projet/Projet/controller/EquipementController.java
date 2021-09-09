@@ -53,4 +53,16 @@ public class EquipementController {
 				
 		return "redirect:/equipement";
 	}
+
+	@GetMapping("vendre-equipement")
+	public String vendreEquipement (Model model,@RequestParam int idRec){
+		Recompense maRecompense = daoRecompense.findById(idRec).get();
+		for(Equipement equip:maRecompense.getEquipements()){
+			if(equip.getAventurier()==null){
+				daoEquipement.delete(equip);
+				return "redirect:/equipement";
+			}
+		}
+		return "redirect:/equipement";
+	}
 }

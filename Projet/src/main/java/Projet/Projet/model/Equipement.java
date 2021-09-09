@@ -39,6 +39,7 @@ public class Equipement {
 
 	public void setRecompense(Recompense recompense) {
 		this.recompense = recompense;
+		recompense.isSellable();
 	}
 
 	public AventurierGuilde getAventurier() {
