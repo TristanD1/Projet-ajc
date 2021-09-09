@@ -15,10 +15,13 @@ header {
 	border-bottom: solid 2px #333;
     background-color: #333;
     color: white;
+  
 }
 
 h1 {
 	font-size: 36px;
+	
+	
 }
 
 h2 {
@@ -28,7 +31,7 @@ h2 {
 	margin-left: -20px;
 	margin-right: -20px;
 	border-bottom: solid 1px  skyblue;
-	width: 75.4%;
+	width: 50%;
 	
 }
 
@@ -40,20 +43,6 @@ nav {
 	height: 100%;
 	background: #333;
 	color: white;
-}
-
-#gold {
-	position: absolute;
-	bottom: 0px;
-	align-items: center;
-	padding: 5px 10px;
-	color: white;
-	text-decoration: initial;
-}
-
-#gold img {
-	width: 30px;
-	margin-right: 10px;
 }
 
 nav ul {
@@ -113,7 +102,8 @@ section h2 {
 } */
 
 #tableauQuete {
-	width: 74.2%;
+	
+	width: 50%;
 } 
 
 #imageDroite{

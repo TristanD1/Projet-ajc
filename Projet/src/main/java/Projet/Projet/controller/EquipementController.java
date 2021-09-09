@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
@@ -25,6 +26,8 @@ public class EquipementController {
 	IRecompenseDaoJpaRepository daoRecompense;
 	@Autowired
 	IAventurierDaoJpaRepository daoAventurier;
+	@Autowired
+	IArgentDaoJpaRepository daoArgent;
 	
 	@GetMapping("/equipement")
 	public String equipement(Model model) {
@@ -38,8 +41,16 @@ public class EquipementController {
 				mesRecompenses.add(rec);
 			}
 		};
-		model.addAttribute("argent", 10000);
-		model.addAttribute("aventuriers",daoAventurier.findAll());
+
+		List<Aventurier> mesAventuriers = new ArrayList<Aventurier>();
+		
+		for(Aventurier av:daoAventurier.findAll()){
+			if(av.isRecru()){
+				mesAventuriers.add(av);
+			}
+		};
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
+		model.addAttribute("aventuriers",mesAventuriers);
 		model.addAttribute("equipements", mesRecompenses);
 		return "equipement";
 	}
@@ -60,6 +71,7 @@ public class EquipementController {
 		Recompense maRecompense = daoRecompense.findById(idRec).get();
 		for(Equipement equip:maRecompense.getEquipements()){
 			if(equip.getAventurier()==null){
+				daoArgent.findById(1).get().addSomme(equip.getRecompense().getValeur());
 				daoEquipement.delete(equip);
 				return "redirect:/equipement";
 			}

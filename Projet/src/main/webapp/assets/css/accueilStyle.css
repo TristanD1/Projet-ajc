@@ -31,6 +31,20 @@ nav {
 	color: white;
 }
 
+#gold {
+	position: absolute;
+	bottom: 0px;
+	align-items: center;
+	padding: 5px 10px;
+	color: white;
+	text-decoration: initial;
+}
+
+#gold img {
+	width: 30px;
+	margin-right: 10px;
+}
+
 nav ul {
 	padding: 0;
 }

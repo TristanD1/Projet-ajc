@@ -90,13 +90,13 @@
 											<td>
 												<div class="dropdown">
 												
-													<c:if test="${aventurier.id != equipement.aventurier.id }" >
+													<c:if test="${equipement.aventurier.id == null}" >
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">Choisir un equipement</button>
 													</c:if>
 													
-													<c:if test="${aventurier.id == equipement.aventurier.id }">
+													<c:if test="${equipement.aventurier.id != null}">
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">${equipement.recompense.nom}</button>
@@ -137,7 +137,7 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<a type="submit" href="lancer-quete" class="btn btn-danger">
+							<a type="submit" href="lancer-quete?idQuete=${quete.id}" class="btn btn-danger">
 								<i class="bi-flower1"></i> Lancer la qu�te <i class="bi-flower1"></i>
 							</a>
 							<button href="quete" type="button" class="btn btn-secondary"
