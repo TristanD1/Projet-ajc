@@ -91,37 +91,37 @@ public class QueteController {
 		return "redirect:/ajouter-quete";
 	}
 
-	@GetMapping("/associer-quete-aventurier")
-	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
-		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
-		Quete quete = daoQuete.findById(idQuete).get();
+//	@GetMapping("/associer-quete-aventurier")
+//	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
+//		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+//		Quete quete = daoQuete.findById(idQuete).get();
+//
+//		try {
+//			if (quete.getId() == aventurier.getQuete().getId()) {
+//				aventurier.setQuete(null);
+//				daoAventurier.save(aventurier);
+//			} else {
+//				aventurier.setQuete(null);
+//				daoAventurier.save(aventurier);
+//				aventurier.setQuete(quete);
+//				daoAventurier.save(aventurier);
+//			}
+//		} catch (Exception e) {
+//			aventurier.setQuete(quete);
+//			daoAventurier.save(aventurier);
+//		}
+//
+//		return "redirect:/quete";
+//	}
 
-		try {
-			if (quete.getId() == aventurier.getQuete().getId()) {
-				aventurier.setQuete(null);
-				daoAventurier.save(aventurier);
-			} else {
-				aventurier.setQuete(null);
-				daoAventurier.save(aventurier);
-				aventurier.setQuete(quete);
-				daoAventurier.save(aventurier);
-			}
-		} catch (Exception e) {
-			aventurier.setQuete(quete);
-			daoAventurier.save(aventurier);
-		}
+	// @GetMapping("/associer-equipement-aventurier")
+	// public String associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
+	// 	AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+	// 	Equipement equipement = daoEquipement.findById(idEquipement).get();
 
-		return "redirect:/quete";
-	}
+	// 	equipement.setAventurier(aventurier);
+	// 	daoEquipement.save(equipement);
 
-	@GetMapping("/associer-equipement-aventurier")
-	public String associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
-		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
-		Equipement equipement = daoEquipement.findById(idEquipement).get();
-
-		equipement.setAventurier(aventurier);
-		daoEquipement.save(equipement);
-
-		return "redirect:/quete";
-	}
+	// 	return "redirect:/quete";
+	// }
 }
