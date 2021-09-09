@@ -23,7 +23,7 @@ public class Equipement {
 
 	@ManyToOne
 	@JoinColumn(name = "EQU_AVENTURIER")
-	private AventurierGuilde aventurier;
+	private Aventurier aventurier;
 
 	public int getId() {
 		return id;
@@ -41,11 +41,11 @@ public class Equipement {
 		this.recompense = recompense;
 	}
 
-	public AventurierGuilde getAventurier() {
+	public Aventurier getAventurier() {
 		return aventurier;
 	}
 
-	public void setAventurier(AventurierGuilde aventurier) {
+	public void setAventurier(Aventurier aventurier) {
 		this.aventurier = aventurier;
 	}
 }

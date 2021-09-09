@@ -64,6 +64,22 @@
 					</div>
 
 					<div class="row">
+						<div class="col-2 col-form-label">
+							<label for="competences" class="form-label">Compétences :</label>
+						</div>
+
+						<div class="col-10">
+							<c:forEach items="${ competences }" var="competence">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="${ competence.id }"
+										name="competencesId" id="flexCheckDefault">
+									<a>${ competence.nom }</a>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+
+					<div class="row">
 						<c:if test="${ aventurier == null }">
 							<input type="submit" class="btn btn-success" value="Ajouter" />
 						</c:if>
@@ -77,54 +93,70 @@
 				<section>
 					<h2>Aventuriers en recrutement</h2>
 
-					<table id="recrutement" class="table table-dark">
+					<table class="table table-dark">
 						<thead>
 							<tr>
 								<th>Nom</th>
 								<th>Expérience</th>
 								<th>Coût</th>
+								<th>Competences</th>
 								<th></th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<c:forEach items="${ aventurierRecrutement }" var="aventurier">
-								<tr>
-									<td>${ aventurier.nom }</td>
-									<td>${ aventurier.experience }</td>
-									<td>${ aventurier.cout }</td>
-									<td><a href="modifier-aventurier?id=${ aventurier.id }"
-											class="btn btn-warning">Modifier</a> <a
-											href="supprimer-aventurier?id=${ aventurier.id }"
-											class="btn btn-danger">Supprimer</a></td>
-								</tr>
+							<c:forEach items="${ aventuriers }" var="aventurier">
+								<c:if test="${ !aventurier.isRecru() }">
+									<tr>
+										<td>${ aventurier.nom }</td>
+										<td>${ aventurier.experience }</td>
+										<td>${ aventurier.cout }</td>
+										<td>
+											<c:forEach items="${ aventurier.getCompetences() }" var="competence">
+												<p>${ competence.nom } (+ ${ competence.bonus })</p>
+											</c:forEach>
+										</td>
+										<td><a href="modifier-aventurier?id=${ aventurier.id }"
+												class="btn btn-warning">Modifier</a> <a
+												href="supprimer-aventurier?id=${ aventurier.id }"
+												class="btn btn-danger">Supprimer</a></td>
+									</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
 
 					<h2>Aventuriers en guilde</h2>
 
-					<table id="guilde" class="table table-dark">
+					<table class="table table-dark">
 						<thead>
 							<tr>
 								<th>Nom</th>
-								<th>Exp�rience</th>
-								<th>Etat de sant�</th>
+								<th>Expérience</th>
+								<th>Compétences</th>
+								<th>Etat de santé</th>
 								<th></th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<c:forEach items="${ aventurierGuilde }" var="aventurier">
-								<tr>
-									<td>${ aventurier.nom }</td>
-									<td>${ aventurier.experience }</td>
-									<td>${ aventurier.etat }</td>
-									<td><a href="modifier-aventurier?id=${ aventurier.id }"
-											class="btn btn-warning">Modifier</a> <a
-											href="supprimer-aventurier?id=${ aventurier.id }"
-											class="btn btn-danger">Supprimer</a></td>
-								</tr>
+							<c:forEach items="${ aventuriers }" var="aventurier">
+								<c:if test="${ aventurier.isRecru() }">
+									<tr>
+										<td>${ aventurier.nom }</td>
+										<td>${ aventurier.experience }</td>
+										<td>
+											<c:forEach items="${ aventurier.getCompetences() }" var="competence">
+												<p>${ competence.nom } (+ ${ competence.bonus })</p>
+											</c:forEach>
+										</td>
+										<td>${ aventurier.etat }</td>
+										<td><a href="modifier-aventurier?id=${ aventurier.id }"
+												class="btn btn-warning">Modifier</a> <a
+												href="supprimer-aventurier?id=${ aventurier.id }"
+												class="btn btn-danger">Supprimer</a></td>
+									</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>

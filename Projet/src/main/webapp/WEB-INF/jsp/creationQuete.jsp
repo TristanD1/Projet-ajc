@@ -73,15 +73,15 @@
 
 					<div class="row">
 						<div class="col-2 col-form-label">
-							<label for="recompenses" class="form-label">Recompense :</label>
+							<label for="recompenses" class="form-label">Recompenses :</label>
 						</div>
 
 						<div class="col-10">
-							<c:forEach items="${recompenses}" var="recompense">
+							<c:forEach items="${ recompenses }" var="recompense">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="${recompense.id}"
+									<input class="form-check-input" type="checkbox" value="${ recompense.id }"
 										name="recompensesId" id="flexCheckDefault">
-									<a>${recompense.nom}</a>
+									<a>${ recompense.nom }</a>
 								</div>
 							</c:forEach>
 						</div>

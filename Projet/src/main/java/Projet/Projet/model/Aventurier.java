@@ -17,9 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aventurierGuilde")
-public class AventurierGuilde {
-	
+@Table(name = "aventurier")
+public class Aventurier {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AVE_ID")
@@ -32,19 +32,25 @@ public class AventurierGuilde {
 	private int experience;
 
 	@ManyToMany
-	@JoinTable(name = "AVE_COMP", joinColumns = @JoinColumn(name = "IDAVE", referencedColumnName = "AVE_ID") , inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
-			"IDAVE", "IDCOMP" }) )
+	@JoinTable(name = "AVE_COMP", joinColumns = @JoinColumn(name = "IDAVE", referencedColumnName = "AVE_ID"), inverseJoinColumns = @JoinColumn(name = "IDCOMP", referencedColumnName = "COMP_ID"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"IDAVE", "IDCOMP" }))
 	private List<Competence> competences;
 
 	@ManyToOne
 	@JoinColumn(name = "AVE_QTE")
 	private Quete quete;
 
-	@OneToMany(mappedBy = "aventurier", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "aventurier", fetch = FetchType.EAGER)
 	private List<Equipement> equipements;
-	
-	@Column(name="AVE_ETAT")
+
+	@Column(name = "AVE_ETAT")
 	private String etat;
+
+	@Column(name = "AVE_RECRU", nullable = false)
+	private boolean isRecru;
+
+	@Column(name = "AVE_COUT")
+	private int cout;
 
 	public int getId() {
 		return id;
@@ -100,6 +106,22 @@ public class AventurierGuilde {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+
+	public boolean isRecru() {
+		return isRecru;
+	}
+
+	public void setRecru(boolean isRecru) {
+		this.isRecru = isRecru;
+	}
+
+	public int getCout() {
+		return cout;
+	}
+
+	public void setCout(int cout) {
+		this.cout = cout;
 	}
 
 }

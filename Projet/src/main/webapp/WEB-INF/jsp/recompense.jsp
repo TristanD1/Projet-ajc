@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ADMIN - Cr�ation / Modification des �quipements</title>
+<title>ADMIN - Création / Modification des équipements</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -37,11 +37,11 @@
 	<t:layout></t:layout>
 
 	<form method="POST">
-		<h2>Ajouter un �quipement</h2>
+		<h2>Ajouter un équipement</h2>
 
 		<div class="row">
 			<div class="col-2 col-form-label">
-				<label for="nom" class="form-label">Nom de l'�quipement :</label>
+				<label for="nom" class="form-label">Nom de l'équipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -53,7 +53,7 @@
 		<div class="row">
 			<div class="col-2 col-form-label">
 				<label for="experience" class="form-label">Bonus de
-					l'�quipement :</label>
+					l'équipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -65,7 +65,7 @@
 		<div class="row">
 			<div class="col-2 col-form-label">
 				<label for="cout" class="form-label">Description de
-					l'�quipement :</label>
+					l'équipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -76,7 +76,7 @@
 
 		<div class="row">
 			<div class="col-2 col-form-label">
-				<label for="cout" class="form-label">Image de l'�quipement :</label>
+				<label for="cout" class="form-label">Image de l'équipement :</label>
 			</div>
 
 			<div class="col-10">
@@ -101,7 +101,7 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Bonus d'�quipement</th>
+					<th>Bonus d'équipement</th>
 					<th></th>
 				</tr>
 			</thead>

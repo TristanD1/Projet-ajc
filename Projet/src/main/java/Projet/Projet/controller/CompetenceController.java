@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Projet.Projet.dao.IAventurierGuildeDaoJpaRepository;
+import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.model.Competence;
@@ -20,7 +20,7 @@ public class CompetenceController {
     ICompetenceDaoJpaRepository daoComptence;
 
     @Autowired
-    IAventurierGuildeDaoJpaRepository daoAventurier;
+    IAventurierDaoJpaRepository daoAventurier;
 
     @Autowired
     IQueteDaoJpaRepository daoQuete;
