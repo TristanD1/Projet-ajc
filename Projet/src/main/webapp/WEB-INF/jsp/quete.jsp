@@ -9,8 +9,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choisissez votre quête !</title>
-<meta name="description" content="Choisissez votre quête !" />
+<title>Choisissez votre quï¿½te !</title>
+<meta name="description" content="Choisissez votre quï¿½te !" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -31,19 +31,19 @@
 <body>
 	<t:layout></t:layout>
 	<header>
-		<h1>Quêtes</h1>
+		<h1>Quï¿½tes</h1>
 	</header>
 	<section>
-		<h2>Liste des quêtes disponibes</h2>
+		<h2>Liste des quï¿½tes disponibes</h2>
 
 		<table class="table table-striped table-hover" id="tableauQuete">
 			<thead>
 				<tr>
-					<th>Intitulé de la quête</th>
-					<th>Expérience nécessaire</th>
+					<th>Intitulï¿½ de la quï¿½te</th>
+					<th>Expï¿½rience nï¿½cessaire</th>
 					<th>Statut</th>
 					<th>Description</th>
-					<th>Sélection</th>
+					<th>Sï¿½lection</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,7 +78,7 @@
 								<thead>
 									<tr>
 										<th>Aventurier</th>
-										<th>Choix de l'équipement</th>
+										<th>Choix de l'ï¿½quipement</th>
 										<th>Ajouter</th>
 										<th>Statut</th>
 									</tr>
@@ -89,38 +89,47 @@
 											<td>${aventurier.nom}</td>
 											<td>
 												<div class="dropdown">
-													<c:if test="${equipement.id != equipement.aventurier.id }">
+												
+													<c:if test="${aventurier.id != equipement.aventurier.id }" >
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">Choisir un equipement</button>
 													</c:if>
-													<c:if test="${equipement.id == equipement.aventurier.id }">
+													
+													<c:if test="${aventurier.id == equipement.aventurier.id }">
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-															aria-expanded="false">${recompense.nom}</button>
+															aria-expanded="false">${equipement.recompense.nom}</button>
 													</c:if>
 													<ul class="dropdown-menu"
 														aria-labelledby="dropdownMenuButton1">
 														<c:forEach items="${equipements}" var="equipement">
 															<li><a
-																href="associer-equipement-aventurier?idEquipement=${equipement.id}&idAventurier=${aventurier.id }"
+																data-aventurier="${aventurier.id}"
+																data-equipement="${equipement.id}"
 																class="dropdown-item" id="eq">${equipement.recompense.nom}</a></li>
 														</c:forEach>
 													</ul>
 
 												</div>
 											</td>
-											<td><c:if test="${quete.id != aventurier.quete.id}">
-													<a
-														href="associer-quete-aventurier?idAventurier=${aventurier.id }&idQuete=${quete.id}"
-														class="btn btn-danger" id="ajout">Ajouter</a>
-												</c:if> <c:if test="${quete.id == aventurier.quete.id}">
-													<a
-														href="associer-quete-aventurier?idAventurier=${aventurier.id }&idQuete=${quete.id}"
-														class="btn btn-danger" id="ajout">Enlever</a>
-												</c:if></td>
-											<td id="statut"><i class="bi bi-person-x-fill"
+											<c:if test="${quete.id != aventurier.quete.id}">
+													<td><a
+													data-aventurier="${aventurier.id }"
+													data-quete="${quete.id}"
+														class="btn btn-danger" id="ajout">Ajouter</a></td>
+														<td id="statut"><i class="bi bi-person-x-fill"
 												id="imageStatut"></i></td>
+														
+												</c:if> <c:if test="${quete.id == aventurier.quete.id}">
+													<td><a
+													data-aventurier="${aventurier.id }"
+													data-quete="${quete.id}"
+														class="btn btn-danger" id="ajout">Enlever</a></td>
+														<td id="statut"><i class="bi bi-person-check-fill"
+												id="imageStatut"></i></td>
+												</c:if>
+											
 
 										</tr>
 									</c:forEach>
@@ -129,7 +138,7 @@
 						</div>
 						<div class="modal-footer">
 							<a type="submit" href="lancer-quete" class="btn btn-danger">
-								<i class="bi-flower1"></i> Lancer la quête <i class="bi-flower1"></i>
+								<i class="bi-flower1"></i> Lancer la quï¿½te <i class="bi-flower1"></i>
 							</a>
 							<button href="quete" type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" id="close">Annuler</button>

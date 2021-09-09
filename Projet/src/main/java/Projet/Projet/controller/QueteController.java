@@ -44,7 +44,7 @@ public class QueteController {
 
 	@GetMapping("/lancer-quete")
 	public String add() {
-		return "quete";
+		return "resultatQuete";
 	}
 
 	@PostMapping("/lancer-quete")
@@ -89,6 +89,7 @@ public class QueteController {
 		return "redirect:/ajouter-quete";
 	}
 
+<<<<<<< HEAD
 	@GetMapping("/associer-quete-aventurier")
 	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
 		Aventurier aventurier = daoAventurier.findById(idAventurier).get();
@@ -122,4 +123,39 @@ public class QueteController {
 
 		return "redirect:/quete";
 	}
+=======
+//	@GetMapping("/associer-quete-aventurier")
+//	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
+//		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+//		Quete quete = daoQuete.findById(idQuete).get();
+//
+//		try {
+//			if (quete.getId() == aventurier.getQuete().getId()) {
+//				aventurier.setQuete(null);
+//				daoAventurier.save(aventurier);
+//			} else {
+//				aventurier.setQuete(null);
+//				daoAventurier.save(aventurier);
+//				aventurier.setQuete(quete);
+//				daoAventurier.save(aventurier);
+//			}
+//		} catch (Exception e) {
+//			aventurier.setQuete(quete);
+//			daoAventurier.save(aventurier);
+//		}
+//
+//		return "redirect:/quete";
+//	}
+
+	// @GetMapping("/associer-equipement-aventurier")
+	// public String associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
+	// 	AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+	// 	Equipement equipement = daoEquipement.findById(idEquipement).get();
+
+	// 	equipement.setAventurier(aventurier);
+	// 	daoEquipement.save(equipement);
+
+	// 	return "redirect:/quete";
+	// }
+>>>>>>> main
 }

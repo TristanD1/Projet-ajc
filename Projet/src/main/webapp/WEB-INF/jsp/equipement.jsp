@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
+
+<c:set var="Gold" value = "${argent}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,22 +25,10 @@
 </head>
 
 <body>
+	<t:layout></t:layout>
 	<header>
 		<h1>Inventaire</h1>
 	</header>
-
-	<nav>
-		<ul>
-			<li><a href="accueil"><img src="assets/img/accueil.svg"
-					width="100"> Accueil</a></li>
-
-			<li><a href="aventurier"><img
-					src="assets/img/aventurier.svg"> Aventuriers</a></li>
-
-			<li><a href="quete"><img src="assets/img/quete.svg">
-					Quête</a></li>
-		</ul>
-	</nav>
 
 	<section>
 
@@ -44,8 +36,9 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Score d'équipement</th>
-					<th>Quantité</th>
+					<th>Score d'equipement</th>
+					<th>Quantite</th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -60,6 +53,11 @@
 						<td><button type="button" class="btn btn-success"
 								data-bs-toggle="modal"
 								data-bs-target="#ModalChoix-${ equipement.id }" id="btn-choix">equiper</button></td>
+						<td>
+							<c:if test="${equipement.isSellable()}">
+								<a href="vendre-equipement?idRec=${equipement.id}" class="btn btn-danger">Vendre</a>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
