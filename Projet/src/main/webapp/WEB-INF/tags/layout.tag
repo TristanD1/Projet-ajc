@@ -1,4 +1,4 @@
-<%@ attribute name = "Gold" %>
+<%@ attribute name = "argent" %>
 
 <nav>
 	<ul>
@@ -8,8 +8,8 @@
 
 		<li><a href="equipement"><img src="assets/img/equipement.svg">Equipements</a></li>
 
-		<li><a href="quete"><img src="assets/img/quete.svg">
-				Quetes</a></li>
-		<button class="btn btn-danger btn-md"> ${Gold} </button>
+		<li><a href="quete"><img src="assets/img/quete.svg">Quetes</a></li>
+		
+		<li id="gold"> <img src="assets/img/gold.svg"> ${argent} </li>
 	</ul>
 </nav>
