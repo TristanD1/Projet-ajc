@@ -50,8 +50,10 @@
 						<td><button type="button" class="btn btn-success"
 								data-bs-toggle="modal"
 								data-bs-target="#ModalChoix-${ equipement.id }" id="btn-choix">equiper</button></td>
-						<td id="vendre" data-equip="${ equipement.equipements }">
-							<a href="vendre-equipement?idRec=${equipement.id}" class="btn btn-danger">Vendre</a>
+						<td>
+							<c:if test="${equipement.isSellable()}">
+								<a href="vendre-equipement?idRec=${equipement.id}" class="btn btn-danger">Vendre</a>
+							</c:if>
 						</td>
 					</tr>
 				</c:forEach>

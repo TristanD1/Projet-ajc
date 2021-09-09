@@ -35,6 +35,12 @@ public class Recompense {
 	@OneToMany(mappedBy="recompense", fetch=FetchType.EAGER)
 	private List<Equipement> equipements;
 
+	@Column(name="RECO_SELL")
+	private Boolean isSellable = false;
+
+	@ManyToMany(mappedBy = "recompenses")
+	private List<Quete> quetes;
+
 	public List<Equipement> getEquipements() {
 		return equipements;
 	}
@@ -42,9 +48,6 @@ public class Recompense {
 	public void setEquipements(List<Equipement> equipements) {
 		this.equipements = equipements;
 	}
-
-	@ManyToMany(mappedBy = "recompenses")
-	private List<Quete> quetes;
 
 	public String getImage() {
 		return image;
@@ -92,5 +95,14 @@ public class Recompense {
 
 	public void setQuetes(List<Quete> quetes) {
 		this.quetes = quetes;
+	}
+
+	public Boolean isSellable(){
+		for (Equipement equipement : equipements) {
+			if (equipement.getAventurier()==null){
+				isSellable=true;
+			}
+		}
+		return isSellable;
 	}
 }

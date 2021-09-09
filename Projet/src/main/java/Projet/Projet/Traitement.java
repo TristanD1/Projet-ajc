@@ -61,7 +61,7 @@ public class Traitement {
 		CreateCompetence("Discretion", 5);
 
 		CreateRecompense("Dague", 10);
-		CreateRecompense("Epée", 30);
+		CreateRecompense("Epï¿½e", 30);
 		CreateRecompense("Arc", 20);
 		CreateRecompense("Fronde", 10);
 		CreateRecompense("Hache", 40);

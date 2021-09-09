@@ -56,7 +56,6 @@ public class EquipementController {
 
 	@GetMapping("vendre-equipement")
 	public String vendreEquipement (Model model,@RequestParam int idRec){
-		Boolean bool = false;
 		Recompense maRecompense = daoRecompense.findById(idRec).get();
 		for(Equipement equip:maRecompense.getEquipements()){
 			if(equip.getAventurier()==null){
