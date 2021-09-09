@@ -2,6 +2,7 @@ package Projet.Projet.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
+import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
+import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
+import Projet.Projet.model.EtatAventurier;
 import Projet.Projet.model.Quete;
+import Projet.Projet.model.QueteEtat;
 import Projet.Projet.model.Recompense;
 
 @Controller
@@ -32,6 +37,9 @@ public class QueteController {
 
 	@Autowired
 	private IRecompenseDaoJpaRepository daoRecompense;
+	
+	@Autowired
+	private ICompetenceDaoJpaRepository daoCompetence;
 
 	@GetMapping("/quete")
 	public String quete(Model model) {
@@ -43,7 +51,63 @@ public class QueteController {
 	}
 
 	@GetMapping("/lancer-quete")
-	public String add() {
+	public String add(@RequestParam int idQuete, Model model) {
+		model.addAttribute("quetes", daoQuete.findAll());
+		model.addAttribute("aventuriers", daoAventurier.findAll());
+		model.addAttribute("equipements", daoEquipement.findAll());
+		model.addAttribute("quete", daoQuete.findById(idQuete).get());
+		Quete maQuete = daoQuete.findById(idQuete).get();
+
+		if (maQuete.getAventuriers().size() > 0) {
+			int proba = 0;
+
+			for (Aventurier a : maQuete.getAventuriers()) {
+				proba += a.getExperience();
+				for (Equipement e : a.getEquipements()) {
+					proba += e.getRecompense().getBonus();
+				}
+				for (Competence c : daoCompetence.findCommuneByAventurier(a.getId(), a.getQuete().getId())) {
+					proba += c.getBonus();
+				}
+			}
+
+			double r = new Random().nextDouble();
+
+			// Faire le test de reussite
+			if (r < (double) proba / (proba + maQuete.getDifficulte())) {
+				// Changer le status de la quete si reussite
+				maQuete.setEtat(QueteEtat.ACHEVEE.toString().toLowerCase());
+				daoQuete.save(maQuete);
+
+				for (Aventurier a : maQuete.getAventuriers()) {
+					a.setExperience(a.getExperience() + maQuete.getDifficulte() / maQuete.getAventuriers().size());
+				}
+
+				// Choix aleatoire de la recompence parmis le catalogue de la
+				// quete
+				List<Recompense> mesRecompenses = maQuete.getRecompenses();
+				if (mesRecompenses.size() > 0) {
+					double r2 = new Random().nextDouble();
+					Equipement monEquipement = new Equipement();
+					monEquipement.getRecompense().setNom(mesRecompenses.get((int) r2 * mesRecompenses.size()).getNom());
+					monEquipement.getRecompense().setBonus(mesRecompenses.get((int) r2 * mesRecompenses.size()).getBonus());
+					daoEquipement.save(monEquipement);
+				} 
+			} else {
+				maQuete.setEtat(QueteEtat.INACHEVEE.toString().toLowerCase());
+				daoQuete.save(maQuete);
+				for (Aventurier a : maQuete.getAventuriers()) {
+					a.setEtat(EtatAventurier.BLESSE.toString().toLowerCase());
+				}
+			}
+
+			// desassocier les aventuriers
+			for (Aventurier a : maQuete.getAventuriers()) {
+				a.setQuete(null);
+				daoAventurier.save(a);
+			}
+		} 
+		
 		return "resultatQuete";
 	}
 
