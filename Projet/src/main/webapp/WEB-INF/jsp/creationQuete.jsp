@@ -72,16 +72,30 @@
 					</div>
 
 					<div class="row">
-						<div class="col-2 col-form-label">
+						<div class="col-2">
+							<label for="competences" class="form-label">Compétences :</label>
+						</div>
+
+						<div class="col-2">
+							<c:forEach items="${ competences }" var="competence">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="${ competence.id }"
+										name="competencesId" id="flexCheckDefault">
+									<a>${ competence.nom } (+${ competence.bonus })</a>
+								</div>
+							</c:forEach>
+						</div>
+
+						<div class="col-2">
 							<label for="recompenses" class="form-label">Recompenses :</label>
 						</div>
 
-						<div class="col-10">
+						<div class="col-2">
 							<c:forEach items="${ recompenses }" var="recompense">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" value="${ recompense.id }"
 										name="recompensesId" id="flexCheckDefault">
-									<a>${ recompense.nom }</a>
+									<a>${ recompense.nom } (+${ recompense.bonus })</a>
 								</div>
 							</c:forEach>
 						</div>
@@ -107,7 +121,8 @@
 								<th>Intitulé</th>
 								<th>Difficulté</th>
 								<th>Description</th>
-								<th>Recompense</th>
+								<th>Compétences</th>
+								<th>Recompenses</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -119,8 +134,13 @@
 									<td>${ quete.difficulte }</td>
 									<td>${ quete.description }</td>
 									<td>
+										<c:forEach items="${ quete.getCompetences() }" var="competence">
+											<p>${ competence.nom } (+${ competence.bonus })</p>
+										</c:forEach>
+									</td>
+									<td>
 										<c:forEach items="${ quete.getRecompenses() }" var="recompense">
-											<p>${ recompense.nom }</p>
+											<p>${ recompense.nom } (+${ recompense.bonus })</p>
 										</c:forEach>
 									</td>
 									<td><a href="modifier-quete?id=${ quete.id }" class="btn btn-warning">Modifier</a>

@@ -2,10 +2,6 @@ body {
 	padding-left: 250px;
 	font-family: 'Roboto', sans-serif;
 	background-color: tan;
-	background-image: url("/Projet/assets/img/papyrus.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	
 }
 
 header {
@@ -16,7 +12,6 @@ header {
     background-color: #333;
     color: white;
 }
-
 h1 {
 	font-size: 36px;
 }
@@ -27,9 +22,7 @@ h2 {
 	padding-bottom: 5px;
 	margin-left: -20px;
 	margin-right: -20px;
-	border-bottom: solid 1px  skyblue;
-	width: 75.4%;
-	
+	border-bottom: solid 1px #D65050;
 }
 
 nav {
@@ -66,7 +59,7 @@ nav a::before {
 	left: 0;
 	width: 0;
 	height: 50px;
-	background: #a39797;
+	background: #D65050;
 	transition: width 0.25s ease-in;
 	z-index: -1;
 }
@@ -78,7 +71,7 @@ nav a img {
 
 nav a:hover {
 	padding: 5px 20px;
-	color: white;
+	animation: wobble 2s;
 }
 
 nav a:hover::before {
@@ -163,32 +156,3 @@ form input[type="submit"]:hover {
 	left: 1px;
 	background: #333;
 }
-
-#tableauQuete {
-	width: 74.2%;
-} 
-
-#imageDroite{
-	width:23%;
-	position: fixed;
-	right: 0;
-	top: 53px;
-	height: 100%;
-	opacity: 0.7;
-	background-attachment: fixed;
-	border-left: hidden;
-	
-}
-
-#btn-details{
-	width: 10%;
-}
-
-#btn-details:hover{
-	animation: heartBeat 1s infinite ;
-}
-
-#imageStatut{
-	font-size: 30px;
-}
-

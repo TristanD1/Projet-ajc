@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
+import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.Aventurier;
+import Projet.Projet.model.Competence;
 import Projet.Projet.model.Equipement;
 import Projet.Projet.model.Quete;
 import Projet.Projet.model.Recompense;
@@ -32,6 +34,9 @@ public class QueteController {
 
 	@Autowired
 	private IRecompenseDaoJpaRepository daoRecompense;
+
+	@Autowired
+	private ICompetenceDaoJpaRepository daoCompetence;
 
 	@GetMapping("/quete")
 	public String quete(Model model) {
@@ -54,6 +59,7 @@ public class QueteController {
 
 	@GetMapping("/ajouter-quete")
 	public String ajouter(Model model) {
+		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 
@@ -62,6 +68,7 @@ public class QueteController {
 
 	@GetMapping("/modifier-quete")
 	public String modifier(@RequestParam int id, Model model) {
+		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("quete", daoQuete.findById(id).get());
@@ -70,11 +77,17 @@ public class QueteController {
 	}
 
 	@PostMapping({ "/ajouter-quete", "/modifier-quete" })
-	public String sauvegarder(@RequestParam List<Integer> recompensesId, Quete quete) {
+	public String sauvegarder(@RequestParam List<Integer> competencesId, @RequestParam List<Integer> recompensesId,
+			Quete quete) {
 		quete.setRecompenses(new ArrayList<Recompense>());
+		quete.setCompetences(new ArrayList<Competence>());
 
 		for (int i : recompensesId) {
 			quete.getRecompenses().add(daoRecompense.findById(i).get());
+		}
+
+		for (int i : competencesId) {
+			quete.getCompetences().add(daoCompetence.findById(i).get());
 		}
 
 		daoQuete.save(quete);
@@ -89,37 +102,39 @@ public class QueteController {
 		return "redirect:/ajouter-quete";
 	}
 
-//	@GetMapping("/associer-quete-aventurier")
-//	public String associerQueteAventurier(@RequestParam int idAventurier, @RequestParam int idQuete) {
-//		AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
-//		Quete quete = daoQuete.findById(idQuete).get();
-//
-//		try {
-//			if (quete.getId() == aventurier.getQuete().getId()) {
-//				aventurier.setQuete(null);
-//				daoAventurier.save(aventurier);
-//			} else {
-//				aventurier.setQuete(null);
-//				daoAventurier.save(aventurier);
-//				aventurier.setQuete(quete);
-//				daoAventurier.save(aventurier);
-//			}
-//		} catch (Exception e) {
-//			aventurier.setQuete(quete);
-//			daoAventurier.save(aventurier);
-//		}
-//
-//		return "redirect:/quete";
-//	}
+	// @GetMapping("/associer-quete-aventurier")
+	// public String associerQueteAventurier(@RequestParam int idAventurier,
+	// @RequestParam int idQuete) {
+	// AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+	// Quete quete = daoQuete.findById(idQuete).get();
+	//
+	// try {
+	// if (quete.getId() == aventurier.getQuete().getId()) {
+	// aventurier.setQuete(null);
+	// daoAventurier.save(aventurier);
+	// } else {
+	// aventurier.setQuete(null);
+	// daoAventurier.save(aventurier);
+	// aventurier.setQuete(quete);
+	// daoAventurier.save(aventurier);
+	// }
+	// } catch (Exception e) {
+	// aventurier.setQuete(quete);
+	// daoAventurier.save(aventurier);
+	// }
+	//
+	// return "redirect:/quete";
+	// }
 
 	// @GetMapping("/associer-equipement-aventurier")
-	// public String associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
-	// 	AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
-	// 	Equipement equipement = daoEquipement.findById(idEquipement).get();
+	// public String associerEquipementAventurier(@RequestParam int idAventurier,
+	// @RequestParam int idEquipement) {
+	// AventurierGuilde aventurier = daoAventurier.findById(idAventurier).get();
+	// Equipement equipement = daoEquipement.findById(idEquipement).get();
 
-	// 	equipement.setAventurier(aventurier);
-	// 	daoEquipement.save(equipement);
+	// equipement.setAventurier(aventurier);
+	// daoEquipement.save(equipement);
 
-	// 	return "redirect:/quete";
+	// return "redirect:/quete";
 	// }
 }

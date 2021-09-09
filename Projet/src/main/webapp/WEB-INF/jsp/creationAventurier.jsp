@@ -73,7 +73,7 @@
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" value="${ competence.id }"
 										name="competencesId" id="flexCheckDefault">
-									<a>${ competence.nom }</a>
+									<a>${ competence.nom } (+${ competence.bonus })</a>
 								</div>
 							</c:forEach>
 						</div>
@@ -113,7 +113,7 @@
 										<td>${ aventurier.cout }</td>
 										<td>
 											<c:forEach items="${ aventurier.getCompetences() }" var="competence">
-												<p>${ competence.nom } (+ ${ competence.bonus })</p>
+												<p>${ competence.nom } (+${ competence.bonus })</p>
 											</c:forEach>
 										</td>
 										<td><a href="modifier-aventurier?id=${ aventurier.id }"
@@ -146,8 +146,8 @@
 										<td>${ aventurier.nom }</td>
 										<td>${ aventurier.experience }</td>
 										<td>
-											<c:forEach items="${ aventurier.getCompetences() }" var="competence">
-												<p>${ competence.nom } (+ ${ competence.bonus })</p>
+											<c:forEach items="${ aventurier.getCompetence() }" var="competence">
+												<p>${ competence.nom } (+${ competence.bonus })</p>
 											</c:forEach>
 										</td>
 										<td>${ aventurier.etat }</td>
