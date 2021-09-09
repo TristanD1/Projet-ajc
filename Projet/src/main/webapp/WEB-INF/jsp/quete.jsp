@@ -89,11 +89,13 @@
 											<td>${aventurier.nom}</td>
 											<td>
 												<div class="dropdown">
-													<c:if test="${aventurier.id != equipement.aventurier.id }">
+												
+													<c:if test="${aventurier.id != equipement.aventurier.id }" >
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">Choisir un equipement</button>
 													</c:if>
+													
 													<c:if test="${aventurier.id == equipement.aventurier.id }">
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"

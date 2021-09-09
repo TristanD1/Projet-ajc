@@ -44,7 +44,7 @@ public class QueteController {
 
 	@GetMapping("/lancer-quete")
 	public String add() {
-		return "quete";
+		return "resultatQuete";
 	}
 
 	@PostMapping("/lancer-quete")
