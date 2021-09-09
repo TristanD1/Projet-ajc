@@ -64,11 +64,11 @@
 					</div>
 
 					<div class="row">
-						<div class="col-2 col-form-label">
+						<div class="col-2">
 							<label for="competences" class="form-label">Compétences :</label>
 						</div>
 
-						<div class="col-10">
+						<div class="col-2">
 							<c:forEach items="${ competences }" var="competence">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" value="${ competence.id }"
@@ -76,6 +76,17 @@
 									<a>${ competence.nom } (+${ competence.bonus })</a>
 								</div>
 							</c:forEach>
+						</div>
+
+						<div class="col-1">
+							<label class="form-label">Recruter :</label>
+						</div>
+
+						<div class="col-2">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" name="isRecru"
+									id="flexCheckDefault">
+							</div>
 						</div>
 					</div>
 
@@ -112,7 +123,7 @@
 										<td>${ aventurier.experience }</td>
 										<td>${ aventurier.cout }</td>
 										<td>
-											<c:forEach items="${ aventurier.getCompetences() }" var="competence">
+											<c:forEach items="${ aventurier.competences }" var="competence">
 												<p>${ competence.nom } (+${ competence.bonus })</p>
 											</c:forEach>
 										</td>
@@ -146,7 +157,7 @@
 										<td>${ aventurier.nom }</td>
 										<td>${ aventurier.experience }</td>
 										<td>
-											<c:forEach items="${ aventurier.getCompetence() }" var="competence">
+											<c:forEach items="${ aventurier.competences }" var="competence">
 												<p>${ competence.nom } (+${ competence.bonus })</p>
 											</c:forEach>
 										</td>
