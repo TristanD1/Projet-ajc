@@ -31,7 +31,7 @@
 <section>
 		<h2>Détails</h2>
 
-		<table class="table table-striped table-hover" id="tableauQuete">
+		<table class="table table-dark" id="tableauQuete">
 			<thead>
 				<tr>
 					<th>Intitulé de la quête</th>

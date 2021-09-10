@@ -22,7 +22,6 @@ INDEX VERSION 1.127+C:\Users\jorda\OneDrive\Bureau\Formation JAVA Sopra Stéria\T
 147975546.index
 1207882061.index
 1380600312.index
-2674025601.index
 2274042111.index
 4218565620.index
 735536965.index
