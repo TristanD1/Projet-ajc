@@ -160,6 +160,11 @@ public class QueteController {
 		return "redirect:/ajouter-quete";
 	}
 
+	@GetMapping("/returnEquipement")
+	public String returnEq(){
+		return "redirect:/equipement";
+	}
+
 	// @GetMapping("/associer-quete-aventurier")
 	// public String associerQueteAventurier(@RequestParam int idAventurier,
 	// @RequestParam int idQuete) {

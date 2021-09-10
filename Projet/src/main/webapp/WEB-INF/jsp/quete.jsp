@@ -79,6 +79,7 @@
 									<tr>
 										<th>Aventurier</th>
 										<th>Choix de l'�quipement</th>
+										<th>Equipement(s) s�lectionn�(s)</th>
 										<th>Ajouter</th>
 										<th>Statut</th>
 									</tr>
@@ -88,33 +89,13 @@
 									<c:if test="${aventurier.isRecru()}">
 										<tr>
 											<td>${aventurier.nom}</td>
-											<td>
-												<div class="dropdown">
-												
-													<c:if test="${equipement.aventurier.id == null}" >
-														<button class="btn btn-secondary dropdown-toggle"
-															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-															aria-expanded="false">Choisir un equipement</button>
-													</c:if>
-													<c:forEach items="${equipements}" var="equipement">
-													<c:if test="${equipement.aventurier.id != null}">
-														<button class="btn btn-secondary dropdown-toggle"
-															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-															aria-expanded="false">${equipement.recompense.nom}</button>
-													</c:if>
-													</c:forEach>
-													<ul class="dropdown-menu"
-														aria-labelledby="dropdownMenuButton1">
-														<c:forEach items="${equipements}" var="equipement">
-															<li><a
-																data-aventurier="${aventurier.id}"
-																data-equipement="${equipement.id}"
-																class="dropdown-item" id="eq">${equipement.recompense.nom}</a></li>
-														</c:forEach>
-													</ul>
-
-												</div>
+											<td><a href="returnEquipement" type="button" class="btn btn-danger">Choisir des équipements</a>
 											</td>
+											<td><c:forEach items="${equipements}" var="equipement">
+												<c:if test="${equipement.aventurier.id == aventurier.id}">
+													<p>${equipement.recompense.nom}</p>
+												</c:if>
+												</c:forEach></td>
 											<c:if test="${quete.id != aventurier.quete.id}">
 													<td><a
 													data-aventurier="${aventurier.id }"
