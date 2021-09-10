@@ -76,8 +76,7 @@
 								<thead>
 									<tr>
 										<th>Aventurier</th>
-										<th>Choix de l'�quipement</th>
-										<th>Equipement(s) s�lectionn�(s)</th>
+										<th>Choix de l'équipement</th>
 										<th>Ajouter</th>
 										<th>Statut</th>
 									</tr>
