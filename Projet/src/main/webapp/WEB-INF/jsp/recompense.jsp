@@ -34,7 +34,7 @@
 		<h1>Equipement</h1>
 	</header>
 
-	<t:layout></t:layout>
+	<t:layout argent="${argent}"></t:layout>
 
 	<form method="POST">
 		<h2>Ajouter un équipement</h2>

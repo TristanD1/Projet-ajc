@@ -17,7 +17,7 @@
 		<h1>Accueil</h1>
 	</header>
 
-	<t:layout></t:layout>
+	<t:layout argent="${argent}"></t:layout>
 
 	<section>
 		<div>

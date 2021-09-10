@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IQueteDaoJpaRepository;
@@ -25,11 +26,15 @@ public class CompetenceController {
     @Autowired
     IQueteDaoJpaRepository daoQuete;
 
+    @Autowired
+	IArgentDaoJpaRepository daoArgent;
+
     @GetMapping("/competence")
     public String findAll(Model model) {
         List<Competence> competences = daoComptence.findAll();
 
         model.addAttribute("competences", competences);
+        model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
         return "competence";
     }
@@ -42,6 +47,7 @@ public class CompetenceController {
 
         Competence competence = daoComptence.findById(id).get();
 
+        model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
         model.addAttribute("competence", competence);
 
         return "competence";

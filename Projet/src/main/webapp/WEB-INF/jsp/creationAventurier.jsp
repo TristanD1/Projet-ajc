@@ -25,7 +25,7 @@
 					<h1>Aventuriers</h1>
 				</header>
 
-				<t:layout></t:layout>
+				<t:layout argent="${argent}"></t:layout>
 
 				<form method="POST">
 					<h2>Ajouter un aventurier</h2>

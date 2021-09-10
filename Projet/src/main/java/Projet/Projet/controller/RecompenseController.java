@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
 import Projet.Projet.dao.IRecompenseDaoJpaRepository;
 import Projet.Projet.model.Equipement;
@@ -22,10 +23,13 @@ public class RecompenseController {
 	@Autowired
 	IEquipementDaoJpaRepository daoEquipement;
 
+	@Autowired
+	IArgentDaoJpaRepository daoArgent;
+
 	@GetMapping("/recompense")
 	public String findAll(Model model) {
 		List<Recompense> recompenses = daoRecompense.findAll();
-
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		model.addAttribute("recompenses", recompenses);
 
 		return "recompense";
@@ -38,7 +42,7 @@ public class RecompenseController {
 		model.addAttribute("recompenses", recompenses);
 
 		Recompense recompense = daoRecompense.findById(id).get();
-
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		model.addAttribute("recompense", recompense);
 
 		return "recompense";
