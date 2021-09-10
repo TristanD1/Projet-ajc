@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+    <%@ page pageEncoding="UTF-8" %>
 
         <!DOCTYPE html>
         <html lang="en">
@@ -28,11 +29,7 @@
                 <h1>Compétences</h1>
             </header>
 
-<<<<<<< HEAD
-            <t:layout></t:layout>
-=======
                 <t:layout argent="${argent}"></t:layout>
->>>>>>> main
 
             <form method="POST">
                 <c:if test="${ competence == null }">
