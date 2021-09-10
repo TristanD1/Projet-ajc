@@ -27,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // .defaultSuccessUrl("/home",false)
         // .failureUrl("/se-connecter?erreur=true")
         // .permitAll();
+
+        
     }
 
 }

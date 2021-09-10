@@ -88,6 +88,17 @@
 		</div>
 
 		<div class="row">
+			<div class="col-2 col-form-label">
+				<label for="cout" class="form-label">Valeur de l'equipement :</label>
+			</div>
+
+			<div class="col-10">
+				<input class="form-control" type="text" id="valeur" name="valeur"
+					value="${ recompense.valeur }" />
+			</div>
+		</div>
+
+		<div class="row">
 			<c:if test="${ recompense == null }">
 				<input type="submit" class="btn btn-success" value="Ajouter" />
 			</c:if>
