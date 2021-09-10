@@ -118,4 +118,14 @@ public class AventurierController {
 		return "redirect:/aventurier";
 	}
 
+	@GetMapping("soigner-aventurier")
+	public String soigner(@RequestParam int id){
+		Aventurier monAventurier = daoAventurier.findById(id).get();
+
+		if(monAventurier.getEtat().toString().toLowerCase().equals("blesse"))
+			daoArgent.findById(1).get().subSomme(100);
+		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+		daoAventurier.save(monAventurier);
+		return "redirect:/aventurier";
+	}
 }

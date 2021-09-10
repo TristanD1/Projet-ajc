@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
@@ -41,11 +42,15 @@ public class QueteController {
 	@Autowired
 	private ICompetenceDaoJpaRepository daoCompetence;
 
+	@Autowired
+	IArgentDaoJpaRepository daoArgent;
+
 	@GetMapping("/quete")
 	public String quete(Model model) {
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
 		model.addAttribute("equipements", daoEquipement.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "quete";
 	}
@@ -56,6 +61,7 @@ public class QueteController {
 		model.addAttribute("aventuriers", daoAventurier.findAll());
 		model.addAttribute("equipements", daoEquipement.findAll());
 		model.addAttribute("quete", daoQuete.findById(idQuete).get());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		Quete maQuete = daoQuete.findById(idQuete).get();
 
 		if (maQuete.getAventuriers().size() > 0) {
@@ -120,6 +126,7 @@ public class QueteController {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "creationQuete";
 	}
@@ -130,7 +137,8 @@ public class QueteController {
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("quete", daoQuete.findById(id).get());
-
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
+		
 		return "creationQuete";
 	}
 

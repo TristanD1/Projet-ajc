@@ -58,7 +58,7 @@
 												<a href="recruter-aventurier?id=${ aventurier.id }"
 												class="btn btn-info">Recruter</a>
 											</c:if>
-											<c:if test="${argent <= aventurier.cout}">
+											<c:if test="${argent < aventurier.cout}">
 												<button class="btn btn-danger">Trop cher</button>
 											</c:if>
 										</td>
@@ -78,7 +78,8 @@
 								<th>Etat de santé</th>
 								<th>Equipement</th>
 								<th>Compétences</th>
-								<th></th>
+								<th>Renvoyer</th>
+								<th>Soigner</th>
 							</tr>
 						</thead>
 
@@ -106,6 +107,19 @@
 										</td>
 										<td><a href="renvoyer-aventurier?id=${ aventurier.id }"
 												class="btn btn-danger">Renvoyer</a></td>
+										<c:if test='${(aventurier.etat).equals("en_pleine_forme")}'>
+											<td><button class="btn btn-info">non blessé</button></td>
+										</c:if>
+										<c:if test="${(aventurier.etat).equals('blesse')}">
+											<c:if test="${argent>=100}">
+												<td>
+													<a href="soigner-aventurier?id=${aventurier.id}" class="btn btn-success"> Soigner </a>
+												</td>
+											</c:if>
+											<c:if test="${argent < 100}">
+												<td><button class="btn btn-danger">Trop cher</button></td>
+											</c:if>
+										</c:if>
 									</tr>
 								</c:if>
 							</c:forEach>

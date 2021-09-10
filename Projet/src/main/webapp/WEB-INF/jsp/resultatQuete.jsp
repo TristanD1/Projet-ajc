@@ -23,7 +23,7 @@
 
 
 <body>
-<t:layout></t:layout>
+	<t:layout argent="${argent}"></t:layout>
 <header>
 <h1>Résultat de la quête :</h1>
 </header>

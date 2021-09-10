@@ -31,7 +31,7 @@
 				<h1>Quêtes</h1>
 			</header>
 
-			<t:layout></t:layout>
+			<t:layout argent="${argent}"></t:layout>
 
 			<form method="POST">
 				<c:if test="${ quete == null }">

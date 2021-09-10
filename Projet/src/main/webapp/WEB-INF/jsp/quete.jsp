@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<t:layout></t:layout>
+	<t:layout argent="${argent}"></t:layout>
 	<header>
 		<h1>Quêtes</h1>
 	</header>
