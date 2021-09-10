@@ -89,8 +89,7 @@ public class QueteController {
 				if (mesRecompenses.size() > 0) {
 					double r2 = new Random().nextDouble();
 					Equipement monEquipement = new Equipement();
-					monEquipement.getRecompense().setNom(mesRecompenses.get((int) r2 * mesRecompenses.size()).getNom());
-					monEquipement.getRecompense().setBonus(mesRecompenses.get((int) r2 * mesRecompenses.size()).getBonus());
+					monEquipement.setRecompense(mesRecompenses.get((int) r2 * mesRecompenses.size()));
 					daoEquipement.save(monEquipement);
 				} 
 			} else {
