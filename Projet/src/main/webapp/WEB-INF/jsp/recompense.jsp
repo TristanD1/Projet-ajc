@@ -38,6 +38,7 @@
 	<t:layout argent="${argent}"></t:layout>
 
 	<form method="POST">
+		<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
 		<h2>Ajouter un équipement</h2>
 
 		<div class="row">

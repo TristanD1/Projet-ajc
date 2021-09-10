@@ -52,7 +52,6 @@ public class RecompenseController {
 	}
 
 	@PostMapping({ "/recompense", "/modifier-recompense" })
-	@PreAuthorize("hasRole('ADMIN')")
 	public String ajouter(Recompense recompense) {
 		daoRecompense.save(recompense);
 
@@ -60,6 +59,7 @@ public class RecompenseController {
 	}
 
 	@GetMapping("/supprimer-recompense")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		for (Equipement e : daoEquipement.findAll()) {
 			if (e.getRecompense().getId() == id) {
