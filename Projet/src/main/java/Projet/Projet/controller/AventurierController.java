@@ -61,14 +61,8 @@ public class AventurierController {
 	}
 
 	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
-	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, /*
-																							 * @RequestParam boolean
-																							 * isRecru,
-																							 */
-			Aventurier aventurier) {
+	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, Aventurier aventurier) {
 		aventurier.setCompetences(new ArrayList<Competence>());
-
-		// aventurier.setRecru(isRecru);
 
 		if (competencesId == null) {
 			competencesId = new ArrayList<Integer>();
