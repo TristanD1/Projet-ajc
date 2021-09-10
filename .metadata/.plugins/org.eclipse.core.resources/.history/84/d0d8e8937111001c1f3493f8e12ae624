@@ -1,0 +1,129 @@
+body {
+	padding-left: 250px;
+	font-family: 'Roboto', sans-serif;
+	background-color: tan;
+	background-image: url("/assets/img/papyrus.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	
+}
+
+header {
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	border-bottom: solid 2px #333;
+    background-color: #333;
+    color: white;
+}
+
+h1 {
+	font-size: 36px;
+	
+}
+
+h2 {
+    font-size: 18px;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	margin-left: -20px;
+	margin-right: -20px;
+	border-bottom: solid 1px  skyblue;
+	width: 75.4%;
+	
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	background: #333;
+	color: white;
+}
+
+nav ul {
+	padding: 0;
+}
+
+nav li {
+	display: block;
+	margin-bottom: 10px;
+}
+
+nav a {
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+	color: white;
+	text-decoration: initial;
+	transition: all 0.5s ease-in-out;
+}
+
+nav a::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 50px;
+	background: #a39797;
+	transition: width 0.25s ease-in;
+	z-index: -1;
+}
+
+nav a img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+nav a:hover {
+	padding: 5px 20px;
+	color: white;
+}
+
+nav a:hover::before {
+	width: 100%;
+}
+
+section {
+	padding: 0 30px;
+}
+
+section h2 {
+    padding-top: 20px;
+}
+
+/* section > table {
+	display: block;
+	margin-left: 10%;
+} */
+
+#tableauQuete {
+	width: 74.2%;
+} 
+
+#imageDroite{
+	width:23%;
+	position: fixed;
+	right: 0;
+	top: 53px;
+	height: 100%;
+	opacity: 0.7;
+	background-attachment: fixed;
+	border-left: hidden;
+	
+}
+
+#btn-details{
+	width: 10%;
+}
+
+#btn-details:hover{
+	animation: heartBeat 1s infinite ;
+}
+
+#imageStatut{
+	font-size: 30px;
+}
+

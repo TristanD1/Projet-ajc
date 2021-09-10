@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Résultat de la quête</title>
+<meta name="description" content="Résultat de la quête" />
+<link rel="stylesheet" href="assets/css/resultatStyle.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+	crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+<t:layout></t:layout>
+<header>
+<h1>Résultat de la quête :</h1>
+</header>
+
+<section>
+		<h2>Détails</h2>
+
+		<table class="table table-striped table-hover" id="tableauQuete">
+			<thead>
+				<tr>
+					<th>Intitulé de la quête</th>
+					<td>${quete.intitule}</td>
+					</tr>
+					<tr>
+					<th>Résultat</th>
+					<c:if test='${quete.etat === "achevee"}'>
+					<td>Succés</td>
+					</c:if>
+					<c:if test='${quete.etat === "inachevee"}'>
+					<td>Echec</td>
+					</c:if>
+					</tr>
+					<tr>
+					<th>Expérience Reçu</th>
+					<td>ok</td>
+					</tr>
+					<tr>
+					<th>Récompense</th>
+					<td>ok</td>
+					</tr>
+					<tr>
+					<th>Quantité</th>
+					<td>ok</td>
+					<tr>
+					<th>Etats des héros</th>
+					<td>ok</td>
+					</tr>
+				</tr>
+			</thead>
+			</table>
+			</section>
+
+</body>
+</html>
