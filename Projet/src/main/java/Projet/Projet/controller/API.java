@@ -65,35 +65,37 @@ public class API {
 	public void associerEquipementAventurier(@RequestParam int idAventurier, @RequestParam int idEquipement) {
 		Aventurier aventurier = daoAventurier.findById(idAventurier).get();
 		Equipement equipement = daoEquipement.findById(idEquipement).get();
+		
+		equipement.setAventurier(aventurier);
+		daoEquipement.save(equipement);
+		
+//		for (Equipement eq : equipements) {
+//			try{
+//				if(eq.getAventurier().getId() == aventurier.getId()){
+//					eq.setAventurier(null);
+//					daoEquipement.save(eq);
+//			}
+//			}catch (Exception e1){
+//				
+//			}
+//		}
+//		try{
+//			if (aventurier.getId() == equipement.getAventurier().getId()){
+//				equipement.setAventurier(null);
+//				daoEquipement.save(equipement);
+//			}else{
+//				equipement.setAventurier(null);
+//				daoEquipement.save(equipement);
+//				equipement.setAventurier(aventurier);
+//				daoEquipement.save(equipement);
+//			}
+//		}catch (Exception e2){
+//			equipement.setAventurier(aventurier);
+//			daoEquipement.save(equipement);
+//			}
+//		
+//		
+//	}
 
-		List<Equipement> equipements = daoEquipement.findAll();
-		
-		for (Equipement eq : equipements) {
-			try{
-				if(eq.getAventurier().getId() == aventurier.getId()){
-					eq.setAventurier(null);
-					daoEquipement.save(eq);
-			}
-			}catch (Exception e1){
-				
-			}
-		}
-		try{
-			if (aventurier.getId() == equipement.getAventurier().getId()){
-				equipement.setAventurier(null);
-				daoEquipement.save(equipement);
-			}else{
-				equipement.setAventurier(null);
-				daoEquipement.save(equipement);
-				equipement.setAventurier(aventurier);
-				daoEquipement.save(equipement);
-			}
-		}catch (Exception e2){
-			equipement.setAventurier(aventurier);
-			daoEquipement.save(equipement);
-			}
-		
-		
-	}
-
+}
 }

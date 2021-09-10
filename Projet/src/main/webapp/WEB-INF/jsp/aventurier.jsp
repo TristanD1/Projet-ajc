@@ -53,8 +53,15 @@
 												<p>${ competence.nom } (+ ${ competence.bonus })</p>
 											</c:forEach>
 										</td>
-										<td><a href="recruter-aventurier?id=${ aventurier.id }"
-												class="btn btn-info">Recruter</a></td>
+										<td>
+											<c:if test="${argent >= aventurier.cout}">
+												<a href="recruter-aventurier?id=${ aventurier.id }"
+												class="btn btn-info">Recruter</a>
+											</c:if>
+											<c:if test="${argent <= aventurier.cout}">
+												<button class="btn btn-danger">Trop cher</button>
+											</c:if>
+										</td>
 									</tr>
 								</c:if>
 							</c:forEach>

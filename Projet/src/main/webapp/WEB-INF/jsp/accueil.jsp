@@ -3,6 +3,7 @@
 	<!DOCTYPE html>
 	<html lang="en">
 
+<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,8 @@
 		<link rel="stylesheet" href="assets/css/accueilStyle.css">
 	</head>
 
+=======
+>>>>>>> main
 	<t:layout argent="${argent}"></t:layout>
 
 	<body>

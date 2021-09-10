@@ -49,12 +49,12 @@ for (let btn of listBtnAjouter) {
     
 // }
 
- for (let equipement of listEquipement) {
-     equipement.addEventListener('click', () => {
-        equipement.closest('div').querySelector('#dropdownMenu').textContent = equipement.textContent;
-
-     })
- };
+// for (let equipement of listEquipement) {
+//     equipement.addEventListener('click', () => {
+//        equipement.closest('div').querySelector('#dropdownMenu').textContent = equipement.textContent;
+//
+//     })
+// };
 
 // document.querySelector('#btn-choix2').addEventListener('click', () =>{
 //     document.querySelector('#intituleQueteChoisir').textContent = document.querySelector('#intituleQueteDetails').textContent;
@@ -80,7 +80,7 @@ for(let btnEq of listEquipement ){
         let equipementId = this.getAttribute('data-equipement');
 
         fetch(`http://localhost:8080/api/associer-equipement-aventurier?idEquipement=${equipementId}&idAventurier=${aventurierId}`);
-    })
+ })
 }
 
 
