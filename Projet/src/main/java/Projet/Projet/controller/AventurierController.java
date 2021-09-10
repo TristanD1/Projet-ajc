@@ -70,8 +70,9 @@ public class AventurierController {
 
 		// aventurier.setRecru(isRecru);
 
-		if (competencesId == null)
+		if (competencesId == null) {
 			competencesId = new ArrayList<Integer>();
+		}
 
 		for (int i : competencesId) {
 			aventurier.getCompetences().add(daoCompetence.findById(i).get());

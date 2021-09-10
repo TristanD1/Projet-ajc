@@ -135,10 +135,18 @@ public class QueteController {
 	}
 
 	@PostMapping({ "/ajouter-quete", "/modifier-quete" })
-	public String sauvegarder(@RequestParam List<Integer> competencesId, @RequestParam List<Integer> recompensesId,
+	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, @RequestParam(required = false) List<Integer> recompensesId,
 			Quete quete) {
 		quete.setRecompenses(new ArrayList<Recompense>());
 		quete.setCompetences(new ArrayList<Competence>());
+
+		if (competencesId == null) {
+			competencesId = new ArrayList<Integer>();
+		}
+
+		if (recompensesId == null) {
+			recompensesId = new ArrayList<Integer>();
+		}
 
 		for (int i : recompensesId) {
 			quete.getRecompenses().add(daoRecompense.findById(i).get());

@@ -24,11 +24,7 @@
 				<h1>Aventuriers</h1>
 			</header>
 
-<<<<<<< HEAD
-			<t:layout></t:layout>
-=======
-				<t:layout argent="${argent}"></t:layout>
->>>>>>> main
+			<t:layout argent="${argent}"></t:layout>
 
 			<form method="POST">
 				<c:if test="${ aventurier == null }">
