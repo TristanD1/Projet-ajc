@@ -88,7 +88,7 @@ public class AventurierController {
 
 		aventurier.setRecru(true);
 		aventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
-
+		daoArgent.findById(1).get().subSomme(aventurier.getCout());
 		daoAventurier.save(aventurier);
 
 		return "redirect:/aventurier";

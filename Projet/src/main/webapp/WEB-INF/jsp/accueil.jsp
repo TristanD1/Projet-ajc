@@ -3,18 +3,7 @@
 	<!DOCTYPE html>
 	<html lang="en">
 
-<<<<<<< HEAD
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Projet</title>
-		<meta name="description" content="Gérez votre guilde d'aventuriers !" />
-		<link rel="stylesheet" href="assets/css/accueilStyle.css">
-	</head>
-=======
 	<t:layout argent="${argent}"></t:layout>
->>>>>>> main
 
 	<body>
 		<header>
