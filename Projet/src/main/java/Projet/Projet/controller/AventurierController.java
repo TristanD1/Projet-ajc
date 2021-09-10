@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
@@ -29,8 +30,12 @@ public class AventurierController {
 	@Autowired
 	ICompetenceDaoJpaRepository daoCompetence;
 
+	@Autowired
+	IArgentDaoJpaRepository daoArgent;
+
 	@GetMapping("/aventurier")
 	public String findAll(Model model) {
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
 
 		return "aventurier";
@@ -40,6 +45,7 @@ public class AventurierController {
 	public String ajouter(Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "creationAventurier";
 	}
@@ -48,6 +54,7 @@ public class AventurierController {
 	public String modifier(@RequestParam int id, Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		model.addAttribute("aventurier", daoAventurier.findById(id).get());
 
 		return "creationAventurier";
@@ -73,7 +80,7 @@ public class AventurierController {
 
 		aventurier.setRecru(true);
 		aventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
-
+		daoArgent.findById(1).get().subSomme(aventurier.getCout());
 		daoAventurier.save(aventurier);
 
 		return "redirect:/aventurier";

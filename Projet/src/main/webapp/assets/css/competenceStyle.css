@@ -35,6 +35,20 @@ nav {
 	color: white;
 }
 
+#gold {
+	position: absolute;
+	bottom: 0px;
+	align-items: center;
+	padding: 5px 10px;
+	color: white;
+	text-decoration: initial;
+}
+
+#gold img {
+	width: 30px;
+	margin-right: 10px;
+}
+
 nav ul {
 	padding: 0;
 }
@@ -111,6 +125,18 @@ section button:hover {
 
 form {
 	padding: 20px;
+}
+
+form a[type="button"] {
+	text-align: center;
+	width: 120px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	background: #D65050;
+	color: white;
+	cursor: pointer;
+	transition: background 0.25s ease-in;
 }
 
 form label {

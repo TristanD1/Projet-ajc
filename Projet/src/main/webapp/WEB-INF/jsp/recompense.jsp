@@ -26,6 +26,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="assets/js/equipement.js"></script>
 
 </head>
 
@@ -34,7 +35,7 @@
 		<h1>Equipement</h1>
 	</header>
 
-	<t:layout></t:layout>
+	<t:layout argent="${argent}"></t:layout>
 
 	<form method="POST">
 		<h2>Ajouter un équipement</h2>
@@ -108,8 +109,8 @@
 			<tbody>
 				<c:forEach items="${ recompenses }" var="recompense">
 					<tr>
-						<td>
-							<button class="btn btn-success btn-md" id="tooltip"
+						<td id="infobulle">
+							<button class="btn btn-success btn-md"
 								data-nom="${ recompense.nom }" data-img="${ recompense.image }"
 								data-descr="${ recompense.description }">${ recompense.nom }</button>
 						</td>
