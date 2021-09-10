@@ -54,11 +54,17 @@ public class AventurierController {
 	}
 
 	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
-	public String sauvegarder(@RequestParam List<Integer> competencesId, @RequestParam boolean isRecru,
+	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, /*
+																							 * @RequestParam boolean
+																							 * isRecru,
+																							 */
 			Aventurier aventurier) {
 		aventurier.setCompetences(new ArrayList<Competence>());
 
-		aventurier.setRecru(isRecru);
+		// aventurier.setRecru(isRecru);
+
+		if (competencesId == null)
+			competencesId = new ArrayList<Integer>();
 
 		for (int i : competencesId) {
 			aventurier.getCompetences().add(daoCompetence.findById(i).get());

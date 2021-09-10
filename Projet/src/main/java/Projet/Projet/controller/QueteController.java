@@ -41,9 +41,6 @@ public class QueteController {
 	@Autowired
 	private ICompetenceDaoJpaRepository daoCompetence;
 
-	@Autowired
-	private ICompetenceDaoJpaRepository daoCompetence;
-
 	@GetMapping("/quete")
 	public String quete(Model model) {
 		model.addAttribute("quetes", daoQuete.findAll());

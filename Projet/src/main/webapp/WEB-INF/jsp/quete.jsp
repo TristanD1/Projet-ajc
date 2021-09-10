@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <!DOCTYPE html>
@@ -9,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choisissez votre qu�te !</title>
+<title>Choisissez votre quête !</title>
 <meta name="description" content="Choisissez votre qu�te !" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -31,19 +29,19 @@
 <body>
 	<t:layout></t:layout>
 	<header>
-		<h1>Qu�tes</h1>
+		<h1>Quêtes</h1>
 	</header>
 	<section>
-		<h2>Liste des qu�tes disponibes</h2>
+		<h2>Liste des quêtes disponibes</h2>
 
 		<table class="table table-striped table-hover" id="tableauQuete">
 			<thead>
 				<tr>
-					<th>Intitul� de la qu�te</th>
-					<th>Exp�rience n�cessaire</th>
+					<th>Intitulé de la quête</th>
+					<th>Expérience nécessaire</th>
 					<th>Statut</th>
 					<th>Description</th>
-					<th>S�lection</th>
+					<th>Sélection</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,7 +76,7 @@
 								<thead>
 									<tr>
 										<th>Aventurier</th>
-										<th>Choix de l'�quipement</th>
+										<th>Choix de l'équipement</th>
 										<th>Ajouter</th>
 										<th>Statut</th>
 									</tr>
@@ -138,7 +136,7 @@
 						</div>
 						<div class="modal-footer">
 							<a type="submit" href="lancer-quete?idQuete=${quete.id}" class="btn btn-danger">
-								<i class="bi-flower1"></i> Lancer la qu�te <i class="bi-flower1"></i>
+								<i class="bi-flower1"></i> Lancer la quête <i class="bi-flower1"></i>
 							</a>
 							<button href="quete" type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" id="close">Annuler</button>

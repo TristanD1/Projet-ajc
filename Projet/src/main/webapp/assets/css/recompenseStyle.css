@@ -105,6 +105,18 @@ form {
 	padding: 20px;
 }
 
+form a[type="button"] {
+	text-align: center;
+	width: 120px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	background: #D65050;
+	color: white;
+	cursor: pointer;
+	transition: background 0.25s ease-in;
+}
+
 form label {
 	display: inline-block;
 	width: 250px;

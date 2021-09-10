@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,8 +5,8 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Résultat de la quête</title>
-<meta name="description" content="Résultat de la quête" />
+<title>RÃ©sultat de la quÃªte</title>
+<meta name="description" content="RÃ©sultat de la quÃªte" />
 <link rel="stylesheet" href="assets/css/resultatStyle.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -27,50 +25,50 @@
 <body>
 <t:layout></t:layout>
 <header>
-<h1>Résultat de la quête :</h1>
+<h1>RÃ©sultat de la quÃªte :</h1>
 </header>
 
 <section>
-		<h2>Détails</h2>
+		<h2>DÃ©tails</h2>
 
 		<table class="table table-striped table-hover" id="tableauQuete">
 			<thead>
 				<tr>
-					<th>Intitulé de la quête</th>
+					<th>IntitulÃ© de la quÃªte</th>
 					<td>${quete.intitule}</td>
 					</tr>
 					<c:if test='${(quete.etat).equals("achevee")}'>
 					<tr>
-					<th>Résultat</th>
-					<td>Succés</td>
+					<th>RÃ©sultat</th>
+					<td>SuccÃ¨s</td>
 					</tr>
 					<tr>
-					<th>Expérience Reçu</th>
+					<th>ExpÃ©rience ReÃ§u</th>
 					<td>${quete.difficulte}</td>
 					</tr>
 					<tr>
-					<th>Récompenses</th>
+					<th>RÃ©compenses</th>
 					<c:forEach items="${quete.recompenses}" var="recompense">
 					<td>${recompense.nom}</td>
 					</c:forEach>
 					</tr>
 					<tr>
 					<th>Etat des aventuriers</th>
-					<td>Prêts pour une autre mission</td>
+					<td>PrÃªts pour une autre mission</td>
 					</tr>
 					
 					</c:if>
 					<c:if test='${(quete.etat).equals("inachevee")}'>
 					<tr>
-					<th>Résultat</th>
+					<th>RÃ©sultat</th>
 					<td>Echec</td>
 					</tr>
 					<tr>
-					<th>Expérience Reçu</th>
+					<th>ExpÃ©rience ReÃ§u</th>
 					<td>0 XP</td>
 					</tr>
 					<tr>
-					<th>Récompenses</th>
+					<th>RÃ©compenses</th>
 					<td>Aucune</td>
 					</tr>
 					<tr>
