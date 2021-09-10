@@ -66,7 +66,6 @@
                     <c:if test="${ competence != null }">
                         <input type="submit" class="btn btn-warning" value="Modifier" />
                         <a href="competence" type="button">Annuler</a>
-
                     </c:if>
                 </div>
             </form>
