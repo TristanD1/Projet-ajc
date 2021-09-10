@@ -48,9 +48,7 @@
 					</tr>
 					<tr>
 					<th>Récompenses</th>
-					<c:forEach items="${quete.recompenses}" var="recompense">
-					<td>${recompense.nom}</td>
-					</c:forEach>
+					<td><c:forEach items="${quete.recompenses}" var="recompense"><p>${recompense.nom}</p></c:forEach></td>
 					</tr>
 					<tr>
 					<th>Etat des aventuriers</th>

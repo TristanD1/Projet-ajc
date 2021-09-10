@@ -86,12 +86,12 @@ public class QueteController {
 				// Choix aleatoire de la recompence parmis le catalogue de la
 				// quete
 				List<Recompense> mesRecompenses = maQuete.getRecompenses();
-				if (mesRecompenses.size() > 0) {
-					double r2 = new Random().nextDouble();
+				for (Recompense rec : mesRecompenses) {
 					Equipement monEquipement = new Equipement();
-					monEquipement.setRecompense(mesRecompenses.get((int) r2 * mesRecompenses.size()));
-					daoEquipement.save(monEquipement);
-				} 
+						monEquipement.setRecompense(rec);
+						daoEquipement.save(monEquipement);
+					
+				}
 			} else {
 				maQuete.setEtat(QueteEtat.INACHEVEE.toString().toLowerCase());
 				daoQuete.save(maQuete);
