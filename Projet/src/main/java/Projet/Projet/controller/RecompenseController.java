@@ -3,6 +3,7 @@ package Projet.Projet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,7 @@ public class RecompenseController {
 	IArgentDaoJpaRepository daoArgent;
 
 	@GetMapping("/recompense")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String findAll(Model model) {
 		List<Recompense> recompenses = daoRecompense.findAll();
 		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
@@ -36,6 +38,7 @@ public class RecompenseController {
 	}
 
 	@GetMapping("/modifier-recompense")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String modifier(@RequestParam int id, Model model) {
 		List<Recompense> recompenses = daoRecompense.findAll();
 
@@ -56,6 +59,7 @@ public class RecompenseController {
 	}
 
 	@GetMapping("/supprimer-recompense")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		for (Equipement e : daoEquipement.findAll()) {
 			if (e.getRecompense().getId() == id) {
