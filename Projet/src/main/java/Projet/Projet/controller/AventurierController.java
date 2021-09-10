@@ -64,6 +64,7 @@ public class AventurierController {
 	}
 
 	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
+	@PreAuthorize("hasRole('ADMIN')")
 	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, /*
 																							 * @RequestParam boolean
 																							 * isRecru,
