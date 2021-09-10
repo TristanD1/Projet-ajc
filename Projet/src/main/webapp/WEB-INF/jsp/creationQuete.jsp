@@ -35,6 +35,7 @@
 			<t:layout argent="${argent}"></t:layout>
 
 			<form method="POST">
+				<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
 				<c:if test="${ quete == null }">
 					<h2>Ajouter une quête</h2>
 				</c:if>
