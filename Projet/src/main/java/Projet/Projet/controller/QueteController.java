@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,6 +123,7 @@ public class QueteController {
 	}
 
 	@GetMapping("/ajouter-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String ajouter(Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
@@ -132,13 +134,14 @@ public class QueteController {
 	}
 
 	@GetMapping("/modifier-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String modifier(@RequestParam int id, Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("quete", daoQuete.findById(id).get());
 		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
-		
+
 		return "creationQuete";
 	}
 
@@ -162,6 +165,7 @@ public class QueteController {
 	}
 
 	@GetMapping("/supprimer-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		daoQuete.deleteById(id);
 
