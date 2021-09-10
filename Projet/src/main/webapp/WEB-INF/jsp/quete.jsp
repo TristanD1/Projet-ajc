@@ -85,6 +85,7 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${aventuriers}" var="aventurier">
+									<c:if test="${aventurier.isRecru()}">
 										<tr>
 											<td>${aventurier.nom}</td>
 											<td>
@@ -95,12 +96,13 @@
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">Choisir un equipement</button>
 													</c:if>
-													
+													<c:forEach items="${equipements}" var="equipement">
 													<c:if test="${equipement.aventurier.id != null}">
 														<button class="btn btn-secondary dropdown-toggle"
 															type="button" id="dropdownMenu" data-bs-toggle="dropdown"
 															aria-expanded="false">${equipement.recompense.nom}</button>
 													</c:if>
+													</c:forEach>
 													<ul class="dropdown-menu"
 														aria-labelledby="dropdownMenuButton1">
 														<c:forEach items="${equipements}" var="equipement">
@@ -132,6 +134,7 @@
 											
 
 										</tr>
+										</c:if>
 									</c:forEach>
 								</tbody>
 							</table>
