@@ -1531,3 +1531,4 @@ Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find
 2021-09-10 14:11:20,724 [Worker-113] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2021-09-10 14:11:20,726 [Worker-113] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-09-10 14:11:20,726 [Worker-113] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-09-10 14:11:20,726 [Worker-113] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jorda\OneDrive\Bureau\Formation JAVA Sopra Stéria\Travaux\Projet-ajc\Projet\src\test\resources
