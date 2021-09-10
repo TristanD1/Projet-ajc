@@ -77,6 +77,7 @@
 									<tr>
 										<th>Aventurier</th>
 										<th>Choix de l'équipement</th>
+										<th>Equipement sélectionné</th>
 										<th>Ajouter</th>
 										<th>Statut</th>
 									</tr>
