@@ -1,7 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
-		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-		<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
+<%@ page pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,63 +19,61 @@
 		</head>
 
 
-		<body>
-			<t:layout></t:layout>
-			<header>
-				<h1>Résultat de la quête :</h1>
-			</header>
+<body>
+	<t:layout argent="${argent}"></t:layout>
+<header>
+<h1>Résultat de la quête :</h1>
+</header>
 
 			<section>
 				<h2>Détails</h2>
 
-				<table class="table table-striped table-hover" id="tableauQuete">
-					<thead>
-						<tr>
-							<th>Intitulé de la quête</th>
-							<td>${quete.intitule}</td>
-						</tr>
-						<c:if test='${(quete.etat).equals("achevee")}'>
-							<tr>
-								<th>Résultat</th>
-								<td>Succès</td>
-							</tr>
-							<tr>
-								<th>Expérience Reçu</th>
-								<td>${quete.difficulte}</td>
-							</tr>
-							<tr>
-								<th>Récompenses</th>
-								<c:forEach items="${quete.recompenses}" var="recompense">
-									<td>${recompense.nom}</td>
-								</c:forEach>
-							</tr>
-							<tr>
-								<th>Etat des aventuriers</th>
-								<td>Prêts pour une autre mission</td>
-							</tr>
-
-						</c:if>
-						<c:if test='${(quete.etat).equals("inachevee")}'>
-							<tr>
-								<th>Résultat</th>
-								<td>Echec</td>
-							</tr>
-							<tr>
-								<th>Expérience Reçu</th>
-								<td>0 XP</td>
-							</tr>
-							<tr>
-								<th>Récompenses</th>
-								<td>Aucune</td>
-							</tr>
-							<tr>
-								<th>Etat des aventuriers</th>
-								<td>Necessitent des soins</td>
-							</tr>
-						</c:if>
-
-					</thead>
-				</table>
+		<table class="table table-dark" id="tableauQuete">
+			<thead>
+				<tr>
+					<th>Intitulé de la quête</th>
+					<td>${quete.intitule}</td>
+					</tr>
+					<c:if test='${(quete.etat).equals("achevee")}'>
+					<tr>
+					<th>Résultat</th>
+					<td>Succès</td>
+					</tr>
+					<tr>
+					<th>Expérience Reçu</th>
+					<td>${quete.difficulte}</td>
+					</tr>
+					<tr>
+					<th>Récompenses</th>
+					<td><c:forEach items="${quete.recompenses}" var="recompense"><p>${recompense.nom}</p></c:forEach></td>
+					</tr>
+					<tr>
+					<th>Etat des aventuriers</th>
+					<td>Prêts pour une autre mission</td>
+					</tr>
+					
+					</c:if>
+					<c:if test='${(quete.etat).equals("inachevee")}'>
+					<tr>
+					<th>Résultat</th>
+					<td>Echec</td>
+					</tr>
+					<tr>
+					<th>Expérience Reçu</th>
+					<td>0 XP</td>
+					</tr>
+					<tr>
+					<th>Récompenses</th>
+					<td>Aucune</td>
+					</tr>
+					<tr>
+					<th>Etat des aventuriers</th>
+					<td>Necessitent des soins</td>
+					</tr>
+					</c:if>
+					
+			</thead>
+			</table>
 			</section>
 
 		</body>

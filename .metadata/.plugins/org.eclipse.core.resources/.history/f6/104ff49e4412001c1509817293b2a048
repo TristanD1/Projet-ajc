@@ -60,6 +60,7 @@ public class RecompenseController {
 	}
 
 	@GetMapping("/supprimer-recompense")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		for (Equipement e : daoEquipement.findAll()) {
 			if (e.getRecompense().getId() == id) {

@@ -1,7 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
-		<!DOCTYPE html>
-		<html lang="en">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
+<%@ page pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
 
 		<head>
 			<meta charset="UTF-8">
@@ -21,13 +22,13 @@
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 		</head>
 
-		<body>
-			<t:layout></t:layout>
-			<header>
-				<h1>Quêtes</h1>
-			</header>
-			<section>
-				<h2>Liste des quêtes disponibes</h2>
+<body>
+	<t:layout argent="${argent}"></t:layout>
+	<header>
+		<h1>Quêtes</h1>
+	</header>
+	<section>
+		<h2>Liste des quêtes disponibes</h2>
 
 				<table class="table table-striped table-hover" id="tableauQuete">
 					<thead>

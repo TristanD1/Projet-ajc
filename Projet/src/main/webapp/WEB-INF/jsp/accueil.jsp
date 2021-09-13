@@ -1,4 +1,5 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+<%@ page pageEncoding="UTF-8" %>
 
 	<!DOCTYPE html>
 	<html lang="en">
@@ -12,14 +13,12 @@
 		<link rel="stylesheet" href="assets/css/accueilStyle.css">
 	</head>
 
-	<t:layout argent="${argent}"></t:layout>
-
 	<body>
 		<header>
 			<h1>Accueil</h1>
 		</header>
 
-		<t:layout></t:layout>
+		<t:layout argent="${argent}"></t:layout>
 
 		<section>
 			<div>

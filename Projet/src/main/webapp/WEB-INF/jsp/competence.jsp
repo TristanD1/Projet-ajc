@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+    <%@ page pageEncoding="UTF-8" %>
 
         <!DOCTYPE html>
         <html lang="en">
@@ -28,9 +29,10 @@
                 <h1>Compétences</h1>
             </header>
 
-            <t:layout argent="${argent}"></t:layout>
+                <t:layout argent="${argent}"></t:layout>
 
             <form method="POST">
+                <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
                 <c:if test="${ competence == null }">
                     <h2>Ajouter une compétence</h2>
                 </c:if>

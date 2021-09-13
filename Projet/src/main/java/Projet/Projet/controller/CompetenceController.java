@@ -3,6 +3,7 @@ package Projet.Projet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class CompetenceController {
 	IArgentDaoJpaRepository daoArgent;
 
     @GetMapping("/competence")
+    @PreAuthorize("hasRole('ADMIN')")
     public String findAll(Model model) {
         List<Competence> competences = daoComptence.findAll();
 
@@ -40,6 +42,7 @@ public class CompetenceController {
     }
 
     @GetMapping("/modifier-competence")
+    @PreAuthorize("hasRole('ADMIN')")
     public String modifier(@RequestParam int id, Model model) {
         List<Competence> competences = daoComptence.findAll();
 
@@ -61,6 +64,7 @@ public class CompetenceController {
     }
 
     @GetMapping("/supprimer-competence")
+    @PreAuthorize("hasRole('ADMIN')")
     public String supprimer(@RequestParam int id) {
         daoComptence.deleteById(id);
 

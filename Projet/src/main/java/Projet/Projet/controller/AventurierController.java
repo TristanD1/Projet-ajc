@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,7 @@ public class AventurierController {
 	}
 
 	@GetMapping("/ajouter-aventurier")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String ajouter(Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
@@ -51,6 +53,7 @@ public class AventurierController {
 	}
 
 	@GetMapping("/modifier-aventurier")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String modifier(@RequestParam int id, Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
@@ -61,7 +64,12 @@ public class AventurierController {
 	}
 
 	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
-	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, Aventurier aventurier) {
+	@PreAuthorize("hasRole('ADMIN')")
+	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, /*
+																							 * @RequestParam boolean
+																							 * isRecru,
+																							 */
+			Aventurier aventurier) {
 		aventurier.setCompetences(new ArrayList<Competence>());
 
 		if (competencesId == null) {
@@ -90,6 +98,7 @@ public class AventurierController {
 	}
 
 	@GetMapping("/supprimer-aventurier")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		daoAventurier.delete(daoAventurier.findById(id).get());
 
@@ -113,4 +122,14 @@ public class AventurierController {
 		return "redirect:/aventurier";
 	}
 
+	@GetMapping("soigner-aventurier")
+	public String soigner(@RequestParam int id){
+		Aventurier monAventurier = daoAventurier.findById(id).get();
+
+		if(monAventurier.getEtat().toString().toLowerCase().equals("blesse"))
+			daoArgent.findById(1).get().subSomme(100);
+		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+		daoAventurier.save(monAventurier);
+		return "redirect:/aventurier";
+	}
 }

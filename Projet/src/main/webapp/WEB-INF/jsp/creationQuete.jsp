@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+	<%@ page pageEncoding="UTF-8" %>
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -31,9 +32,10 @@
 				<h1>Quêtes</h1>
 			</header>
 
-			<t:layout></t:layout>
+			<t:layout argent="${argent}"></t:layout>
 
 			<form method="POST">
+				<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
 				<c:if test="${ quete == null }">
 					<h2>Ajouter une quête</h2>
 				</c:if>

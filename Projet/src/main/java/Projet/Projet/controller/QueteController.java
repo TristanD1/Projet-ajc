@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Projet.Projet.dao.IArgentDaoJpaRepository;
 import Projet.Projet.dao.IAventurierDaoJpaRepository;
 import Projet.Projet.dao.ICompetenceDaoJpaRepository;
 import Projet.Projet.dao.IEquipementDaoJpaRepository;
@@ -41,11 +43,15 @@ public class QueteController {
 	@Autowired
 	private ICompetenceDaoJpaRepository daoCompetence;
 
+	@Autowired
+	IArgentDaoJpaRepository daoArgent;
+
 	@GetMapping("/quete")
 	public String quete(Model model) {
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("aventuriers", daoAventurier.findAll());
 		model.addAttribute("equipements", daoEquipement.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "quete";
 	}
@@ -56,6 +62,7 @@ public class QueteController {
 		model.addAttribute("aventuriers", daoAventurier.findAll());
 		model.addAttribute("equipements", daoEquipement.findAll());
 		model.addAttribute("quete", daoQuete.findById(idQuete).get());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 		Quete maQuete = daoQuete.findById(idQuete).get();
 
 		if (maQuete.getAventuriers().size() > 0) {
@@ -86,12 +93,12 @@ public class QueteController {
 				// Choix aleatoire de la recompence parmis le catalogue de la
 				// quete
 				List<Recompense> mesRecompenses = maQuete.getRecompenses();
-				if (mesRecompenses.size() > 0) {
-					double r2 = new Random().nextDouble();
+				for (Recompense rec : mesRecompenses) {
 					Equipement monEquipement = new Equipement();
-					monEquipement.setRecompense(mesRecompenses.get((int) r2 * mesRecompenses.size()));
-					daoEquipement.save(monEquipement);
-				} 
+						monEquipement.setRecompense(rec);
+						daoEquipement.save(monEquipement);
+					
+				}
 			} else {
 				maQuete.setEtat(QueteEtat.INACHEVEE.toString().toLowerCase());
 				daoQuete.save(maQuete);
@@ -116,20 +123,24 @@ public class QueteController {
 	}
 
 	@GetMapping("/ajouter-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String ajouter(Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "creationQuete";
 	}
 
 	@GetMapping("/modifier-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String modifier(@RequestParam int id, Model model) {
 		model.addAttribute("competences", daoCompetence.findAll());
 		model.addAttribute("recompenses", daoRecompense.findAll());
 		model.addAttribute("quetes", daoQuete.findAll());
 		model.addAttribute("quete", daoQuete.findById(id).get());
+		model.addAttribute("argent", daoArgent.findById(1).get().getSomme());
 
 		return "creationQuete";
 	}
@@ -162,6 +173,7 @@ public class QueteController {
 	}
 
 	@GetMapping("/supprimer-quete")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String supprimer(@RequestParam int id) {
 		daoQuete.deleteById(id);
 
