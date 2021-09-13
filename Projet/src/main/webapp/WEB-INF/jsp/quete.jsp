@@ -70,6 +70,7 @@
 											<tr>
 												<th>Aventurier</th>
 												<th>Choix de l'équipement</th>
+												<th>Equipement sélectionné</th>
 												<th>Ajouter</th>
 												<th>Statut</th>
 											</tr>
@@ -79,38 +80,18 @@
 												<c:if test="${aventurier.isRecru()}">
 													<tr>
 														<td>${aventurier.nom}</td>
+														<td><a href="returnEquipement" type="button"
+																class="btn btn-danger">Choisir des
+																équipements</a>
+														</td>
 														<td>
-															<div class="dropdown">
-
-<<<<<<< HEAD
-																<c:if test="${equipement.aventurier.id == null}">
-																	<button class="btn btn-secondary dropdown-toggle"
-																		type="button" id="dropdownMenu"
-																		data-bs-toggle="dropdown"
-																		aria-expanded="false">Choisir un
-																		equipement</button>
+															<c:forEach items="${equipements}" var="equipement">
+																<c:if
+																	test="${equipement.aventurier.id == aventurier.id}">
+																	<p>${equipement.recompense.nom}
+																	</p>
 																</c:if>
-																<c:forEach items="${equipements}" var="equipement">
-																	<c:if test="${equipement.aventurier.id != null}">
-																		<button
-																			class="btn btn-secondary dropdown-toggle"
-																			type="button" id="dropdownMenu"
-																			data-bs-toggle="dropdown"
-																			aria-expanded="false">${equipement.recompense.nom}</button>
-																	</c:if>
-																</c:forEach>
-																<ul class="dropdown-menu"
-																	aria-labelledby="dropdownMenuButton1">
-																	<c:forEach items="${equipements}" var="equipement">
-																		<li><a data-aventurier="${aventurier.id}"
-																				data-equipement="${equipement.id}"
-																				class="dropdown-item"
-																				id="eq">${equipement.recompense.nom}</a>
-																		</li>
-																	</c:forEach>
-																</ul>
-
-															</div>
+															</c:forEach>
 														</td>
 														<c:if test="${quete.id != aventurier.quete.id}">
 															<td><a data-aventurier="${aventurier.id }"
@@ -127,62 +108,6 @@
 															<td id="statut"><i class="bi bi-person-check-fill"
 																	id="imageStatut"></i></td>
 														</c:if>
-
-
-													</tr>
-=======
-				</c:forEach>
-			</tbody>
-		</table>
-
-		<c:forEach items="${ quetes }" var="quete">
-			<div class="modal fade" id="ModalChoix-${ quete.id }" tabindex="-1"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 id="intituleQueteChoisir">${quete.intitule}</h5>
-						</div>
-						<div class="modal-body">
-							<table class="table table-striped table-hover" id="tableauPopup">
-								<thead>
-									<tr>
-										<th>Aventurier</th>
-										<th>Choix de l'équipement</th>
-										<th>Equipement sélectionné</th>
-										<th>Ajouter</th>
-										<th>Statut</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${aventuriers}" var="aventurier">
-									<c:if test="${aventurier.isRecru()}">
-										<tr>
-											<td>${aventurier.nom}</td>
-											<td><a href="returnEquipement" type="button" class="btn btn-danger">Choisir des équipements</a>
-											</td>
-											<td><c:forEach items="${equipements}" var="equipement">
-												<c:if test="${equipement.aventurier.id == aventurier.id}">
-													<p>${equipement.recompense.nom}</p>
-												</c:if>
-												</c:forEach></td>
-											<c:if test="${quete.id != aventurier.quete.id}">
-													<td><a
-													data-aventurier="${aventurier.id }"
-													data-quete="${quete.id}"
-														class="btn btn-danger" id="ajout">Ajouter</a></td>
-														<td id="statut"><i class="bi bi-person-x-fill"
-												id="imageStatut"></i></td>
-														
-												</c:if> <c:if test="${quete.id == aventurier.quete.id}">
-													<td><a
-													data-aventurier="${aventurier.id }"
-													data-quete="${quete.id}"
-														class="btn btn-danger" id="ajout">Enlever</a></td>
-														<td id="statut"><i class="bi bi-person-check-fill"
-												id="imageStatut"></i></td>
->>>>>>> main
-												</c:if>
 											</c:forEach>
 										</tbody>
 									</table>
@@ -218,7 +143,6 @@
 						</div>
 					</div>
 				</c:forEach>
-
 			</section>
 			<img src="assets/img/FondDeQuete.jpg" id="imageDroite">
 
