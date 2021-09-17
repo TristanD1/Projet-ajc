@@ -10,6 +10,8 @@
 
 		<li><a href="quete"><img src="assets/img/quete.svg">Quetes</a></li>
 		
+		<li><a href="ajouter-aventurier"><img src="assets/img/admin.png">Admin</a></li>
+
 		<li id="gold"> <img src="assets/img/gold.svg"> ${argent} </li>
 	</ul>
 </nav>

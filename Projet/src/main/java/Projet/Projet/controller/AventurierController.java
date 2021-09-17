@@ -65,10 +65,7 @@ public class AventurierController {
 
 	@PostMapping({ "/ajouter-aventurier", "/modifier-aventurier" })
 	@PreAuthorize("hasRole('ADMIN')")
-	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, /*
-																							 * @RequestParam boolean
-																							 * isRecru,
-																							 */
+	public String sauvegarder(@RequestParam(required = false) List<Integer> competencesId, @RequestParam String isRecru,
 			Aventurier aventurier) {
 		aventurier.setCompetences(new ArrayList<Competence>());
 
@@ -78,6 +75,14 @@ public class AventurierController {
 
 		for (int i : competencesId) {
 			aventurier.getCompetences().add(daoCompetence.findById(i).get());
+		}
+
+		if (aventurier.getEtat() == null) {
+			aventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
+		}
+
+		if (isRecru.equals("true")) {
+			aventurier.setRecru(true);
 		}
 
 		daoAventurier.save(aventurier);
@@ -123,10 +128,10 @@ public class AventurierController {
 	}
 
 	@GetMapping("soigner-aventurier")
-	public String soigner(@RequestParam int id){
+	public String soigner(@RequestParam int id) {
 		Aventurier monAventurier = daoAventurier.findById(id).get();
 
-		if(monAventurier.getEtat().toString().toLowerCase().equals("blesse"))
+		if (monAventurier.getEtat().toString().toLowerCase().equals("blesse"))
 			daoArgent.findById(1).get().subSomme(100);
 		monAventurier.setEtat(EtatAventurier.EN_PLEINE_FORME.toString().toLowerCase());
 		daoAventurier.save(monAventurier);

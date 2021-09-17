@@ -113,12 +113,12 @@ section h2 {
 } */
 
 #tableauQuete {
-	width: 74.2%;
+	width: 70%;
 } 
 
 #imageDroite{
 	width:23%;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 53px;
 	height: 100%;
